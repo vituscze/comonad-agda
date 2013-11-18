@@ -1,4 +1,4 @@
-module ComonadExamples where
+module Comonad.Examples where
 
 open import Algebra.Structures
 open import Data.List as L
@@ -8,7 +8,7 @@ open import Function
 open import Relation.Binary.PropositionalEquality
   hiding ([_])
 
-open import ComonadDef
+open import Comonad.Definition
 open import FunExt
 
 --

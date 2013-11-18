@@ -1,4 +1,4 @@
-module ComonadDef where
+module Comonad.Definition where
 
 open import Function
 open import Relation.Binary.PropositionalEquality

@@ -1,10 +1,10 @@
-module ComonadEquivalence where
+module Comonad.Equivalence where
 
 open import Function
 open import Relation.Binary.PropositionalEquality
 
 open import Category
-open import ComonadDef
+open import Comonad.Definition
 open import FunExt
 
 comonad→comonad′ : ∀ {W} → Comonad W → Comonad′ W
