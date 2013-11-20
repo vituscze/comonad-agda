@@ -77,3 +77,39 @@ module Cokleisli {W : Set → Set} (comonad : Comonad W) where
       ; assoc = λ f g h → ext (cong f ∘ sym ∘ extend-asso g h)
       }
     }
+
+module Comonad-Id {W : Set → Set} (comonad : Comonad W) where
+  open Comonad comonad
+  open Comonad (comonad′→comonad (comonad→comonad′ comonad))
+    using ()
+    renaming (extract to extract′; extend to extend′)
+
+  id-extract : ∀ {A} (x : W A) →
+    extract′ x ≡ extract x
+  id-extract _ = refl
+
+  id-extend : ∀ {A B} (f : W A → B) (x : W A) →
+    extend′ f x ≡ extend f x
+  id-extend f _ =
+    trans (extend-asso (f ∘ extract) id _) $
+          (cong (flip extend _) (ext (cong f ∘ extract-idˡ id)))
+
+module Comonad′-Id {W : Set → Set} (comonad : Comonad′ W) where
+  open Comonad′ comonad
+  open Comonad′ (comonad→comonad′ (comonad′→comonad comonad))
+    using ()
+    renaming (fmap to fmap′; extract to extract′; duplicate to duplicate′)
+
+  id-fmap : ∀ {A B} (f : A → B) (x : W A) →
+    fmap′ f x ≡ fmap f x
+  id-fmap f _ =
+    trans (fmap-∘ f extract _) $
+          (cong (fmap f) (ext-inner _))
+
+  id-extract : ∀ {A} (x : W A) →
+    extract′ x ≡ extract x
+  id-extract _ = refl
+
+  id-duplicate : ∀ {A} (x : W A) →
+    duplicate′ x ≡ duplicate x
+  id-duplicate _ = fmap-id _
