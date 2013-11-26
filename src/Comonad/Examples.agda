@@ -1,15 +1,20 @@
 module Comonad.Examples where
 
 open import Algebra.Structures
-open import Data.List as L
-  hiding ([_])
+  using (IsMonoid; module IsMonoid)
+open import Data.List
+  using ([]; _∷_; List; map)
 open import Data.Product
+  using (_×_; _,_; proj₁; proj₂)
 open import Function
+  using (_∘_; _$_; id)
 open import Relation.Binary.PropositionalEquality
-  hiding ([_])
+  using (_≡_; cong; refl)
 
 open import Comonad.Definition
+  using (Comonad; module Comonad)
 open import FunExt
+  using (ext)
 
 --
 
@@ -55,9 +60,9 @@ reader-Comonad M _∙_ ε isMonoid = record
   ; extend    = λ g f m₁ → g λ m₂ → f (m₁ ∙ m₂)
   ; isComonad = record
     { extract-idʳ = λ     f →
-        ext (λ _ → cong f (proj₂ identity _))
+                ext (cong f ∘ proj₂ identity)
     ; extract-idˡ = λ   g f →
-        cong g (ext (λ _ → cong f (proj₁ identity _)))
+        cong g (ext (cong f ∘ proj₁ identity))
     ; extend-asso = λ h g f →
         ext λ _ → cong h $
         ext λ _ → cong g $
@@ -125,9 +130,9 @@ data NonEmpty (A : Set) : Set where
   _∷_ : A → NonEmpty A → NonEmpty A
 
 nonEmpty-elim : ∀ {A} {P : NonEmpty A → Set} →
-               (f : ∀ a {as} → P as → P (a ∷ as))
-               (z : ∀ a → P [ a ]) →
-               ∀ as → P as
+  (f : ∀ a {as} → P as → P (a ∷ as))
+  (z : ∀ a → P [ a ]) →
+  ∀ as → P as
 nonEmpty-elim f z [ a ]    = z a
 nonEmpty-elim f z (a ∷ as) = f a (nonEmpty-elim f z as)
 
@@ -149,8 +154,8 @@ nonEmpty-comonad = record
 Zipper : Set → Set
 Zipper A = List A × A × List A
 
-mapZipper : ∀ {A B} → (A → B) → Zipper A → Zipper B
-mapZipper f (l , x , r) = L.map f l , f x , L.map f r
+mapZ : ∀ {A B} → (A → B) → Zipper A → Zipper B
+mapZ f (l , x , r) = map f l , f x , map f r
 
 listZipper-comonad : Comonad Zipper
 listZipper-comonad = record
@@ -185,30 +190,30 @@ listZipper-comonad = record
   extract = proj₁ ∘ proj₂
 
   extend : ∀ {A B} → (Zipper A → B) → Zipper A → Zipper B
-  extend f = mapZipper f ∘ duplicate
+  extend f = mapZ f ∘ duplicate
 
   -- Lemmas.
   extract-left : ∀ {A} l (x : A) r →
-           L.map extract (lefts l x r) ≡ l
+    map extract (lefts l x r) ≡ l
   extract-left []      _ _ = refl
   extract-left (_ ∷ _) _ _ = cong (_∷_ _) (extract-left _ _ _)
 
   extract-right : ∀ {A} l (x : A) r →
-            L.map extract (rights l x r) ≡ r
+    map extract (rights l x r) ≡ r
   extract-right _ _ []      = refl
   extract-right _ _ (_ ∷ _) = cong (_∷_ _) (extract-right _ _ _)
 
   asso-left : ∀ {A B C} (f : Zipper B → C) (g : Zipper A → B) l x r →
     let z = l , x , r
-    in L.map f (before (duplicate (extend g z)))
-     ≡ L.map (f ∘ extend g) (before (duplicate z))
+    in map f (before (duplicate (extend g z)))
+     ≡ map (f ∘ extend g) (before (duplicate z))
   asso-left _ _ []      _ _ = refl
   asso-left _ _ (_ ∷ _) _ _ = cong (_∷_ _) (asso-left _ _ _ _ _)
 
   asso-right : ∀ {A B C} (f : Zipper B → C) (g : Zipper A → B) l x r →
     let z = l , x , r
-    in L.map f (after (duplicate (extend g z)))
-      ≡ L.map (f ∘ extend g) (after (duplicate z))
+    in map f (after (duplicate (extend g z)))
+     ≡ map (f ∘ extend g) (after (duplicate z))
   asso-right _ _ _ _ []      = refl
   asso-right _ _ _ _ (_ ∷ _) = cong (_∷_ _) (asso-right _ _ _ _ _)
 
@@ -224,6 +229,6 @@ listZipper-comonad = record
 
   extend-asso : ∀ {A B C}
     (f : Zipper B → C) (g : Zipper A → B) (x : Zipper A) →
-    extend f (extend g x) ≡ extend (λ y → f (extend g y)) x
+    extend f (extend g x) ≡ extend (f ∘ extend g) x
   extend-asso f g (l , x , r)
     rewrite asso-left f g l x r | asso-right f g l x r = refl

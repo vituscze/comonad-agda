@@ -1,12 +1,17 @@
 open import Comonad.Definition
+  using (Comonad; module Comonad)
 
 module Comonad.Cokleisli {W : Set → Set} (comonad : Comonad W) where
 
 open import Function
+  using (_∘_)
 open import Relation.Binary.PropositionalEquality
+  using (cong; sym)
 
 open import Category
+  using (Category)
 open import FunExt
+  using (ext)
 
 open Comonad comonad
 

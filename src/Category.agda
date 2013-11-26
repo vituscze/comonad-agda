@@ -1,6 +1,7 @@
 module Category where
 
 open import Relation.Binary.PropositionalEquality
+  using (_≡_)
 
 record IsCategory
        (_⇒_ : Set → Set → Set)

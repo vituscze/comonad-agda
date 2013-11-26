@@ -1,11 +1,16 @@
 module Comonad.Equivalence where
 
 open import Function
+  using (_∘_; _$_; flip; id)
 open import Relation.Binary.PropositionalEquality
+  using (_≡_; cong; refl; sym; trans)
 
 open import Category
+  using (Category)
 open import Comonad.Definition
+  using (Comonad; module Comonad; Comonad′; module Comonad′)
 open import FunExt
+  using (ext)
 
 comonad→comonad′ : ∀ {W} → Comonad W → Comonad′ W
 comonad→comonad′ comonad = record

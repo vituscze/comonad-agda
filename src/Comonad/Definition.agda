@@ -1,7 +1,9 @@
 module Comonad.Definition where
 
 open import Function
+  using (_∘_; id)
 open import Relation.Binary.PropositionalEquality
+  using (_≡_)
 
 -- Comonad definition using extract and extend.
 record IsComonad {W : Set → Set}
