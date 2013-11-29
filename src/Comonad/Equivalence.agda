@@ -1,8 +1,8 @@
 module Comonad.Equivalence where
 
-open import Function
+open import Lib.Function
   using (_∘_; _$_; flip; id)
-open import Relation.Binary.PropositionalEquality
+open import Lib.Relation.Binary.PropositionalEquality
   using (_≡_; cong; refl; sym; trans)
 
 open import Category

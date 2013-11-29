@@ -1,8 +1,8 @@
 module Comonad.Definition where
 
-open import Function
+open import Lib.Function
   using (_∘_; id)
-open import Relation.Binary.PropositionalEquality
+open import Lib.Relation.Binary.PropositionalEquality
   using (_≡_)
 
 -- Comonad definition using extract and extend.

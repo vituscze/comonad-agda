@@ -1,6 +1,6 @@
 module Category where
 
-open import Relation.Binary.PropositionalEquality
+open import Lib.Relation.Binary.PropositionalEquality
   using (_≡_)
 
 record IsCategory

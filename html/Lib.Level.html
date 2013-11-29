@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Lib.Level</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Keyword"
+      >module</a
+      ><a name="7"
+      > </a
+      ><a name="8" href="Lib.Level.html#1" class="Module"
+      >Lib.Level</a
+      ><a name="17"
+      > </a
+      ><a name="18" class="Keyword"
+      >where</a
+      ><a name="23"
+      >
+
+</a
+      ><a name="25" class="Keyword"
+      >open</a
+      ><a name="29"
+      > </a
+      ><a name="30" class="Keyword"
+      >import</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="Agda.Primitive.html#1" class="Module"
+      >Agda.Primitive</a
+      ><a name="51"
+      >
+  </a
+      ><a name="54" class="Keyword"
+      >using</a
+      ><a name="59"
+      > </a
+      ><a name="60" class="Symbol"
+      >(</a
+      ><a name="61"
+      >Level</a
+      ><a name="66" class="Symbol"
+      >;</a
+      ><a name="67"
+      > _&#8852;_</a
+      ><a name="71" class="Symbol"
+      >)</a
+      ><a name="72"
+      >
+  </a
+      ><a name="75" class="Keyword"
+      >renaming</a
+      ><a name="83"
+      > </a
+      ><a name="84" class="Symbol"
+      >(</a
+      ><a name="85"
+      >lzero </a
+      ><a name="91" class="Symbol"
+      >to</a
+      ><a name="93"
+      > zero</a
+      ><a name="98" class="Symbol"
+      >;</a
+      ><a name="99"
+      > lsuc </a
+      ><a name="105" class="Symbol"
+      >to</a
+      ><a name="107"
+      > suc</a
+      ><a name="111" class="Symbol"
+      >)</a
+      ><a name="112"
+      >
+  </a
+      ><a name="115" class="Keyword"
+      >public</a
+      ><a name="121"
+      >
+
+</a
+      ><a name="123" class="Keyword"
+      >record</a
+      ><a name="129"
+      > </a
+      ><a name="130" href="Lib.Level.html#130" class="Record"
+      >Lift</a
+      ><a name="134"
+      > </a
+      ><a name="135" class="Symbol"
+      >{</a
+      ><a name="136" href="Lib.Level.html#136" class="Bound"
+      >a</a
+      ><a name="137"
+      > </a
+      ><a name="138" href="Lib.Level.html#138" class="Bound"
+      >&#8467;</a
+      ><a name="139" class="Symbol"
+      >}</a
+      ><a name="140"
+      > </a
+      ><a name="141" class="Symbol"
+      >(</a
+      ><a name="142" href="Lib.Level.html#142" class="Bound"
+      >A</a
+      ><a name="143"
+      > </a
+      ><a name="144" class="Symbol"
+      >:</a
+      ><a name="145"
+      > </a
+      ><a name="146" class="PrimitiveType"
+      >Set</a
+      ><a name="149"
+      > </a
+      ><a name="150" href="Lib.Level.html#136" class="Bound"
+      >a</a
+      ><a name="151" class="Symbol"
+      >)</a
+      ><a name="152"
+      > </a
+      ><a name="153" class="Symbol"
+      >:</a
+      ><a name="154"
+      > </a
+      ><a name="155" class="PrimitiveType"
+      >Set</a
+      ><a name="158"
+      > </a
+      ><a name="159" class="Symbol"
+      >(</a
+      ><a name="160" href="Lib.Level.html#136" class="Bound"
+      >a</a
+      ><a name="161"
+      > </a
+      ><a name="162" href="Agda.Primitive.html#319" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="163"
+      > </a
+      ><a name="164" href="Lib.Level.html#138" class="Bound"
+      >&#8467;</a
+      ><a name="165" class="Symbol"
+      >)</a
+      ><a name="166"
+      > </a
+      ><a name="167" class="Keyword"
+      >where</a
+      ><a name="172"
+      >
+  </a
+      ><a name="175" class="Keyword"
+      >constructor</a
+      ><a name="186"
+      > </a
+      ><a name="187" href="Lib.Level.html#187" class="InductiveConstructor"
+      >lift</a
+      ><a name="191"
+      >
+  </a
+      ><a name="194" class="Keyword"
+      >field</a
+      ><a name="199"
+      >
+    </a
+      ><a name="204" href="Lib.Level.html#204" class="Field"
+      >lower</a
+      ><a name="209"
+      > </a
+      ><a name="210" class="Symbol"
+      >:</a
+      ><a name="211"
+      > </a
+      ><a name="212" href="Lib.Level.html#142" class="Bound"
+      >A</a
+      ><a name="213"
+      >
+
+</a
+      ><a name="215" class="Keyword"
+      >open</a
+      ><a name="219"
+      > </a
+      ><a name="220" href="Lib.Level.html#130" class="Module"
+      >Lift</a
+      ><a name="224"
+      > </a
+      ><a name="225" class="Keyword"
+      >public</a
+      ><a name="231"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

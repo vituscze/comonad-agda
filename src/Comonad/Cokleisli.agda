@@ -3,9 +3,9 @@ open import Comonad.Definition
 
 module Comonad.Cokleisli {W : Set → Set} (comonad : Comonad W) where
 
-open import Function
+open import Lib.Function
   using (_∘_)
-open import Relation.Binary.PropositionalEquality
+open import Lib.Relation.Binary.PropositionalEquality
   using (cong; sym)
 
 open import Category

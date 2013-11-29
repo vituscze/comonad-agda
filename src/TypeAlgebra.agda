@@ -1,24 +1,24 @@
 module TypeAlgebra where
 
-open import Algebra
+open import Lib.Algebra
   using (CommutativeSemiring)
-open import Algebra.FunctionProperties
+open import Lib.Algebra.FunctionProperties
   using ()
-open import Data.Empty
+open import Lib.Data.Empty
   using (⊥; ⊥-elim)
-open import Data.Product as P
+open import Lib.Data.Product as P
   using (_×_; _,_; ,_; <_,_>; proj₁; proj₂; swap)
-open import Data.Sum as S
+open import Lib.Data.Sum as S
   using (_⊎_; [_,_]; inj₁; inj₂)
-open import Data.Unit
+open import Lib.Data.Unit
   using (⊤)
-open import Function
+open import Lib.Function
   using (_∘_; id)
-open import Level
+open import Lib.Level
   using (_⊔_; Lift; lift; lower; suc)
-open import Relation.Binary
+open import Lib.Relation.Binary
   using (_Preserves₂_⟶_⟶_; IsEquivalence; Transitive)
-open import Relation.Binary.PropositionalEquality
+open import Lib.Relation.Binary.PropositionalEquality
   using (_≡_; cong; cong₂; refl; trans)
 
 record _≅_ {a b} (A : Set a) (B : Set b) : Set (a ⊔ b) where
@@ -76,7 +76,7 @@ semiring {ℓ} = record
     }
   }
   where
-  open Algebra.FunctionProperties (_≅_ {a = ℓ})
+  open Lib.Algebra.FunctionProperties (_≅_ {a = ℓ})
 
   ⊎-assoc : Associative _⊎_
   ⊎-assoc _ _ _ = iso

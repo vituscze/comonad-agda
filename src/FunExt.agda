@@ -1,8 +1,8 @@
 module FunExt where
 
-open import Level
+open import Lib.Level
   using (zero)
-open import Relation.Binary.PropositionalEquality
+open import Lib.Relation.Binary.PropositionalEquality
   using (Extensionality)
 
 postulate

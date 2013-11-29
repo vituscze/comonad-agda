@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Lib.Algebra</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Keyword"
+      >module</a
+      ><a name="7"
+      > </a
+      ><a name="8" href="Lib.Algebra.html#1" class="Module"
+      >Lib.Algebra</a
+      ><a name="19"
+      > </a
+      ><a name="20" class="Keyword"
+      >where</a
+      ><a name="25"
+      >
+
+</a
+      ><a name="27" class="Keyword"
+      >open</a
+      ><a name="31"
+      > </a
+      ><a name="32" class="Keyword"
+      >import</a
+      ><a name="38"
+      > </a
+      ><a name="39" href="Lib.Algebra.Structures.html#1" class="Module"
+      >Lib.Algebra.Structures</a
+      ><a name="61"
+      >
+</a
+      ><a name="62" class="Keyword"
+      >open</a
+      ><a name="66"
+      > </a
+      ><a name="67" class="Keyword"
+      >import</a
+      ><a name="73"
+      > </a
+      ><a name="74" href="Lib.Level.html#1" class="Module"
+      >Lib.Level</a
+      ><a name="83"
+      >
+</a
+      ><a name="84" class="Keyword"
+      >open</a
+      ><a name="88"
+      > </a
+      ><a name="89" class="Keyword"
+      >import</a
+      ><a name="95"
+      > </a
+      ><a name="96" href="Lib.Relation.Binary.html#1" class="Module"
+      >Lib.Relation.Binary</a
+      ><a name="115"
+      >
+
+</a
+      ><a name="117" class="Keyword"
+      >import</a
+      ><a name="123"
+      > </a
+      ><a name="124" href="Lib.Algebra.FunctionProperties.html#1" class="Module"
+      >Lib.Algebra.FunctionProperties</a
+      ><a name="154"
+      > </a
+      ><a name="155" class="Symbol"
+      >as</a
+      ><a name="157"
+      > </a
+      ><a name="158" class="Module"
+      >FunctionProperties</a
+      ><a name="176"
+      >
+
+</a
+      ><a name="178" class="Keyword"
+      >open</a
+      ><a name="182"
+      > </a
+      ><a name="183" href="Lib.Algebra.FunctionProperties.html#1" class="Module"
+      >FunctionProperties</a
+      ><a name="201"
+      > </a
+      ><a name="202" class="Keyword"
+      >using</a
+      ><a name="207"
+      > </a
+      ><a name="208" class="Symbol"
+      >(</a
+      ><a name="209"
+      >Op&#8322;</a
+      ><a name="212" class="Symbol"
+      >)</a
+      ><a name="213"
+      >
+
+</a
+      ><a name="215" class="Keyword"
+      >record</a
+      ><a name="221"
+      > </a
+      ><a name="222" href="Lib.Algebra.html#222" class="Record"
+      >CommutativeSemiring</a
+      ><a name="241"
+      > </a
+      ><a name="242" href="Lib.Algebra.html#242" class="Bound"
+      >c</a
+      ><a name="243"
+      > </a
+      ><a name="244" href="Lib.Algebra.html#244" class="Bound"
+      >&#8467;</a
+      ><a name="245"
+      > </a
+      ><a name="246" class="Symbol"
+      >:</a
+      ><a name="247"
+      > </a
+      ><a name="248" class="PrimitiveType"
+      >Set</a
+      ><a name="251"
+      > </a
+      ><a name="252" class="Symbol"
+      >(</a
+      ><a name="253" href="Agda.Primitive.html#289" class="Primitive"
+      >suc</a
+      ><a name="256"
+      > </a
+      ><a name="257" class="Symbol"
+      >(</a
+      ><a name="258" href="Lib.Algebra.html#242" class="Bound"
+      >c</a
+      ><a name="259"
+      > </a
+      ><a name="260" href="Agda.Primitive.html#319" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="261"
+      > </a
+      ><a name="262" href="Lib.Algebra.html#244" class="Bound"
+      >&#8467;</a
+      ><a name="263" class="Symbol"
+      >))</a
+      ><a name="265"
+      > </a
+      ><a name="266" class="Keyword"
+      >where</a
+      ><a name="271"
+      >
+  </a
+      ><a name="274" class="Keyword"
+      >infixl</a
+      ><a name="280"
+      > </a
+      ><a name="281" class="Number"
+      >7</a
+      ><a name="282"
+      > _*_
+  </a
+      ><a name="289" class="Keyword"
+      >infixl</a
+      ><a name="295"
+      > </a
+      ><a name="296" class="Number"
+      >6</a
+      ><a name="297"
+      > _+_
+  </a
+      ><a name="304" class="Keyword"
+      >infix</a
+      ><a name="309"
+      >  </a
+      ><a name="311" class="Number"
+      >4</a
+      ><a name="312"
+      > _&#8776;_
+  </a
+      ><a name="319" class="Keyword"
+      >field</a
+      ><a name="324"
+      >
+    </a
+      ><a name="329" href="Lib.Algebra.html#329" class="Field"
+      >Carrier</a
+      ><a name="336"
+      >               </a
+      ><a name="351" class="Symbol"
+      >:</a
+      ><a name="352"
+      > </a
+      ><a name="353" class="PrimitiveType"
+      >Set</a
+      ><a name="356"
+      > </a
+      ><a name="357" href="Lib.Algebra.html#242" class="Bound"
+      >c</a
+      ><a name="358"
+      >
+    </a
+      ><a name="363" href="Lib.Algebra.html#363" class="Field Operator"
+      >_&#8776;_</a
+      ><a name="366"
+      >                   </a
+      ><a name="385" class="Symbol"
+      >:</a
+      ><a name="386"
+      > </a
+      ><a name="387" href="Lib.Relation.Binary.html#58" class="Function"
+      >Rel</a
+      ><a name="390"
+      > </a
+      ><a name="391" href="Lib.Algebra.html#329" class="Bound"
+      >Carrier</a
+      ><a name="398"
+      > </a
+      ><a name="399" href="Lib.Algebra.html#244" class="Bound"
+      >&#8467;</a
+      ><a name="400"
+      >
+    </a
+      ><a name="405" href="Lib.Algebra.html#405" class="Field Operator"
+      >_+_</a
+      ><a name="408"
+      >                   </a
+      ><a name="427" class="Symbol"
+      >:</a
+      ><a name="428"
+      > </a
+      ><a name="429" href="Lib.Algebra.FunctionProperties.Core.html#51" class="Function"
+      >Op&#8322;</a
+      ><a name="432"
+      > </a
+      ><a name="433" href="Lib.Algebra.html#329" class="Bound"
+      >Carrier</a
+      ><a name="440"
+      >
+    </a
+      ><a name="445" href="Lib.Algebra.html#445" class="Field Operator"
+      >_*_</a
+      ><a name="448"
+      >                   </a
+      ><a name="467" class="Symbol"
+      >:</a
+      ><a name="468"
+      > </a
+      ><a name="469" href="Lib.Algebra.FunctionProperties.Core.html#51" class="Function"
+      >Op&#8322;</a
+      ><a name="472"
+      > </a
+      ><a name="473" href="Lib.Algebra.html#329" class="Bound"
+      >Carrier</a
+      ><a name="480"
+      >
+    </a
+      ><a name="485" href="Lib.Algebra.html#485" class="Field"
+      >0#</a
+      ><a name="487"
+      >                    </a
+      ><a name="507" class="Symbol"
+      >:</a
+      ><a name="508"
+      > </a
+      ><a name="509" href="Lib.Algebra.html#329" class="Bound"
+      >Carrier</a
+      ><a name="516"
+      >
+    </a
+      ><a name="521" href="Lib.Algebra.html#521" class="Field"
+      >1#</a
+      ><a name="523"
+      >                    </a
+      ><a name="543" class="Symbol"
+      >:</a
+      ><a name="544"
+      > </a
+      ><a name="545" href="Lib.Algebra.html#329" class="Bound"
+      >Carrier</a
+      ><a name="552"
+      >
+    </a
+      ><a name="557" href="Lib.Algebra.html#557" class="Field"
+      >isCommutativeSemiring</a
+      ><a name="578"
+      > </a
+      ><a name="579" class="Symbol"
+      >:</a
+      ><a name="580"
+      > </a
+      ><a name="581" href="Lib.Algebra.Structures.html#1015" class="Record"
+      >IsCommutativeSemiring</a
+      ><a name="602"
+      > </a
+      ><a name="603" href="Lib.Algebra.html#363" class="Bound Operator"
+      >_&#8776;_</a
+      ><a name="606"
+      > </a
+      ><a name="607" href="Lib.Algebra.html#405" class="Bound Operator"
+      >_+_</a
+      ><a name="610"
+      > </a
+      ><a name="611" href="Lib.Algebra.html#445" class="Bound Operator"
+      >_*_</a
+      ><a name="614"
+      > </a
+      ><a name="615" href="Lib.Algebra.html#485" class="Bound"
+      >0#</a
+      ><a name="617"
+      > </a
+      ><a name="618" href="Lib.Algebra.html#521" class="Bound"
+      >1#</a
+      ><a name="620"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

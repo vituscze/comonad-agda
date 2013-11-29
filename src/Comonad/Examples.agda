@@ -1,14 +1,14 @@
 module Comonad.Examples where
 
-open import Algebra.Structures
+open import Lib.Algebra.Structures
   using (IsMonoid; module IsMonoid)
-open import Data.List
+open import Lib.Data.List
   using ([]; _∷_; List; map)
-open import Data.Product
+open import Lib.Data.Product
   using (_×_; _,_; proj₁; proj₂)
-open import Function
+open import Lib.Function
   using (_∘_; _$_; id)
-open import Relation.Binary.PropositionalEquality
+open import Lib.Relation.Binary.PropositionalEquality
   using (_≡_; cong; refl)
 
 open import Comonad.Definition
