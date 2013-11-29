@@ -25,5 +25,4 @@ LeftZero : A → Op₂ A → Set _
 LeftZero z _∙_ = ∀ x → (z ∙ x) ≈ z
 
 _DistributesOverʳ_ : Op₂ A → Op₂ A → Set _
-_*_ DistributesOverʳ _+_ =
-  ∀ x y z → ((y + z) * x) ≈ ((y * x) + (z * x))
+_*_ DistributesOverʳ _+_ = ∀ x y z → ((y + z) * x) ≈ ((y * x) + (z * x))

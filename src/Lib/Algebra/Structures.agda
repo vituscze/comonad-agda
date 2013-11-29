@@ -37,9 +37,8 @@ record IsCommutativeMonoid {a ℓ} {A : Set a}
 
   open IsSemigroup isSemigroup
 
-record IsCommutativeSemiring
-         {a ℓ} {A : Set a} (≈ : Rel A ℓ)
-         (_+_ _*_ : Op₂ A) (0# 1# : A) : Set (a ⊔ ℓ) where
+record IsCommutativeSemiring {a ℓ} {A : Set a}
+  (≈ : Rel A ℓ) (_+_ _*_ : Op₂ A) (0# 1# : A) : Set (a ⊔ ℓ) where
   open FunctionProperties ≈
   field
     +-isCommutativeMonoid : IsCommutativeMonoid ≈ _+_ 0#
