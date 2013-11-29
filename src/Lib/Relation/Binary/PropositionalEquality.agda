@@ -1,7 +1,5 @@
 module Lib.Relation.Binary.PropositionalEquality where
 
-open import Lib.Level
-
 infix 4 _≡_
 
 data _≡_ {a} {A : Set a} (x : A) : A → Set a where
