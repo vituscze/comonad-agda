@@ -1,4 +1,3 @@
-open import Lib.Level
 open import Lib.Relation.Binary
 
 module Lib.Algebra.FunctionProperties
