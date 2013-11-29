@@ -15,4 +15,4 @@ License
 
 The code is licensed under (new) BSD license. See also: `LICENSE`.
 
-Generated HTML includes parts of Agda standard library which is licensed under MIT license. See also: `LIBLICENSE`.
+Generated HTML includes parts of Agda standard library which is licensed under MIT license. See also: `LIBLICENCE`.
