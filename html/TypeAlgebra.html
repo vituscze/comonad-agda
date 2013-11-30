@@ -9,2288 +9,1631 @@
      /></head
   ><body
   ><pre
-    ><a name="1" class="Keyword"
-      >module</a
-      ><a name="7"
-      > </a
-      ><a name="8" href="TypeAlgebra.html#1" class="Module"
-      >TypeAlgebra</a
-      ><a name="19"
-      > </a
-      ><a name="20" class="Keyword"
-      >where</a
-      ><a name="25"
+    ><a name="1" class="Comment"
+      >------------------------------------------------------------------------</a
+      ><a name="73"
+      >
+</a
+      ><a name="74" class="Comment"
+      >-- Definition of isomorphism and commutative semiring over types.</a
+      ><a name="139"
+      >
+</a
+      ><a name="140" class="Comment"
+      >------------------------------------------------------------------------</a
+      ><a name="212"
       >
 
 </a
-      ><a name="27" class="Keyword"
+      ><a name="214" class="Keyword"
+      >module</a
+      ><a name="220"
+      > </a
+      ><a name="221" href="TypeAlgebra.html#1" class="Module"
+      >TypeAlgebra</a
+      ><a name="232"
+      > </a
+      ><a name="233" class="Keyword"
+      >where</a
+      ><a name="238"
+      >
+
+</a
+      ><a name="240" class="Keyword"
       >open</a
-      ><a name="31"
+      ><a name="244"
       > </a
-      ><a name="32" class="Keyword"
+      ><a name="245" class="Keyword"
       >import</a
-      ><a name="38"
+      ><a name="251"
       > </a
-      ><a name="39" href="Algebra.html#1" class="Module"
+      ><a name="252" href="Algebra.html#1" class="Module"
       >Algebra</a
-      ><a name="46"
+      ><a name="259"
       >
   </a
-      ><a name="49" class="Keyword"
+      ><a name="262" class="Keyword"
       >using</a
-      ><a name="54"
+      ><a name="267"
       > </a
-      ><a name="55" class="Symbol"
+      ><a name="268" class="Symbol"
       >(</a
-      ><a name="56"
+      ><a name="269"
       >CommutativeSemiring</a
-      ><a name="75" class="Symbol"
-      >)</a
-      ><a name="76"
-      >
-</a
-      ><a name="77" class="Keyword"
-      >open</a
-      ><a name="81"
-      > </a
-      ><a name="82" class="Keyword"
-      >import</a
-      ><a name="88"
-      > </a
-      ><a name="89" href="Algebra.FunctionProperties.html#1" class="Module"
-      >Algebra.FunctionProperties</a
-      ><a name="115"
-      >
-  </a
-      ><a name="118" class="Keyword"
-      >using</a
-      ><a name="123"
-      > </a
-      ><a name="124" class="Symbol"
-      >()</a
-      ><a name="126"
-      >
-</a
-      ><a name="127" class="Keyword"
-      >open</a
-      ><a name="131"
-      > </a
-      ><a name="132" class="Keyword"
-      >import</a
-      ><a name="138"
-      > </a
-      ><a name="139" href="Data.Empty.html#1" class="Module"
-      >Data.Empty</a
-      ><a name="149"
-      >
-  </a
-      ><a name="152" class="Keyword"
-      >using</a
-      ><a name="157"
-      > </a
-      ><a name="158" class="Symbol"
-      >(</a
-      ><a name="159"
-      >&#8869;</a
-      ><a name="160" class="Symbol"
-      >;</a
-      ><a name="161"
-      > &#8869;-elim</a
-      ><a name="168" class="Symbol"
-      >)</a
-      ><a name="169"
-      >
-</a
-      ><a name="170" class="Keyword"
-      >open</a
-      ><a name="174"
-      > </a
-      ><a name="175" class="Keyword"
-      >import</a
-      ><a name="181"
-      > </a
-      ><a name="182" href="Data.Product.html#1" class="Module"
-      >Data.Product</a
-      ><a name="194"
-      > </a
-      ><a name="195" class="Symbol"
-      >as</a
-      ><a name="197"
-      > </a
-      ><a name="198" class="Module"
-      >P</a
-      ><a name="199"
-      >
-  </a
-      ><a name="202" class="Keyword"
-      >using</a
-      ><a name="207"
-      > </a
-      ><a name="208" class="Symbol"
-      >(</a
-      ><a name="209"
-      >_&#215;_</a
-      ><a name="212" class="Symbol"
-      >;</a
-      ><a name="213"
-      > _,_</a
-      ><a name="217" class="Symbol"
-      >;</a
-      ><a name="218"
-      > ,_</a
-      ><a name="221" class="Symbol"
-      >;</a
-      ><a name="222"
-      > &lt;_,_&gt;</a
-      ><a name="228" class="Symbol"
-      >;</a
-      ><a name="229"
-      > proj&#8321;</a
-      ><a name="235" class="Symbol"
-      >;</a
-      ><a name="236"
-      > proj&#8322;</a
-      ><a name="242" class="Symbol"
-      >;</a
-      ><a name="243"
-      > swap</a
-      ><a name="248" class="Symbol"
-      >)</a
-      ><a name="249"
-      >
-</a
-      ><a name="250" class="Keyword"
-      >open</a
-      ><a name="254"
-      > </a
-      ><a name="255" class="Keyword"
-      >import</a
-      ><a name="261"
-      > </a
-      ><a name="262" href="Data.Sum.html#1" class="Module"
-      >Data.Sum</a
-      ><a name="270"
-      > </a
-      ><a name="271" class="Symbol"
-      >as</a
-      ><a name="273"
-      > </a
-      ><a name="274" class="Module"
-      >S</a
-      ><a name="275"
-      >
-  </a
-      ><a name="278" class="Keyword"
-      >using</a
-      ><a name="283"
-      > </a
-      ><a name="284" class="Symbol"
-      >(</a
-      ><a name="285"
-      >_&#8846;_</a
       ><a name="288" class="Symbol"
-      >;</a
+      >)</a
       ><a name="289"
-      > [_,_]</a
-      ><a name="295" class="Symbol"
-      >;</a
-      ><a name="296"
-      > inj&#8321;</a
-      ><a name="301" class="Symbol"
-      >;</a
-      ><a name="302"
-      > inj&#8322;</a
-      ><a name="307" class="Symbol"
-      >)</a
-      ><a name="308"
       >
 </a
-      ><a name="309" class="Keyword"
+      ><a name="290" class="Keyword"
       >open</a
-      ><a name="313"
+      ><a name="294"
       > </a
-      ><a name="314" class="Keyword"
+      ><a name="295" class="Keyword"
       >import</a
-      ><a name="320"
+      ><a name="301"
       > </a
-      ><a name="321" href="Data.Unit.html#1" class="Module"
-      >Data.Unit</a
-      ><a name="330"
+      ><a name="302" href="Algebra.FunctionProperties.html#1" class="Module"
+      >Algebra.FunctionProperties</a
+      ><a name="328"
       >
   </a
-      ><a name="333" class="Keyword"
+      ><a name="331" class="Keyword"
       >using</a
-      ><a name="338"
+      ><a name="336"
       > </a
-      ><a name="339" class="Symbol"
+      ><a name="337" class="Symbol"
+      >()</a
+      ><a name="339"
+      >
+</a
+      ><a name="340" class="Keyword"
+      >open</a
+      ><a name="344"
+      > </a
+      ><a name="345" class="Keyword"
+      >import</a
+      ><a name="351"
+      > </a
+      ><a name="352" href="Data.Empty.html#1" class="Module"
+      >Data.Empty</a
+      ><a name="362"
+      >
+  </a
+      ><a name="365" class="Keyword"
+      >using</a
+      ><a name="370"
+      > </a
+      ><a name="371" class="Symbol"
       >(</a
-      ><a name="340"
-      >&#8868;</a
-      ><a name="341" class="Symbol"
-      >)</a
-      ><a name="342"
-      >
-</a
-      ><a name="343" class="Keyword"
-      >open</a
-      ><a name="347"
-      > </a
-      ><a name="348" class="Keyword"
-      >import</a
-      ><a name="354"
-      > </a
-      ><a name="355" href="Function.html#1" class="Module"
-      >Function</a
-      ><a name="363"
-      >
-  </a
-      ><a name="366" class="Keyword"
-      >using</a
-      ><a name="371"
-      > </a
-      ><a name="372" class="Symbol"
-      >(</a
-      ><a name="373"
-      >_&#8728;_</a
-      ><a name="376" class="Symbol"
+      ><a name="372"
+      >&#8869;</a
+      ><a name="373" class="Symbol"
       >;</a
-      ><a name="377"
-      > id</a
-      ><a name="380" class="Symbol"
+      ><a name="374"
+      > &#8869;-elim</a
+      ><a name="381" class="Symbol"
       >)</a
-      ><a name="381"
+      ><a name="382"
       >
 </a
-      ><a name="382" class="Keyword"
+      ><a name="383" class="Keyword"
       >open</a
-      ><a name="386"
+      ><a name="387"
       > </a
-      ><a name="387" class="Keyword"
+      ><a name="388" class="Keyword"
       >import</a
-      ><a name="393"
+      ><a name="394"
       > </a
-      ><a name="394" href="Level.html#1" class="Module"
-      >Level</a
-      ><a name="399"
-      >
-  </a
-      ><a name="402" class="Keyword"
-      >using</a
+      ><a name="395" href="Data.Product.html#1" class="Module"
+      >Data.Product</a
       ><a name="407"
       > </a
       ><a name="408" class="Symbol"
-      >(</a
-      ><a name="409"
-      >_&#8852;_</a
-      ><a name="412" class="Symbol"
-      >;</a
-      ><a name="413"
-      > Lift</a
-      ><a name="418" class="Symbol"
-      >;</a
-      ><a name="419"
-      > lift</a
-      ><a name="424" class="Symbol"
-      >;</a
-      ><a name="425"
-      > lower</a
-      ><a name="431" class="Symbol"
-      >;</a
-      ><a name="432"
-      > suc</a
-      ><a name="436" class="Symbol"
-      >)</a
-      ><a name="437"
+      >as</a
+      ><a name="410"
+      > </a
+      ><a name="411" class="Module"
+      >P</a
+      ><a name="412"
       >
-</a
-      ><a name="438" class="Keyword"
-      >open</a
+  </a
+      ><a name="415" class="Keyword"
+      >using</a
+      ><a name="420"
+      > </a
+      ><a name="421" class="Symbol"
+      >(</a
+      ><a name="422"
+      >_&#215;_</a
+      ><a name="425" class="Symbol"
+      >;</a
+      ><a name="426"
+      > _,_</a
+      ><a name="430" class="Symbol"
+      >;</a
+      ><a name="431"
+      > ,_</a
+      ><a name="434" class="Symbol"
+      >;</a
+      ><a name="435"
+      > &lt;_,_&gt;</a
+      ><a name="441" class="Symbol"
+      >;</a
       ><a name="442"
-      > </a
-      ><a name="443" class="Keyword"
-      >import</a
+      > proj&#8321;</a
+      ><a name="448" class="Symbol"
+      >;</a
       ><a name="449"
-      > </a
-      ><a name="450" href="Relation.Binary.html#1" class="Module"
-      >Relation.Binary</a
-      ><a name="465"
-      >
-  </a
-      ><a name="468" class="Keyword"
-      >using</a
-      ><a name="473"
-      > </a
-      ><a name="474" class="Symbol"
-      >(</a
-      ><a name="475"
-      >_Preserves&#8322;_&#10230;_&#10230;_</a
-      ><a name="491" class="Symbol"
+      > proj&#8322;</a
+      ><a name="455" class="Symbol"
       >;</a
-      ><a name="492"
-      > IsEquivalence</a
-      ><a name="506" class="Symbol"
-      >;</a
-      ><a name="507"
-      > Transitive</a
-      ><a name="518" class="Symbol"
+      ><a name="456"
+      > swap</a
+      ><a name="461" class="Symbol"
       >)</a
-      ><a name="519"
+      ><a name="462"
       >
 </a
-      ><a name="520" class="Keyword"
+      ><a name="463" class="Keyword"
       >open</a
-      ><a name="524"
+      ><a name="467"
       > </a
-      ><a name="525" class="Keyword"
+      ><a name="468" class="Keyword"
       >import</a
-      ><a name="531"
+      ><a name="474"
       > </a
-      ><a name="532" href="Relation.Binary.PropositionalEquality.html#1" class="Module"
-      >Relation.Binary.PropositionalEquality</a
-      ><a name="569"
+      ><a name="475" href="Data.Sum.html#1" class="Module"
+      >Data.Sum</a
+      ><a name="483"
+      > </a
+      ><a name="484" class="Symbol"
+      >as</a
+      ><a name="486"
+      > </a
+      ><a name="487" class="Module"
+      >S</a
+      ><a name="488"
       >
   </a
-      ><a name="572" class="Keyword"
+      ><a name="491" class="Keyword"
       >using</a
-      ><a name="577"
+      ><a name="496"
       > </a
-      ><a name="578" class="Symbol"
+      ><a name="497" class="Symbol"
       >(</a
-      ><a name="579"
-      >_&#8801;_</a
-      ><a name="582" class="Symbol"
+      ><a name="498"
+      >_&#8846;_</a
+      ><a name="501" class="Symbol"
       >;</a
-      ><a name="583"
-      > cong</a
-      ><a name="588" class="Symbol"
+      ><a name="502"
+      > [_,_]</a
+      ><a name="508" class="Symbol"
       >;</a
-      ><a name="589"
-      > cong&#8322;</a
-      ><a name="595" class="Symbol"
+      ><a name="509"
+      > inj&#8321;</a
+      ><a name="514" class="Symbol"
       >;</a
-      ><a name="596"
-      > refl</a
-      ><a name="601" class="Symbol"
-      >;</a
-      ><a name="602"
-      > trans</a
-      ><a name="608" class="Symbol"
+      ><a name="515"
+      > inj&#8322;</a
+      ><a name="520" class="Symbol"
       >)</a
-      ><a name="609"
+      ><a name="521"
       >
-
 </a
-      ><a name="611" class="Keyword"
-      >record</a
-      ><a name="617"
+      ><a name="522" class="Keyword"
+      >open</a
+      ><a name="526"
       > </a
-      ><a name="618" href="TypeAlgebra.html#618" class="Record Operator"
-      >_&#8773;_</a
-      ><a name="621"
+      ><a name="527" class="Keyword"
+      >import</a
+      ><a name="533"
       > </a
-      ><a name="622" class="Symbol"
-      >{</a
-      ><a name="623" href="TypeAlgebra.html#623" class="Bound"
-      >a</a
-      ><a name="624"
+      ><a name="534" href="Data.Unit.html#1" class="Module"
+      >Data.Unit</a
+      ><a name="543"
+      >
+  </a
+      ><a name="546" class="Keyword"
+      >using</a
+      ><a name="551"
       > </a
-      ><a name="625" href="TypeAlgebra.html#625" class="Bound"
-      >b</a
-      ><a name="626" class="Symbol"
-      >}</a
-      ><a name="627"
-      > </a
-      ><a name="628" class="Symbol"
+      ><a name="552" class="Symbol"
       >(</a
-      ><a name="629" href="TypeAlgebra.html#629" class="Bound"
-      >A</a
-      ><a name="630"
+      ><a name="553"
+      >&#8868;</a
+      ><a name="554" class="Symbol"
+      >)</a
+      ><a name="555"
+      >
+</a
+      ><a name="556" class="Keyword"
+      >open</a
+      ><a name="560"
       > </a
+      ><a name="561" class="Keyword"
+      >import</a
+      ><a name="567"
+      > </a
+      ><a name="568" href="Function.html#1" class="Module"
+      >Function</a
+      ><a name="576"
+      >
+  </a
+      ><a name="579" class="Keyword"
+      >using</a
+      ><a name="584"
+      > </a
+      ><a name="585" class="Symbol"
+      >(</a
+      ><a name="586"
+      >_&#8728;_</a
+      ><a name="589" class="Symbol"
+      >;</a
+      ><a name="590"
+      > id</a
+      ><a name="593" class="Symbol"
+      >)</a
+      ><a name="594"
+      >
+</a
+      ><a name="595" class="Keyword"
+      >open</a
+      ><a name="599"
+      > </a
+      ><a name="600" class="Keyword"
+      >import</a
+      ><a name="606"
+      > </a
+      ><a name="607" href="Level.html#1" class="Module"
+      >Level</a
+      ><a name="612"
+      >
+  </a
+      ><a name="615" class="Keyword"
+      >using</a
+      ><a name="620"
+      > </a
+      ><a name="621" class="Symbol"
+      >(</a
+      ><a name="622"
+      >_&#8852;_</a
+      ><a name="625" class="Symbol"
+      >;</a
+      ><a name="626"
+      > Lift</a
       ><a name="631" class="Symbol"
-      >:</a
+      >;</a
       ><a name="632"
-      > </a
-      ><a name="633" class="PrimitiveType"
-      >Set</a
-      ><a name="636"
-      > </a
-      ><a name="637" href="TypeAlgebra.html#623" class="Bound"
-      >a</a
-      ><a name="638" class="Symbol"
+      > lift</a
+      ><a name="637" class="Symbol"
+      >;</a
+      ><a name="638"
+      > lower</a
+      ><a name="644" class="Symbol"
+      >;</a
+      ><a name="645"
+      > suc</a
+      ><a name="649" class="Symbol"
       >)</a
-      ><a name="639"
+      ><a name="650"
+      >
+</a
+      ><a name="651" class="Keyword"
+      >open</a
+      ><a name="655"
       > </a
-      ><a name="640" class="Symbol"
-      >(</a
-      ><a name="641" href="TypeAlgebra.html#641" class="Bound"
-      >B</a
-      ><a name="642"
-      > </a
-      ><a name="643" class="Symbol"
-      >:</a
-      ><a name="644"
-      > </a
-      ><a name="645" class="PrimitiveType"
-      >Set</a
-      ><a name="648"
-      > </a
-      ><a name="649" href="TypeAlgebra.html#625" class="Bound"
-      >b</a
-      ><a name="650" class="Symbol"
-      >)</a
-      ><a name="651"
-      > </a
-      ><a name="652" class="Symbol"
-      >:</a
-      ><a name="653"
-      > </a
-      ><a name="654" class="PrimitiveType"
-      >Set</a
-      ><a name="657"
-      > </a
-      ><a name="658" class="Symbol"
-      >(</a
-      ><a name="659" href="TypeAlgebra.html#623" class="Bound"
-      >a</a
-      ><a name="660"
-      > </a
-      ><a name="661" href="Agda.Primitive.html#319" class="Primitive Operator"
-      >&#8852;</a
+      ><a name="656" class="Keyword"
+      >import</a
       ><a name="662"
       > </a
-      ><a name="663" href="TypeAlgebra.html#625" class="Bound"
-      >b</a
-      ><a name="664" class="Symbol"
+      ><a name="663" href="Relation.Binary.html#1" class="Module"
+      >Relation.Binary</a
+      ><a name="678"
+      >
+  </a
+      ><a name="681" class="Keyword"
+      >using</a
+      ><a name="686"
+      > </a
+      ><a name="687" class="Symbol"
+      >(</a
+      ><a name="688"
+      >_Preserves&#8322;_&#10230;_&#10230;_</a
+      ><a name="704" class="Symbol"
+      >;</a
+      ><a name="705"
+      > IsEquivalence</a
+      ><a name="719" class="Symbol"
+      >;</a
+      ><a name="720"
+      > Transitive</a
+      ><a name="731" class="Symbol"
       >)</a
-      ><a name="665"
-      > </a
-      ><a name="666" class="Keyword"
-      >where</a
-      ><a name="671"
+      ><a name="732"
       >
-  </a
-      ><a name="674" class="Keyword"
-      >constructor</a
-      ><a name="685"
+</a
+      ><a name="733" class="Keyword"
+      >open</a
+      ><a name="737"
       > </a
-      ><a name="686" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="689"
-      >
-  </a
-      ><a name="692" class="Keyword"
-      >field</a
-      ><a name="697"
-      >
-    </a
-      ><a name="702" href="TypeAlgebra.html#702" class="Field"
-      >to</a
-      ><a name="704"
-      >   </a
-      ><a name="707" class="Symbol"
-      >:</a
-      ><a name="708"
-      > </a
-      ><a name="709" href="TypeAlgebra.html#629" class="Bound"
-      >A</a
-      ><a name="710"
-      > </a
-      ><a name="711" class="Symbol"
-      >&#8594;</a
-      ><a name="712"
-      > </a
-      ><a name="713" href="TypeAlgebra.html#641" class="Bound"
-      >B</a
-      ><a name="714"
-      >
-    </a
-      ><a name="719" href="TypeAlgebra.html#719" class="Field"
-      >from</a
-      ><a name="723"
-      > </a
-      ><a name="724" class="Symbol"
-      >:</a
-      ><a name="725"
-      > </a
-      ><a name="726" href="TypeAlgebra.html#641" class="Bound"
-      >B</a
-      ><a name="727"
-      > </a
-      ><a name="728" class="Symbol"
-      >&#8594;</a
-      ><a name="729"
-      > </a
-      ><a name="730" href="TypeAlgebra.html#629" class="Bound"
-      >A</a
-      ><a name="731"
-      >
-
-    </a
-      ><a name="737" href="TypeAlgebra.html#737" class="Field"
-      >to-from</a
+      ><a name="738" class="Keyword"
+      >import</a
       ><a name="744"
       > </a
-      ><a name="745" class="Symbol"
-      >:</a
-      ><a name="746"
-      > </a
-      ><a name="747" class="Symbol"
-      >&#8704;</a
-      ><a name="748"
-      > </a
-      ><a name="749" class="Symbol"
-      >{</a
-      ><a name="750" href="TypeAlgebra.html#750" class="Bound"
-      >x</a
-      ><a name="751" class="Symbol"
-      >}</a
-      ><a name="752"
-      > </a
-      ><a name="753" class="Symbol"
-      >&#8594;</a
-      ><a name="754"
-      > </a
-      ><a name="755" href="TypeAlgebra.html#702" class="Bound"
-      >to</a
-      ><a name="757"
-      > </a
-      ><a name="758" class="Symbol"
-      >(</a
-      ><a name="759" href="TypeAlgebra.html#719" class="Bound"
-      >from</a
-      ><a name="763"
-      > </a
-      ><a name="764" href="TypeAlgebra.html#750" class="Bound"
-      >x</a
-      ><a name="765" class="Symbol"
-      >)</a
-      ><a name="766"
-      > </a
-      ><a name="767" href="Relation.Binary.Core.html#4603" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="768"
-      > </a
-      ><a name="769" href="TypeAlgebra.html#750" class="Bound"
-      >x</a
-      ><a name="770"
-      >
-    </a
-      ><a name="775" href="TypeAlgebra.html#775" class="Field"
-      >from-to</a
+      ><a name="745" href="Relation.Binary.PropositionalEquality.html#1" class="Module"
+      >Relation.Binary.PropositionalEquality</a
       ><a name="782"
-      > </a
-      ><a name="783" class="Symbol"
-      >:</a
-      ><a name="784"
-      > </a
-      ><a name="785" class="Symbol"
-      >&#8704;</a
-      ><a name="786"
-      > </a
-      ><a name="787" class="Symbol"
-      >{</a
-      ><a name="788" href="TypeAlgebra.html#788" class="Bound"
-      >x</a
-      ><a name="789" class="Symbol"
-      >}</a
+      >
+  </a
+      ><a name="785" class="Keyword"
+      >using</a
       ><a name="790"
       > </a
       ><a name="791" class="Symbol"
-      >&#8594;</a
-      ><a name="792"
-      > </a
-      ><a name="793" href="TypeAlgebra.html#719" class="Bound"
-      >from</a
-      ><a name="797"
-      > </a
-      ><a name="798" class="Symbol"
       >(</a
-      ><a name="799" href="TypeAlgebra.html#702" class="Bound"
-      >to</a
-      ><a name="801"
-      > </a
-      ><a name="802" href="TypeAlgebra.html#788" class="Bound"
-      >x</a
-      ><a name="803" class="Symbol"
+      ><a name="792"
+      >_&#8801;_</a
+      ><a name="795" class="Symbol"
+      >;</a
+      ><a name="796"
+      > cong</a
+      ><a name="801" class="Symbol"
+      >;</a
+      ><a name="802"
+      > cong&#8322;</a
+      ><a name="808" class="Symbol"
+      >;</a
+      ><a name="809"
+      > refl</a
+      ><a name="814" class="Symbol"
+      >;</a
+      ><a name="815"
+      > trans</a
+      ><a name="821" class="Symbol"
       >)</a
-      ><a name="804"
-      > </a
-      ><a name="805" href="Relation.Binary.Core.html#4603" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="806"
-      > </a
-      ><a name="807" href="TypeAlgebra.html#788" class="Bound"
-      >x</a
-      ><a name="808"
+      ><a name="822"
       >
 
 </a
-      ><a name="810" href="TypeAlgebra.html#810" class="Function"
-      >isEquivalence</a
-      ><a name="823"
+      ><a name="824" class="Keyword"
+      >infix</a
+      ><a name="829"
       > </a
-      ><a name="824" class="Symbol"
-      >:</a
-      ><a name="825"
-      > </a
-      ><a name="826" class="Symbol"
-      >&#8704;</a
-      ><a name="827"
-      > </a
-      ><a name="828" class="Symbol"
-      >{</a
-      ><a name="829" href="TypeAlgebra.html#829" class="Bound"
-      >&#8467;</a
-      ><a name="830" class="Symbol"
-      >}</a
+      ><a name="830" class="Number"
+      >4</a
       ><a name="831"
-      > </a
-      ><a name="832" class="Symbol"
-      >&#8594;</a
-      ><a name="833"
-      > </a
-      ><a name="834" href="Relation.Binary.Core.html#5084" class="Record"
-      >IsEquivalence</a
-      ><a name="847"
-      > </a
-      ><a name="848" class="Symbol"
-      >{</a
-      ><a name="849" href="Agda.Primitive.html#289" class="Primitive"
-      >suc</a
-      ><a name="852"
-      > </a
-      ><a name="853" href="TypeAlgebra.html#829" class="Bound"
-      >&#8467;</a
-      ><a name="854" class="Symbol"
-      >}</a
-      ><a name="855"
-      > </a
-      ><a name="856" href="TypeAlgebra.html#618" class="Record Operator"
-      >_&#8773;_</a
-      ><a name="859"
+      > _&#8773;_
+
+</a
+      ><a name="837" class="Comment"
+      >-- Definition of isomorphism.</a
+      ><a name="866"
       >
 </a
-      ><a name="860" href="TypeAlgebra.html#810" class="Function"
-      >isEquivalence</a
+      ><a name="867" class="Keyword"
+      >record</a
       ><a name="873"
       > </a
-      ><a name="874" class="Symbol"
-      >{</a
-      ><a name="875" href="TypeAlgebra.html#875" class="Bound"
-      >&#8467;</a
-      ><a name="876" class="Symbol"
-      >}</a
+      ><a name="874" href="TypeAlgebra.html#874" class="Record Operator"
+      >_&#8773;_</a
       ><a name="877"
       > </a
       ><a name="878" class="Symbol"
-      >=</a
-      ><a name="879"
-      > </a
-      ><a name="880" class="Keyword"
-      >record</a
-      ><a name="886"
-      >
-  </a
-      ><a name="889" class="Symbol"
       >{</a
-      ><a name="890"
+      ><a name="879" href="TypeAlgebra.html#879" class="Bound"
+      >a</a
+      ><a name="880"
       > </a
-      ><a name="891" class="Field"
-      >refl</a
+      ><a name="881" href="TypeAlgebra.html#881" class="Bound"
+      >b</a
+      ><a name="882" class="Symbol"
+      >}</a
+      ><a name="883"
+      > </a
+      ><a name="884" class="Symbol"
+      >(</a
+      ><a name="885" href="TypeAlgebra.html#885" class="Bound"
+      >A</a
+      ><a name="886"
+      > </a
+      ><a name="887" class="Symbol"
+      >:</a
+      ><a name="888"
+      > </a
+      ><a name="889" class="PrimitiveType"
+      >Set</a
+      ><a name="892"
+      > </a
+      ><a name="893" href="TypeAlgebra.html#879" class="Bound"
+      >a</a
+      ><a name="894" class="Symbol"
+      >)</a
       ><a name="895"
-      >  </a
-      ><a name="897" class="Symbol"
-      >=</a
+      > </a
+      ><a name="896" class="Symbol"
+      >(</a
+      ><a name="897" href="TypeAlgebra.html#897" class="Bound"
+      >B</a
       ><a name="898"
       > </a
-      ><a name="899" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="902"
+      ><a name="899" class="Symbol"
+      >:</a
+      ><a name="900"
       > </a
-      ><a name="903" href="Function.html#1006" class="Function"
-      >id</a
-      ><a name="905"
+      ><a name="901" class="PrimitiveType"
+      >Set</a
+      ><a name="904"
       > </a
-      ><a name="906" href="Function.html#1006" class="Function"
-      >id</a
-      ><a name="908"
+      ><a name="905" href="TypeAlgebra.html#881" class="Bound"
+      >b</a
+      ><a name="906" class="Symbol"
+      >)</a
+      ><a name="907"
       > </a
-      ><a name="909" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
+      ><a name="908" class="Symbol"
+      >:</a
+      ><a name="909"
+      > </a
+      ><a name="910" class="PrimitiveType"
+      >Set</a
       ><a name="913"
       > </a
-      ><a name="914" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
+      ><a name="914" class="Symbol"
+      >(</a
+      ><a name="915" href="TypeAlgebra.html#879" class="Bound"
+      >a</a
+      ><a name="916"
+      > </a
+      ><a name="917" href="Agda.Primitive.html#319" class="Primitive Operator"
+      >&#8852;</a
       ><a name="918"
+      > </a
+      ><a name="919" href="TypeAlgebra.html#881" class="Bound"
+      >b</a
+      ><a name="920" class="Symbol"
+      >)</a
+      ><a name="921"
+      > </a
+      ><a name="922" class="Keyword"
+      >where</a
+      ><a name="927"
       >
   </a
-      ><a name="921" class="Symbol"
-      >;</a
-      ><a name="922"
-      > </a
-      ><a name="923" class="Field"
-      >sym</a
-      ><a name="926"
-      >   </a
-      ><a name="929" class="Symbol"
-      >=</a
-      ><a name="930"
-      > </a
-      ><a name="931" class="Symbol"
-      >&#955;</a
-      ><a name="932"
-      > </a
-      ><a name="933" class="Symbol"
-      >{</a
-      ><a name="934"
-      > </a
-      ><a name="935" class="Symbol"
-      >(</a
-      ><a name="936" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="939"
-      > </a
-      ><a name="940" href="TypeAlgebra.html#940" class="Bound"
-      >t</a
+      ><a name="930" class="Keyword"
+      >constructor</a
       ><a name="941"
       > </a
-      ><a name="942" href="TypeAlgebra.html#942" class="Bound"
-      >f</a
-      ><a name="943"
-      > </a
-      ><a name="944" href="TypeAlgebra.html#944" class="Bound"
-      >tf</a
-      ><a name="946"
-      > </a
-      ><a name="947" href="TypeAlgebra.html#947" class="Bound"
-      >ft</a
-      ><a name="949" class="Symbol"
-      >)</a
-      ><a name="950"
-      > </a
-      ><a name="951" class="Symbol"
-      >&#8594;</a
-      ><a name="952"
-      > </a
-      ><a name="953" href="TypeAlgebra.html#686" class="InductiveConstructor"
+      ><a name="942" href="TypeAlgebra.html#942" class="InductiveConstructor"
       >iso</a
-      ><a name="956"
-      > </a
-      ><a name="957" href="TypeAlgebra.html#942" class="Bound"
-      >f</a
-      ><a name="958"
-      > </a
-      ><a name="959" href="TypeAlgebra.html#940" class="Bound"
-      >t</a
+      ><a name="945"
+      >
+  </a
+      ><a name="948" class="Keyword"
+      >field</a
+      ><a name="953"
+      >
+    </a
+      ><a name="958" href="TypeAlgebra.html#958" class="Field"
+      >to</a
       ><a name="960"
+      >   </a
+      ><a name="963" class="Symbol"
+      >:</a
+      ><a name="964"
       > </a
-      ><a name="961" href="TypeAlgebra.html#947" class="Bound"
-      >ft</a
-      ><a name="963"
-      > </a
-      ><a name="964" href="TypeAlgebra.html#944" class="Bound"
-      >tf</a
+      ><a name="965" href="TypeAlgebra.html#885" class="Bound"
+      >A</a
       ><a name="966"
       > </a
       ><a name="967" class="Symbol"
-      >}</a
+      >&#8594;</a
       ><a name="968"
-      >
-  </a
-      ><a name="971" class="Symbol"
-      >;</a
-      ><a name="972"
       > </a
-      ><a name="973" class="Field"
-      >trans</a
-      ><a name="978"
-      > </a
-      ><a name="979" class="Symbol"
-      >=</a
-      ><a name="980"
-      > </a
-      ><a name="981" href="TypeAlgebra.html#1003" class="Function"
-      >&#8773;-trans</a
-      ><a name="988"
+      ><a name="969" href="TypeAlgebra.html#897" class="Bound"
+      >B</a
+      ><a name="970"
       >
-  </a
-      ><a name="991" class="Symbol"
-      >}</a
-      ><a name="992"
+    </a
+      ><a name="975" href="TypeAlgebra.html#975" class="Field"
+      >from</a
+      ><a name="979"
+      > </a
+      ><a name="980" class="Symbol"
+      >:</a
+      ><a name="981"
+      > </a
+      ><a name="982" href="TypeAlgebra.html#897" class="Bound"
+      >B</a
+      ><a name="983"
+      > </a
+      ><a name="984" class="Symbol"
+      >&#8594;</a
+      ><a name="985"
+      > </a
+      ><a name="986" href="TypeAlgebra.html#885" class="Bound"
+      >A</a
+      ><a name="987"
       >
-  </a
-      ><a name="995" class="Keyword"
-      >where</a
+
+    </a
+      ><a name="993" href="TypeAlgebra.html#993" class="Field"
+      >to-from</a
       ><a name="1000"
-      >
-  </a
-      ><a name="1003" href="TypeAlgebra.html#1003" class="Function"
-      >&#8773;-trans</a
+      > </a
+      ><a name="1001" class="Symbol"
+      >:</a
+      ><a name="1002"
+      > </a
+      ><a name="1003" class="Symbol"
+      >&#8704;</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" class="Symbol"
+      >{</a
+      ><a name="1006" href="TypeAlgebra.html#1006" class="Bound"
+      >x</a
+      ><a name="1007" class="Symbol"
+      >}</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" class="Symbol"
+      >&#8594;</a
       ><a name="1010"
       > </a
-      ><a name="1011" class="Symbol"
-      >:</a
-      ><a name="1012"
+      ><a name="1011" href="TypeAlgebra.html#958" class="Bound"
+      >to</a
+      ><a name="1013"
       > </a
-      ><a name="1013" href="Relation.Binary.Core.html#2793" class="Function"
-      >Transitive</a
-      ><a name="1023"
-      > </a
-      ><a name="1024" href="TypeAlgebra.html#618" class="Record Operator"
-      >_&#8773;_</a
-      ><a name="1027"
-      >
-  </a
-      ><a name="1030" href="TypeAlgebra.html#1003" class="Function"
-      >&#8773;-trans</a
-      ><a name="1037"
-      > </a
-      ><a name="1038" class="Symbol"
+      ><a name="1014" class="Symbol"
       >(</a
-      ><a name="1039" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
+      ><a name="1015" href="TypeAlgebra.html#975" class="Bound"
+      >from</a
+      ><a name="1019"
+      > </a
+      ><a name="1020" href="TypeAlgebra.html#1006" class="Bound"
+      >x</a
+      ><a name="1021" class="Symbol"
+      >)</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" href="Relation.Binary.Core.html#4603" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" href="TypeAlgebra.html#1006" class="Bound"
+      >x</a
+      ><a name="1026"
+      >
+    </a
+      ><a name="1031" href="TypeAlgebra.html#1031" class="Field"
+      >from-to</a
+      ><a name="1038"
+      > </a
+      ><a name="1039" class="Symbol"
+      >:</a
+      ><a name="1040"
+      > </a
+      ><a name="1041" class="Symbol"
+      >&#8704;</a
       ><a name="1042"
       > </a
-      ><a name="1043" href="TypeAlgebra.html#1043" class="Bound"
-      >t&#8321;</a
-      ><a name="1045"
+      ><a name="1043" class="Symbol"
+      >{</a
+      ><a name="1044" href="TypeAlgebra.html#1044" class="Bound"
+      >x</a
+      ><a name="1045" class="Symbol"
+      >}</a
+      ><a name="1046"
       > </a
-      ><a name="1046" href="TypeAlgebra.html#1046" class="Bound"
-      >f&#8321;</a
+      ><a name="1047" class="Symbol"
+      >&#8594;</a
       ><a name="1048"
       > </a
-      ><a name="1049" href="TypeAlgebra.html#1049" class="Bound"
-      >tf&#8321;</a
-      ><a name="1052"
+      ><a name="1049" href="TypeAlgebra.html#975" class="Bound"
+      >from</a
+      ><a name="1053"
       > </a
-      ><a name="1053" href="TypeAlgebra.html#1053" class="Bound"
-      >ft&#8321;</a
-      ><a name="1056" class="Symbol"
-      >)</a
+      ><a name="1054" class="Symbol"
+      >(</a
+      ><a name="1055" href="TypeAlgebra.html#958" class="Bound"
+      >to</a
       ><a name="1057"
       > </a
-      ><a name="1058" class="Symbol"
-      >(</a
-      ><a name="1059" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
+      ><a name="1058" href="TypeAlgebra.html#1044" class="Bound"
+      >x</a
+      ><a name="1059" class="Symbol"
+      >)</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" href="Relation.Binary.Core.html#4603" class="Datatype Operator"
+      >&#8801;</a
       ><a name="1062"
       > </a
-      ><a name="1063" href="TypeAlgebra.html#1063" class="Bound"
-      >t&#8322;</a
-      ><a name="1065"
-      > </a
-      ><a name="1066" href="TypeAlgebra.html#1066" class="Bound"
-      >f&#8322;</a
-      ><a name="1068"
-      > </a
-      ><a name="1069" href="TypeAlgebra.html#1069" class="Bound"
-      >tf&#8322;</a
-      ><a name="1072"
-      > </a
-      ><a name="1073" href="TypeAlgebra.html#1073" class="Bound"
-      >ft&#8322;</a
-      ><a name="1076" class="Symbol"
-      >)</a
-      ><a name="1077"
-      > </a
-      ><a name="1078" class="Symbol"
-      >=</a
-      ><a name="1079"
-      > </a
-      ><a name="1080" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="1083"
-      >
-    </a
-      ><a name="1088" class="Symbol"
-      >(</a
-      ><a name="1089" href="TypeAlgebra.html#1063" class="Bound"
-      >t&#8322;</a
-      ><a name="1091"
-      > </a
-      ><a name="1092" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="1093"
-      > </a
-      ><a name="1094" href="TypeAlgebra.html#1043" class="Bound"
-      >t&#8321;</a
-      ><a name="1096" class="Symbol"
-      >)</a
-      ><a name="1097"
-      >
-    </a
-      ><a name="1102" class="Symbol"
-      >(</a
-      ><a name="1103" href="TypeAlgebra.html#1046" class="Bound"
-      >f&#8321;</a
-      ><a name="1105"
-      > </a
-      ><a name="1106" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="1107"
-      > </a
-      ><a name="1108" href="TypeAlgebra.html#1066" class="Bound"
-      >f&#8322;</a
-      ><a name="1110" class="Symbol"
-      >)</a
-      ><a name="1111"
-      >
-    </a
-      ><a name="1116" class="Symbol"
-      >(</a
-      ><a name="1117" href="Relation.Binary.PropositionalEquality.Core.html#632" class="Function"
-      >trans</a
-      ><a name="1122"
-      > </a
-      ><a name="1123" class="Symbol"
-      >(</a
-      ><a name="1124" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
-      >cong</a
-      ><a name="1128"
-      > </a
-      ><a name="1129" href="TypeAlgebra.html#1063" class="Bound"
-      >t&#8322;</a
-      ><a name="1131"
-      > </a
-      ><a name="1132" href="TypeAlgebra.html#1049" class="Bound"
-      >tf&#8321;</a
-      ><a name="1135" class="Symbol"
-      >)</a
-      ><a name="1136"
-      > </a
-      ><a name="1137" href="TypeAlgebra.html#1069" class="Bound"
-      >tf&#8322;</a
-      ><a name="1140" class="Symbol"
-      >)</a
-      ><a name="1141"
-      >
-    </a
-      ><a name="1146" class="Symbol"
-      >(</a
-      ><a name="1147" href="Relation.Binary.PropositionalEquality.Core.html#632" class="Function"
-      >trans</a
-      ><a name="1152"
-      > </a
-      ><a name="1153" class="Symbol"
-      >(</a
-      ><a name="1154" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
-      >cong</a
-      ><a name="1158"
-      > </a
-      ><a name="1159" href="TypeAlgebra.html#1046" class="Bound"
-      >f&#8321;</a
-      ><a name="1161"
-      > </a
-      ><a name="1162" href="TypeAlgebra.html#1073" class="Bound"
-      >ft&#8322;</a
-      ><a name="1165" class="Symbol"
-      >)</a
-      ><a name="1166"
-      > </a
-      ><a name="1167" href="TypeAlgebra.html#1053" class="Bound"
-      >ft&#8321;</a
-      ><a name="1170" class="Symbol"
-      >)</a
-      ><a name="1171"
+      ><a name="1063" href="TypeAlgebra.html#1044" class="Bound"
+      >x</a
+      ><a name="1064"
       >
 
 </a
-      ><a name="1173" href="TypeAlgebra.html#1173" class="Function"
-      >semiring</a
-      ><a name="1181"
-      > </a
-      ><a name="1182" class="Symbol"
-      >:</a
-      ><a name="1183"
-      > </a
-      ><a name="1184" class="Symbol"
-      >&#8704;</a
-      ><a name="1185"
-      > </a
-      ><a name="1186" class="Symbol"
-      >{</a
-      ><a name="1187" href="TypeAlgebra.html#1187" class="Bound"
-      >&#8467;</a
-      ><a name="1188" class="Symbol"
-      >}</a
-      ><a name="1189"
-      > </a
-      ><a name="1190" class="Symbol"
-      >&#8594;</a
-      ><a name="1191"
-      > </a
-      ><a name="1192" href="Algebra.html#7862" class="Record"
-      >CommutativeSemiring</a
-      ><a name="1211"
-      > </a
-      ><a name="1212" class="Symbol"
-      >(</a
-      ><a name="1213" href="Agda.Primitive.html#289" class="Primitive"
-      >suc</a
-      ><a name="1216"
-      > </a
-      ><a name="1217" href="TypeAlgebra.html#1187" class="Bound"
-      >&#8467;</a
-      ><a name="1218" class="Symbol"
-      >)</a
-      ><a name="1219"
-      > </a
-      ><a name="1220" href="TypeAlgebra.html#1187" class="Bound"
-      >&#8467;</a
-      ><a name="1221"
+      ><a name="1066" class="Comment"
+      >-- The above definition of isomorphism forms an equivalence.</a
+      ><a name="1126"
       >
 </a
-      ><a name="1222" href="TypeAlgebra.html#1173" class="Function"
-      >semiring</a
+      ><a name="1127" href="TypeAlgebra.html#1127" class="Function"
+      >isEquivalence</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" class="Symbol"
+      >:</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" class="Symbol"
+      >&#8704;</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" class="Symbol"
+      >{</a
+      ><a name="1146" href="TypeAlgebra.html#1146" class="Bound"
+      >&#8467;</a
+      ><a name="1147" class="Symbol"
+      >}</a
+      ><a name="1148"
+      > </a
+      ><a name="1149" class="Symbol"
+      >&#8594;</a
+      ><a name="1150"
+      > </a
+      ><a name="1151" href="Relation.Binary.Core.html#5084" class="Record"
+      >IsEquivalence</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" class="Symbol"
+      >{</a
+      ><a name="1166" href="Agda.Primitive.html#289" class="Primitive"
+      >suc</a
+      ><a name="1169"
+      > </a
+      ><a name="1170" href="TypeAlgebra.html#1146" class="Bound"
+      >&#8467;</a
+      ><a name="1171" class="Symbol"
+      >}</a
+      ><a name="1172"
+      > </a
+      ><a name="1173" href="TypeAlgebra.html#874" class="Record Operator"
+      >_&#8773;_</a
+      ><a name="1176"
+      >
+</a
+      ><a name="1177" href="TypeAlgebra.html#1127" class="Function"
+      >isEquivalence</a
+      ><a name="1190"
+      > </a
+      ><a name="1191" class="Symbol"
+      >{</a
+      ><a name="1192" href="TypeAlgebra.html#1192" class="Bound"
+      >&#8467;</a
+      ><a name="1193" class="Symbol"
+      >}</a
+      ><a name="1194"
+      > </a
+      ><a name="1195" class="Symbol"
+      >=</a
+      ><a name="1196"
+      > </a
+      ><a name="1197" class="Keyword"
+      >record</a
+      ><a name="1203"
+      >
+  </a
+      ><a name="1206" class="Symbol"
+      >{</a
+      ><a name="1207"
+      > </a
+      ><a name="1208" class="Field"
+      >refl</a
+      ><a name="1212"
+      >  </a
+      ><a name="1214" class="Symbol"
+      >=</a
+      ><a name="1215"
+      > </a
+      ><a name="1216" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="1219"
+      > </a
+      ><a name="1220" href="Function.html#1006" class="Function"
+      >id</a
+      ><a name="1222"
+      > </a
+      ><a name="1223" href="Function.html#1006" class="Function"
+      >id</a
+      ><a name="1225"
+      > </a
+      ><a name="1226" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
       ><a name="1230"
       > </a
-      ><a name="1231" class="Symbol"
-      >{</a
-      ><a name="1232" href="TypeAlgebra.html#1232" class="Bound"
-      >&#8467;</a
-      ><a name="1233" class="Symbol"
-      >}</a
-      ><a name="1234"
-      > </a
-      ><a name="1235" class="Symbol"
-      >=</a
-      ><a name="1236"
-      > </a
-      ><a name="1237" class="Keyword"
-      >record</a
-      ><a name="1243"
+      ><a name="1231" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="1235"
       >
   </a
+      ><a name="1238" class="Symbol"
+      >;</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" class="Field"
+      >sym</a
+      ><a name="1243"
+      >   </a
       ><a name="1246" class="Symbol"
-      >{</a
+      >=</a
       ><a name="1247"
       > </a
-      ><a name="1248" class="Field"
-      >Carrier</a
-      ><a name="1255"
+      ><a name="1248" class="Symbol"
+      >&#955;</a
+      ><a name="1249"
       > </a
-      ><a name="1256" class="Symbol"
-      >=</a
-      ><a name="1257"
+      ><a name="1250" class="Symbol"
+      >{</a
+      ><a name="1251"
       > </a
-      ><a name="1258" class="PrimitiveType"
-      >Set</a
-      ><a name="1261"
+      ><a name="1252" class="Symbol"
+      >(</a
+      ><a name="1253" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="1256"
       > </a
-      ><a name="1262" href="TypeAlgebra.html#1232" class="Bound"
-      >&#8467;</a
+      ><a name="1257" href="TypeAlgebra.html#1257" class="Bound"
+      >t</a
+      ><a name="1258"
+      > </a
+      ><a name="1259" href="TypeAlgebra.html#1259" class="Bound"
+      >f</a
+      ><a name="1260"
+      > </a
+      ><a name="1261" href="TypeAlgebra.html#1261" class="Bound"
+      >tf</a
       ><a name="1263"
-      >
-  </a
+      > </a
+      ><a name="1264" href="TypeAlgebra.html#1264" class="Bound"
+      >ft</a
       ><a name="1266" class="Symbol"
-      >;</a
+      >)</a
       ><a name="1267"
       > </a
-      ><a name="1268" class="Field Operator"
-      >_&#8776;_</a
-      ><a name="1271"
+      ><a name="1268" class="Symbol"
+      >&#8594;</a
+      ><a name="1269"
       > </a
-      ><a name="1272" class="Symbol"
-      >=</a
+      ><a name="1270" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
       ><a name="1273"
       > </a
-      ><a name="1274" href="TypeAlgebra.html#618" class="Record Operator"
-      >_&#8773;_</a
+      ><a name="1274" href="TypeAlgebra.html#1259" class="Bound"
+      >f</a
+      ><a name="1275"
+      > </a
+      ><a name="1276" href="TypeAlgebra.html#1257" class="Bound"
+      >t</a
       ><a name="1277"
-      >
-  </a
-      ><a name="1280" class="Symbol"
-      >;</a
-      ><a name="1281"
       > </a
-      ><a name="1282" class="Field Operator"
-      >_+_</a
+      ><a name="1278" href="TypeAlgebra.html#1264" class="Bound"
+      >ft</a
+      ><a name="1280"
+      > </a
+      ><a name="1281" href="TypeAlgebra.html#1261" class="Bound"
+      >tf</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" class="Symbol"
+      >}</a
       ><a name="1285"
-      > </a
-      ><a name="1286" class="Symbol"
-      >=</a
-      ><a name="1287"
-      > </a
-      ><a name="1288" href="Data.Sum.html#404" class="Datatype Operator"
-      >_&#8846;_</a
-      ><a name="1291"
       >
   </a
-      ><a name="1294" class="Symbol"
+      ><a name="1288" class="Symbol"
       >;</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" class="Field"
+      >trans</a
       ><a name="1295"
       > </a
-      ><a name="1296" class="Field Operator"
-      >_*_</a
-      ><a name="1299"
-      > </a
-      ><a name="1300" class="Symbol"
+      ><a name="1296" class="Symbol"
       >=</a
-      ><a name="1301"
+      ><a name="1297"
       > </a
-      ><a name="1302" href="Data.Product.html#1055" class="Function Operator"
-      >_&#215;_</a
+      ><a name="1298" href="TypeAlgebra.html#1320" class="Function"
+      >&#8773;-trans</a
       ><a name="1305"
       >
   </a
       ><a name="1308" class="Symbol"
-      >;</a
+      >}</a
       ><a name="1309"
-      > </a
-      ><a name="1310" class="Field"
-      >0#</a
-      ><a name="1312"
-      >  </a
-      ><a name="1314" class="Symbol"
-      >=</a
-      ><a name="1315"
-      > </a
-      ><a name="1316" href="Level.html#350" class="Record"
-      >Lift</a
-      ><a name="1320"
-      > </a
-      ><a name="1321" href="Data.Empty.html#243" class="Datatype"
-      >&#8869;</a
-      ><a name="1322"
       >
   </a
-      ><a name="1325" class="Symbol"
-      >;</a
-      ><a name="1326"
+      ><a name="1312" class="Keyword"
+      >where</a
+      ><a name="1317"
+      >
+  </a
+      ><a name="1320" href="TypeAlgebra.html#1320" class="Function"
+      >&#8773;-trans</a
+      ><a name="1327"
       > </a
-      ><a name="1327" class="Field"
-      >1#</a
+      ><a name="1328" class="Symbol"
+      >:</a
       ><a name="1329"
-      >  </a
-      ><a name="1331" class="Symbol"
-      >=</a
-      ><a name="1332"
       > </a
-      ><a name="1333" href="Level.html#350" class="Record"
-      >Lift</a
-      ><a name="1337"
+      ><a name="1330" href="Relation.Binary.Core.html#2793" class="Function"
+      >Transitive</a
+      ><a name="1340"
       > </a
-      ><a name="1338" href="Data.Unit.html#653" class="Record"
-      >&#8868;</a
-      ><a name="1339"
+      ><a name="1341" href="TypeAlgebra.html#874" class="Record Operator"
+      >_&#8773;_</a
+      ><a name="1344"
       >
   </a
-      ><a name="1342" class="Symbol"
-      >;</a
-      ><a name="1343"
+      ><a name="1347" href="TypeAlgebra.html#1320" class="Function"
+      >&#8773;-trans</a
+      ><a name="1354"
       > </a
-      ><a name="1344" class="Field"
-      >isCommutativeSemiring</a
+      ><a name="1355" class="Symbol"
+      >(</a
+      ><a name="1356" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" href="TypeAlgebra.html#1360" class="Bound"
+      >t&#8321;</a
+      ><a name="1362"
+      > </a
+      ><a name="1363" href="TypeAlgebra.html#1363" class="Bound"
+      >f&#8321;</a
       ><a name="1365"
       > </a
-      ><a name="1366" class="Symbol"
-      >=</a
-      ><a name="1367"
+      ><a name="1366" href="TypeAlgebra.html#1366" class="Bound"
+      >tf&#8321;</a
+      ><a name="1369"
       > </a
-      ><a name="1368" class="Keyword"
-      >record</a
+      ><a name="1370" href="TypeAlgebra.html#1370" class="Bound"
+      >ft&#8321;</a
+      ><a name="1373" class="Symbol"
+      >)</a
       ><a name="1374"
-      >
-    </a
-      ><a name="1379" class="Symbol"
-      >{</a
-      ><a name="1380"
       > </a
-      ><a name="1381" class="Field"
-      >+-isCommutativeMonoid</a
-      ><a name="1402"
-      > </a
-      ><a name="1403" class="Symbol"
-      >=</a
-      ><a name="1404"
-      > </a
-      ><a name="1405" class="Keyword"
-      >record</a
-      ><a name="1411"
-      >
-      </a
-      ><a name="1418" class="Symbol"
-      >{</a
-      ><a name="1419"
-      > </a
-      ><a name="1420" class="Field"
-      >isSemigroup</a
-      ><a name="1431"
-      > </a
-      ><a name="1432" class="Symbol"
-      >=</a
-      ><a name="1433"
-      > </a
-      ><a name="1434" class="Keyword"
-      >record</a
-      ><a name="1440"
-      >
-        </a
-      ><a name="1449" class="Symbol"
-      >{</a
-      ><a name="1450"
-      > </a
-      ><a name="1451" class="Field"
-      >isEquivalence</a
-      ><a name="1464"
-      > </a
-      ><a name="1465" class="Symbol"
-      >=</a
-      ><a name="1466"
-      > </a
-      ><a name="1467" href="TypeAlgebra.html#810" class="Function"
-      >isEquivalence</a
-      ><a name="1480"
-      >
-        </a
-      ><a name="1489" class="Symbol"
-      >;</a
-      ><a name="1490"
-      > </a
-      ><a name="1491" class="Field"
-      >assoc</a
-      ><a name="1496"
-      >   </a
-      ><a name="1499" class="Symbol"
-      >=</a
-      ><a name="1500"
-      > </a
-      ><a name="1501" href="TypeAlgebra.html#1969" class="Function"
-      >&#8846;-assoc</a
-      ><a name="1508"
-      >
-        </a
-      ><a name="1517" class="Symbol"
-      >;</a
-      ><a name="1518"
-      > </a
-      ><a name="1519" class="Field"
-      >&#8729;-cong</a
-      ><a name="1525"
-      >  </a
-      ><a name="1527" class="Symbol"
-      >=</a
-      ><a name="1528"
-      > </a
-      ><a name="1529" href="TypeAlgebra.html#2322" class="Function"
-      >&#8846;-cong</a
-      ><a name="1535"
-      >
-        </a
-      ><a name="1544" class="Symbol"
-      >}</a
-      ><a name="1545"
-      >
-      </a
-      ><a name="1552" class="Symbol"
-      >;</a
-      ><a name="1553"
-      > </a
-      ><a name="1554" class="Field"
-      >identity&#737;</a
-      ><a name="1563"
-      > </a
-      ><a name="1564" class="Symbol"
-      >=</a
-      ><a name="1565"
-      > </a
-      ><a name="1566" href="TypeAlgebra.html#2612" class="Function"
-      >&#8846;-identity&#737;</a
-      ><a name="1577"
-      >
-      </a
-      ><a name="1584" class="Symbol"
-      >;</a
-      ><a name="1585"
-      > </a
-      ><a name="1586" class="Field"
-      >comm</a
-      ><a name="1590"
-      >      </a
-      ><a name="1596" class="Symbol"
-      >=</a
-      ><a name="1597"
-      > </a
-      ><a name="1598" href="TypeAlgebra.html#2784" class="Function"
-      >&#8846;-comm</a
-      ><a name="1604"
-      >
-      </a
-      ><a name="1611" class="Symbol"
-      >}</a
-      ><a name="1612"
-      >
-    </a
-      ><a name="1617" class="Symbol"
-      >;</a
-      ><a name="1618"
-      > </a
-      ><a name="1619" class="Field"
-      >*-isCommutativeMonoid</a
-      ><a name="1640"
-      > </a
-      ><a name="1641" class="Symbol"
-      >=</a
-      ><a name="1642"
-      > </a
-      ><a name="1643" class="Keyword"
-      >record</a
-      ><a name="1649"
-      >
-      </a
-      ><a name="1656" class="Symbol"
-      >{</a
-      ><a name="1657"
-      > </a
-      ><a name="1658" class="Field"
-      >isSemigroup</a
-      ><a name="1669"
-      > </a
-      ><a name="1670" class="Symbol"
-      >=</a
-      ><a name="1671"
-      > </a
-      ><a name="1672" class="Keyword"
-      >record</a
-      ><a name="1678"
-      >
-        </a
-      ><a name="1687" class="Symbol"
-      >{</a
-      ><a name="1688"
-      > </a
-      ><a name="1689" class="Field"
-      >isEquivalence</a
-      ><a name="1702"
-      > </a
-      ><a name="1703" class="Symbol"
-      >=</a
-      ><a name="1704"
-      > </a
-      ><a name="1705" href="TypeAlgebra.html#810" class="Function"
-      >isEquivalence</a
-      ><a name="1718"
-      >
-        </a
-      ><a name="1727" class="Symbol"
-      >;</a
-      ><a name="1728"
-      > </a
-      ><a name="1729" class="Field"
-      >assoc</a
-      ><a name="1734"
-      >   </a
-      ><a name="1737" class="Symbol"
-      >=</a
-      ><a name="1738"
-      > </a
-      ><a name="1739" href="TypeAlgebra.html#2991" class="Function"
-      >&#215;-assoc</a
-      ><a name="1746"
-      >
-        </a
-      ><a name="1755" class="Symbol"
-      >;</a
-      ><a name="1756"
-      > </a
-      ><a name="1757" class="Field"
-      >&#8729;-cong</a
-      ><a name="1763"
-      >  </a
-      ><a name="1765" class="Symbol"
-      >=</a
-      ><a name="1766"
-      > </a
-      ><a name="1767" href="TypeAlgebra.html#3160" class="Function"
-      >&#215;-cong</a
-      ><a name="1773"
-      >
-        </a
-      ><a name="1782" class="Symbol"
-      >}</a
-      ><a name="1783"
-      >
-      </a
-      ><a name="1790" class="Symbol"
-      >;</a
-      ><a name="1791"
-      > </a
-      ><a name="1792" class="Field"
-      >identity&#737;</a
-      ><a name="1801"
-      > </a
-      ><a name="1802" class="Symbol"
-      >=</a
-      ><a name="1803"
-      > </a
-      ><a name="1804" href="TypeAlgebra.html#3342" class="Function"
-      >&#215;-identity&#737;</a
-      ><a name="1815"
-      >
-      </a
-      ><a name="1822" class="Symbol"
-      >;</a
-      ><a name="1823"
-      > </a
-      ><a name="1824" class="Field"
-      >comm</a
-      ><a name="1828"
-      >      </a
-      ><a name="1834" class="Symbol"
-      >=</a
-      ><a name="1835"
-      > </a
-      ><a name="1836" href="TypeAlgebra.html#3442" class="Function"
-      >&#215;-comm</a
-      ><a name="1842"
-      >
-      </a
-      ><a name="1849" class="Symbol"
-      >}</a
-      ><a name="1850"
-      >
-    </a
-      ><a name="1855" class="Symbol"
-      >;</a
-      ><a name="1856"
-      > </a
-      ><a name="1857" class="Field"
-      >distrib&#691;</a
-      ><a name="1865"
-      > </a
-      ><a name="1866" class="Symbol"
-      >=</a
-      ><a name="1867"
-      > </a
-      ><a name="1868" href="TypeAlgebra.html#3525" class="Function"
-      >distrib&#691;</a
-      ><a name="1876"
-      >
-    </a
-      ><a name="1881" class="Symbol"
-      >;</a
-      ><a name="1882"
-      > </a
-      ><a name="1883" class="Field"
-      >zero&#737;</a
-      ><a name="1888"
-      >    </a
-      ><a name="1892" class="Symbol"
-      >=</a
-      ><a name="1893"
-      > </a
-      ><a name="1894" href="TypeAlgebra.html#3883" class="Function"
-      >zero&#737;</a
-      ><a name="1899"
-      >
-    </a
-      ><a name="1904" class="Symbol"
-      >}</a
-      ><a name="1905"
-      >
-  </a
-      ><a name="1908" class="Symbol"
-      >}</a
-      ><a name="1909"
-      >
-  </a
-      ><a name="1912" class="Keyword"
-      >where</a
-      ><a name="1917"
-      >
-  </a
-      ><a name="1920" class="Keyword"
-      >open</a
-      ><a name="1924"
-      > </a
-      ><a name="1925" href="Algebra.FunctionProperties.html#1" class="Module"
-      >Algebra.FunctionProperties</a
-      ><a name="1951"
-      > </a
-      ><a name="1952" class="Symbol"
+      ><a name="1375" class="Symbol"
       >(</a
-      ><a name="1953" href="TypeAlgebra.html#618" class="Record Operator"
-      >_&#8773;_</a
-      ><a name="1956"
+      ><a name="1376" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="1379"
       > </a
-      ><a name="1957" class="Symbol"
-      >{</a
-      ><a name="1958"
-      >a </a
-      ><a name="1960" class="Symbol"
+      ><a name="1380" href="TypeAlgebra.html#1380" class="Bound"
+      >t&#8322;</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" href="TypeAlgebra.html#1383" class="Bound"
+      >f&#8322;</a
+      ><a name="1385"
+      > </a
+      ><a name="1386" href="TypeAlgebra.html#1386" class="Bound"
+      >tf&#8322;</a
+      ><a name="1389"
+      > </a
+      ><a name="1390" href="TypeAlgebra.html#1390" class="Bound"
+      >ft&#8322;</a
+      ><a name="1393" class="Symbol"
+      >)</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" class="Symbol"
       >=</a
-      ><a name="1961"
+      ><a name="1396"
       > </a
-      ><a name="1962" href="TypeAlgebra.html#1232" class="Bound"
-      >&#8467;</a
-      ><a name="1963" class="Symbol"
-      >})</a
-      ><a name="1965"
+      ><a name="1397" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="1400"
+      >
+    </a
+      ><a name="1405" class="Symbol"
+      >(</a
+      ><a name="1406" href="TypeAlgebra.html#1380" class="Bound"
+      >t&#8322;</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="1410"
+      > </a
+      ><a name="1411" href="TypeAlgebra.html#1360" class="Bound"
+      >t&#8321;</a
+      ><a name="1413" class="Symbol"
+      >)</a
+      ><a name="1414"
+      >
+    </a
+      ><a name="1419" class="Symbol"
+      >(</a
+      ><a name="1420" href="TypeAlgebra.html#1363" class="Bound"
+      >f&#8321;</a
+      ><a name="1422"
+      > </a
+      ><a name="1423" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="1424"
+      > </a
+      ><a name="1425" href="TypeAlgebra.html#1383" class="Bound"
+      >f&#8322;</a
+      ><a name="1427" class="Symbol"
+      >)</a
+      ><a name="1428"
+      >
+    </a
+      ><a name="1433" class="Symbol"
+      >(</a
+      ><a name="1434" href="Relation.Binary.PropositionalEquality.Core.html#632" class="Function"
+      >trans</a
+      ><a name="1439"
+      > </a
+      ><a name="1440" class="Symbol"
+      >(</a
+      ><a name="1441" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
+      >cong</a
+      ><a name="1445"
+      > </a
+      ><a name="1446" href="TypeAlgebra.html#1380" class="Bound"
+      >t&#8322;</a
+      ><a name="1448"
+      > </a
+      ><a name="1449" href="TypeAlgebra.html#1366" class="Bound"
+      >tf&#8321;</a
+      ><a name="1452" class="Symbol"
+      >)</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" href="TypeAlgebra.html#1386" class="Bound"
+      >tf&#8322;</a
+      ><a name="1457" class="Symbol"
+      >)</a
+      ><a name="1458"
+      >
+    </a
+      ><a name="1463" class="Symbol"
+      >(</a
+      ><a name="1464" href="Relation.Binary.PropositionalEquality.Core.html#632" class="Function"
+      >trans</a
+      ><a name="1469"
+      > </a
+      ><a name="1470" class="Symbol"
+      >(</a
+      ><a name="1471" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
+      >cong</a
+      ><a name="1475"
+      > </a
+      ><a name="1476" href="TypeAlgebra.html#1363" class="Bound"
+      >f&#8321;</a
+      ><a name="1478"
+      > </a
+      ><a name="1479" href="TypeAlgebra.html#1390" class="Bound"
+      >ft&#8322;</a
+      ><a name="1482" class="Symbol"
+      >)</a
+      ><a name="1483"
+      > </a
+      ><a name="1484" href="TypeAlgebra.html#1370" class="Bound"
+      >ft&#8321;</a
+      ><a name="1487" class="Symbol"
+      >)</a
+      ><a name="1488"
       >
 
-  </a
-      ><a name="1969" href="TypeAlgebra.html#1969" class="Function"
-      >&#8846;-assoc</a
-      ><a name="1976"
+</a
+      ><a name="1490" class="Comment"
+      >-- Commutative semiring over types.</a
+      ><a name="1525"
+      >
+</a
+      ><a name="1526" class="Comment"
+      >--</a
+      ><a name="1528"
+      >
+</a
+      ><a name="1529" class="Comment"
+      >-- This semiring has the following components:</a
+      ><a name="1575"
+      >
+</a
+      ><a name="1576" class="Comment"
+      >-- - underlying &quot;set&quot;         - Set &#8467;, the type of all (smaller) types</a
+      ><a name="1646"
+      >
+</a
+      ><a name="1647" class="Comment"
+      >-- - underlying equivalence   - _&#8773;_, the isomorphism defined above</a
+      ><a name="1713"
+      >
+</a
+      ><a name="1714" class="Comment"
+      >-- - additive operation       - _&#8846;_, disjoint union</a
+      ><a name="1765"
+      >
+</a
+      ><a name="1766" class="Comment"
+      >-- - multiplicative operation - _&#215;_, non-dependent pair</a
+      ><a name="1821"
+      >
+</a
+      ><a name="1822" class="Comment"
+      >-- - additive identity        - &#8869;, the empty type (type that has no values)</a
+      ><a name="1897"
+      >
+</a
+      ><a name="1898" class="Comment"
+      >-- - multiplicative identity  - &#8868;, the unit type (type that has one value)</a
+      ><a name="1972"
+      >
+</a
+      ><a name="1973" href="TypeAlgebra.html#1973" class="Function"
+      >semiring</a
+      ><a name="1981"
       > </a
-      ><a name="1977" class="Symbol"
+      ><a name="1982" class="Symbol"
       >:</a
-      ><a name="1978"
+      ><a name="1983"
       > </a
-      ><a name="1979" href="Algebra.FunctionProperties.html#827" class="Function"
-      >Associative</a
-      ><a name="1990"
+      ><a name="1984" class="Symbol"
+      >&#8704;</a
+      ><a name="1985"
       > </a
-      ><a name="1991" href="Data.Sum.html#404" class="Datatype Operator"
-      >_&#8846;_</a
-      ><a name="1994"
-      >
-  </a
-      ><a name="1997" href="TypeAlgebra.html#1969" class="Function"
-      >&#8846;-assoc</a
-      ><a name="2004"
+      ><a name="1986" class="Symbol"
+      >{</a
+      ><a name="1987" href="TypeAlgebra.html#1987" class="Bound"
+      >&#8467;</a
+      ><a name="1988" class="Symbol"
+      >}</a
+      ><a name="1989"
       > </a
-      ><a name="2005" class="Symbol"
-      >_</a
-      ><a name="2006"
+      ><a name="1990" class="Symbol"
+      >&#8594;</a
+      ><a name="1991"
       > </a
-      ><a name="2007" class="Symbol"
-      >_</a
-      ><a name="2008"
+      ><a name="1992" href="Algebra.html#7862" class="Record"
+      >CommutativeSemiring</a
+      ><a name="2011"
       > </a
-      ><a name="2009" class="Symbol"
-      >_</a
-      ><a name="2010"
-      > </a
-      ><a name="2011" class="Symbol"
-      >=</a
-      ><a name="2012"
-      > </a
-      ><a name="2013" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
+      ><a name="2012" class="Symbol"
+      >(</a
+      ><a name="2013" href="Agda.Primitive.html#289" class="Primitive"
+      >suc</a
       ><a name="2016"
+      > </a
+      ><a name="2017" href="TypeAlgebra.html#1987" class="Bound"
+      >&#8467;</a
+      ><a name="2018" class="Symbol"
+      >)</a
+      ><a name="2019"
+      > </a
+      ><a name="2020" href="TypeAlgebra.html#1987" class="Bound"
+      >&#8467;</a
+      ><a name="2021"
       >
-    </a
-      ><a name="2021" href="Data.Sum.html#678" class="Function Operator"
-      >[</a
-      ><a name="2022"
+</a
+      ><a name="2022" href="TypeAlgebra.html#1973" class="Function"
+      >semiring</a
+      ><a name="2030"
       > </a
-      ><a name="2023" href="Data.Sum.html#678" class="Function Operator"
-      >[</a
-      ><a name="2024"
+      ><a name="2031" class="Symbol"
+      >{</a
+      ><a name="2032" href="TypeAlgebra.html#2032" class="Bound"
+      >&#8467;</a
+      ><a name="2033" class="Symbol"
+      >}</a
+      ><a name="2034"
       > </a
-      ><a name="2025" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2029"
-      > </a
-      ><a name="2030" href="Data.Sum.html#678" class="Function Operator"
-      >,</a
-      ><a name="2031"
-      > </a
-      ><a name="2032" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
+      ><a name="2035" class="Symbol"
+      >=</a
       ><a name="2036"
       > </a
-      ><a name="2037" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="2038"
-      > </a
-      ><a name="2039" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
+      ><a name="2037" class="Keyword"
+      >record</a
       ><a name="2043"
-      > </a
-      ><a name="2044" href="Data.Sum.html#678" class="Function Operator"
-      >]</a
-      ><a name="2045"
-      > </a
-      ><a name="2046" href="Data.Sum.html#678" class="Function Operator"
-      >,</a
+      >
+  </a
+      ><a name="2046" class="Symbol"
+      >{</a
       ><a name="2047"
       > </a
-      ><a name="2048" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2052"
+      ><a name="2048" class="Field"
+      >Carrier</a
+      ><a name="2055"
       > </a
-      ><a name="2053" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="2054"
+      ><a name="2056" class="Symbol"
+      >=</a
+      ><a name="2057"
       > </a
-      ><a name="2055" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2059"
-      > </a
-      ><a name="2060" href="Data.Sum.html#678" class="Function Operator"
-      >]</a
+      ><a name="2058" class="PrimitiveType"
+      >Set</a
       ><a name="2061"
+      > </a
+      ><a name="2062" href="TypeAlgebra.html#2032" class="Bound"
+      >&#8467;</a
+      ><a name="2063"
       >
-    </a
-      ><a name="2066" href="Data.Sum.html#678" class="Function Operator"
-      >[</a
+  </a
+      ><a name="2066" class="Symbol"
+      >;</a
       ><a name="2067"
       > </a
-      ><a name="2068" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2072"
+      ><a name="2068" class="Field Operator"
+      >_&#8776;_</a
+      ><a name="2071"
       > </a
-      ><a name="2073" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="2074"
+      ><a name="2072" class="Symbol"
+      >=</a
+      ><a name="2073"
       > </a
-      ><a name="2075" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2079"
-      > </a
-      ><a name="2080" href="Data.Sum.html#678" class="Function Operator"
-      >,</a
+      ><a name="2074" href="TypeAlgebra.html#874" class="Record Operator"
+      >_&#8773;_</a
+      ><a name="2077"
+      >
+  </a
+      ><a name="2080" class="Symbol"
+      >;</a
       ><a name="2081"
       > </a
-      ><a name="2082" href="Data.Sum.html#678" class="Function Operator"
-      >[</a
-      ><a name="2083"
+      ><a name="2082" class="Field Operator"
+      >_+_</a
+      ><a name="2085"
       > </a
-      ><a name="2084" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2088"
+      ><a name="2086" class="Symbol"
+      >=</a
+      ><a name="2087"
       > </a
-      ><a name="2089" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="2090"
-      > </a
-      ><a name="2091" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
+      ><a name="2088" href="Data.Sum.html#404" class="Datatype Operator"
+      >_&#8846;_</a
+      ><a name="2091"
+      >
+  </a
+      ><a name="2094" class="Symbol"
+      >;</a
       ><a name="2095"
       > </a
-      ><a name="2096" href="Data.Sum.html#678" class="Function Operator"
-      >,</a
-      ><a name="2097"
+      ><a name="2096" class="Field Operator"
+      >_*_</a
+      ><a name="2099"
       > </a
-      ><a name="2098" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2102"
+      ><a name="2100" class="Symbol"
+      >=</a
+      ><a name="2101"
       > </a
-      ><a name="2103" href="Data.Sum.html#678" class="Function Operator"
-      >]</a
-      ><a name="2104"
-      > </a
-      ><a name="2105" href="Data.Sum.html#678" class="Function Operator"
-      >]</a
-      ><a name="2106"
+      ><a name="2102" href="Data.Product.html#1055" class="Function Operator"
+      >_&#215;_</a
+      ><a name="2105"
       >
-    </a
-      ><a name="2111" class="Symbol"
-      >(&#955;</a
-      ><a name="2113"
+  </a
+      ><a name="2108" class="Symbol"
+      >;</a
+      ><a name="2109"
       > </a
+      ><a name="2110" class="Field"
+      >0#</a
+      ><a name="2112"
+      >  </a
       ><a name="2114" class="Symbol"
-      >{</a
+      >=</a
       ><a name="2115"
       > </a
-      ><a name="2116" class="Symbol"
-      >{</a
-      ><a name="2117" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2121"
+      ><a name="2116" href="Level.html#350" class="Record"
+      >Lift</a
+      ><a name="2120"
       > </a
-      ><a name="2122" class="Symbol"
-      >_}</a
-      ><a name="2124"
-      >        </a
-      ><a name="2132" class="Symbol"
-      >&#8594;</a
-      ><a name="2133"
-      > </a
-      ><a name="2134" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="2138"
+      ><a name="2121" href="Data.Empty.html#243" class="Datatype"
+      >&#8869;</a
+      ><a name="2122"
       >
-       </a
-      ><a name="2146" class="Symbol"
+  </a
+      ><a name="2125" class="Symbol"
       >;</a
-      ><a name="2147"
+      ><a name="2126"
       > </a
-      ><a name="2148" class="Symbol"
-      >{</a
-      ><a name="2149" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2153"
+      ><a name="2127" class="Field"
+      >1#</a
+      ><a name="2129"
+      >  </a
+      ><a name="2131" class="Symbol"
+      >=</a
+      ><a name="2132"
       > </a
-      ><a name="2154" class="Symbol"
-      >(</a
-      ><a name="2155" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2159"
+      ><a name="2133" href="Level.html#350" class="Record"
+      >Lift</a
+      ><a name="2137"
       > </a
-      ><a name="2160" class="Symbol"
-      >_)}</a
-      ><a name="2163"
+      ><a name="2138" href="Data.Unit.html#653" class="Record"
+      >&#8868;</a
+      ><a name="2139"
+      >
+  </a
+      ><a name="2142" class="Symbol"
+      >;</a
+      ><a name="2143"
       > </a
-      ><a name="2164" class="Symbol"
-      >&#8594;</a
+      ><a name="2144" class="Field"
+      >isCommutativeSemiring</a
       ><a name="2165"
       > </a
-      ><a name="2166" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="2170"
-      >
-       </a
-      ><a name="2178" class="Symbol"
-      >;</a
-      ><a name="2179"
+      ><a name="2166" class="Symbol"
+      >=</a
+      ><a name="2167"
       > </a
-      ><a name="2180" class="Symbol"
-      >{</a
-      ><a name="2181" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2185"
-      > </a
-      ><a name="2186" class="Symbol"
-      >(</a
-      ><a name="2187" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2191"
-      > </a
-      ><a name="2192" class="Symbol"
-      >_)}</a
-      ><a name="2195"
-      > </a
-      ><a name="2196" class="Symbol"
-      >&#8594;</a
-      ><a name="2197"
-      > </a
-      ><a name="2198" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="2202"
-      >
-       </a
-      ><a name="2210" class="Symbol"
-      >})</a
-      ><a name="2212"
+      ><a name="2168" class="Keyword"
+      >record</a
+      ><a name="2174"
       >
     </a
-      ><a name="2217" class="Symbol"
-      >(&#955;</a
+      ><a name="2179" class="Symbol"
+      >{</a
+      ><a name="2180"
+      > </a
+      ><a name="2181" class="Field"
+      >+-isCommutativeMonoid</a
+      ><a name="2202"
+      > </a
+      ><a name="2203" class="Symbol"
+      >=</a
+      ><a name="2204"
+      > </a
+      ><a name="2205" class="Keyword"
+      >record</a
+      ><a name="2211"
+      >
+      </a
+      ><a name="2218" class="Symbol"
+      >{</a
       ><a name="2219"
       > </a
-      ><a name="2220" class="Symbol"
-      >{</a
-      ><a name="2221"
+      ><a name="2220" class="Field"
+      >isSemigroup</a
+      ><a name="2231"
       > </a
-      ><a name="2222" class="Symbol"
-      >{</a
-      ><a name="2223" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2227"
-      > </a
-      ><a name="2228" class="Symbol"
-      >(</a
-      ><a name="2229" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
+      ><a name="2232" class="Symbol"
+      >=</a
       ><a name="2233"
       > </a
-      ><a name="2234" class="Symbol"
-      >_)}</a
-      ><a name="2237"
-      > </a
-      ><a name="2238" class="Symbol"
-      >&#8594;</a
-      ><a name="2239"
-      > </a
-      ><a name="2240" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="2244"
+      ><a name="2234" class="Keyword"
+      >record</a
+      ><a name="2240"
       >
-       </a
-      ><a name="2252" class="Symbol"
-      >;</a
-      ><a name="2253"
-      > </a
-      ><a name="2254" class="Symbol"
+        </a
+      ><a name="2249" class="Symbol"
       >{</a
-      ><a name="2255" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2259"
+      ><a name="2250"
       > </a
-      ><a name="2260" class="Symbol"
-      >(</a
-      ><a name="2261" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2265"
+      ><a name="2251" class="Field"
+      >isEquivalence</a
+      ><a name="2264"
       > </a
-      ><a name="2266" class="Symbol"
-      >_)}</a
-      ><a name="2269"
+      ><a name="2265" class="Symbol"
+      >=</a
+      ><a name="2266"
       > </a
-      ><a name="2270" class="Symbol"
-      >&#8594;</a
-      ><a name="2271"
-      > </a
-      ><a name="2272" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="2276"
+      ><a name="2267" href="TypeAlgebra.html#1127" class="Function"
+      >isEquivalence</a
+      ><a name="2280"
       >
-       </a
-      ><a name="2284" class="Symbol"
+        </a
+      ><a name="2289" class="Symbol"
       >;</a
-      ><a name="2285"
+      ><a name="2290"
       > </a
-      ><a name="2286" class="Symbol"
-      >{</a
-      ><a name="2287" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2291"
+      ><a name="2291" class="Field"
+      >assoc</a
+      ><a name="2296"
+      >   </a
+      ><a name="2299" class="Symbol"
+      >=</a
+      ><a name="2300"
       > </a
-      ><a name="2292" class="Symbol"
-      >_}</a
-      ><a name="2294"
-      >        </a
-      ><a name="2302" class="Symbol"
-      >&#8594;</a
-      ><a name="2303"
-      > </a
-      ><a name="2304" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
+      ><a name="2301" href="TypeAlgebra.html#2782" class="Function"
+      >&#8846;-assoc</a
       ><a name="2308"
       >
-       </a
-      ><a name="2316" class="Symbol"
-      >})</a
+        </a
+      ><a name="2317" class="Symbol"
+      >;</a
       ><a name="2318"
-      >
-
-  </a
-      ><a name="2322" href="TypeAlgebra.html#2322" class="Function"
-      >&#8846;-cong</a
+      > </a
+      ><a name="2319" class="Field"
+      >&#8729;-cong</a
+      ><a name="2325"
+      >  </a
+      ><a name="2327" class="Symbol"
+      >=</a
       ><a name="2328"
       > </a
-      ><a name="2329" class="Symbol"
-      >:</a
-      ><a name="2330"
-      > </a
-      ><a name="2331" href="Data.Sum.html#404" class="Datatype Operator"
-      >_&#8846;_</a
-      ><a name="2334"
-      > </a
-      ><a name="2335" href="Relation.Binary.Core.html#1531" class="Function Operator"
-      >Preserves&#8322;</a
-      ><a name="2345"
-      > </a
-      ><a name="2346" href="TypeAlgebra.html#618" class="Record Operator"
-      >_&#8773;_</a
-      ><a name="2349"
-      > </a
-      ><a name="2350" href="Relation.Binary.Core.html#1531" class="Function Operator"
-      >&#10230;</a
-      ><a name="2351"
-      > </a
-      ><a name="2352" href="TypeAlgebra.html#618" class="Record Operator"
-      >_&#8773;_</a
-      ><a name="2355"
-      > </a
-      ><a name="2356" href="Relation.Binary.Core.html#1531" class="Function Operator"
-      >&#10230;</a
-      ><a name="2357"
-      > </a
-      ><a name="2358" href="TypeAlgebra.html#618" class="Record Operator"
-      >_&#8773;_</a
-      ><a name="2361"
-      >
-  </a
-      ><a name="2364" href="TypeAlgebra.html#2322" class="Function"
+      ><a name="2329" href="TypeAlgebra.html#3135" class="Function"
       >&#8846;-cong</a
-      ><a name="2370"
+      ><a name="2335"
+      >
+        </a
+      ><a name="2344" class="Symbol"
+      >}</a
+      ><a name="2345"
+      >
+      </a
+      ><a name="2352" class="Symbol"
+      >;</a
+      ><a name="2353"
       > </a
-      ><a name="2371" class="Symbol"
-      >(</a
-      ><a name="2372" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="2375"
+      ><a name="2354" class="Field"
+      >identity&#737;</a
+      ><a name="2363"
       > </a
-      ><a name="2376" href="TypeAlgebra.html#2376" class="Bound"
-      >t&#8321;</a
-      ><a name="2378"
+      ><a name="2364" class="Symbol"
+      >=</a
+      ><a name="2365"
       > </a
-      ><a name="2379" href="TypeAlgebra.html#2379" class="Bound"
-      >f&#8321;</a
-      ><a name="2381"
-      > </a
-      ><a name="2382" href="TypeAlgebra.html#2382" class="Bound"
-      >tf&#8321;</a
+      ><a name="2366" href="TypeAlgebra.html#3425" class="Function"
+      >&#8846;-identity&#737;</a
+      ><a name="2377"
+      >
+      </a
+      ><a name="2384" class="Symbol"
+      >;</a
       ><a name="2385"
       > </a
-      ><a name="2386" href="TypeAlgebra.html#2386" class="Bound"
-      >ft&#8321;</a
-      ><a name="2389" class="Symbol"
-      >)</a
+      ><a name="2386" class="Field"
+      >comm</a
       ><a name="2390"
-      > </a
-      ><a name="2391" class="Symbol"
-      >(</a
-      ><a name="2392" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="2395"
-      > </a
-      ><a name="2396" href="TypeAlgebra.html#2396" class="Bound"
-      >t&#8322;</a
-      ><a name="2398"
-      > </a
-      ><a name="2399" href="TypeAlgebra.html#2399" class="Bound"
-      >f&#8322;</a
-      ><a name="2401"
-      > </a
-      ><a name="2402" href="TypeAlgebra.html#2402" class="Bound"
-      >tf&#8322;</a
-      ><a name="2405"
-      > </a
-      ><a name="2406" href="TypeAlgebra.html#2406" class="Bound"
-      >ft&#8322;</a
-      ><a name="2409" class="Symbol"
-      >)</a
-      ><a name="2410"
-      > </a
-      ><a name="2411" class="Symbol"
+      >      </a
+      ><a name="2396" class="Symbol"
       >=</a
+      ><a name="2397"
+      > </a
+      ><a name="2398" href="TypeAlgebra.html#3597" class="Function"
+      >&#8846;-comm</a
+      ><a name="2404"
+      >
+      </a
+      ><a name="2411" class="Symbol"
+      >}</a
       ><a name="2412"
-      > </a
-      ><a name="2413" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="2416"
       >
     </a
-      ><a name="2421" class="Symbol"
-      >(</a
-      ><a name="2422" href="Data.Sum.html#993" class="Function"
-      >S.map</a
-      ><a name="2427"
-      > </a
-      ><a name="2428" href="TypeAlgebra.html#2376" class="Bound"
-      >t&#8321;</a
-      ><a name="2430"
-      > </a
-      ><a name="2431" href="TypeAlgebra.html#2396" class="Bound"
-      >t&#8322;</a
-      ><a name="2433" class="Symbol"
-      >)</a
-      ><a name="2434"
-      >
-    </a
-      ><a name="2439" class="Symbol"
-      >(</a
-      ><a name="2440" href="Data.Sum.html#993" class="Function"
-      >S.map</a
-      ><a name="2445"
-      > </a
-      ><a name="2446" href="TypeAlgebra.html#2379" class="Bound"
-      >f&#8321;</a
-      ><a name="2448"
-      > </a
-      ><a name="2449" href="TypeAlgebra.html#2399" class="Bound"
-      >f&#8322;</a
-      ><a name="2451" class="Symbol"
-      >)</a
-      ><a name="2452"
-      >
-    </a
-      ><a name="2457" class="Symbol"
-      >(&#955;</a
-      ><a name="2459"
-      > </a
-      ><a name="2460" class="Symbol"
-      >{</a
-      ><a name="2461"
-      > </a
-      ><a name="2462" class="Symbol"
-      >{</a
-      ><a name="2463" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2467"
-      > </a
-      ><a name="2468" class="Symbol"
-      >_}</a
-      ><a name="2470"
-      > </a
-      ><a name="2471" class="Symbol"
-      >&#8594;</a
-      ><a name="2472"
-      > </a
-      ><a name="2473" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
-      >cong</a
-      ><a name="2477"
-      > </a
-      ><a name="2478" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2482"
-      > </a
-      ><a name="2483" href="TypeAlgebra.html#2382" class="Bound"
-      >tf&#8321;</a
-      ><a name="2486"
-      >
-       </a
-      ><a name="2494" class="Symbol"
+      ><a name="2417" class="Symbol"
       >;</a
-      ><a name="2495"
+      ><a name="2418"
       > </a
-      ><a name="2496" class="Symbol"
+      ><a name="2419" class="Field"
+      >*-isCommutativeMonoid</a
+      ><a name="2440"
+      > </a
+      ><a name="2441" class="Symbol"
+      >=</a
+      ><a name="2442"
+      > </a
+      ><a name="2443" class="Keyword"
+      >record</a
+      ><a name="2449"
+      >
+      </a
+      ><a name="2456" class="Symbol"
       >{</a
-      ><a name="2497" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2501"
+      ><a name="2457"
       > </a
-      ><a name="2502" class="Symbol"
-      >_}</a
+      ><a name="2458" class="Field"
+      >isSemigroup</a
+      ><a name="2469"
+      > </a
+      ><a name="2470" class="Symbol"
+      >=</a
+      ><a name="2471"
+      > </a
+      ><a name="2472" class="Keyword"
+      >record</a
+      ><a name="2478"
+      >
+        </a
+      ><a name="2487" class="Symbol"
+      >{</a
+      ><a name="2488"
+      > </a
+      ><a name="2489" class="Field"
+      >isEquivalence</a
+      ><a name="2502"
+      > </a
+      ><a name="2503" class="Symbol"
+      >=</a
       ><a name="2504"
       > </a
-      ><a name="2505" class="Symbol"
-      >&#8594;</a
-      ><a name="2506"
-      > </a
-      ><a name="2507" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
-      >cong</a
-      ><a name="2511"
-      > </a
-      ><a name="2512" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2516"
-      > </a
-      ><a name="2517" href="TypeAlgebra.html#2402" class="Bound"
-      >tf&#8322;</a
-      ><a name="2520"
+      ><a name="2505" href="TypeAlgebra.html#1127" class="Function"
+      >isEquivalence</a
+      ><a name="2518"
       >
-       </a
-      ><a name="2528" class="Symbol"
-      >})</a
-      ><a name="2530"
-      >
-    </a
-      ><a name="2535" class="Symbol"
-      >(&#955;</a
-      ><a name="2537"
-      > </a
-      ><a name="2538" class="Symbol"
-      >{</a
-      ><a name="2539"
-      > </a
-      ><a name="2540" class="Symbol"
-      >{</a
-      ><a name="2541" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2545"
-      > </a
-      ><a name="2546" class="Symbol"
-      >_}</a
-      ><a name="2548"
-      > </a
-      ><a name="2549" class="Symbol"
-      >&#8594;</a
-      ><a name="2550"
-      > </a
-      ><a name="2551" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
-      >cong</a
-      ><a name="2555"
-      > </a
-      ><a name="2556" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2560"
-      > </a
-      ><a name="2561" href="TypeAlgebra.html#2386" class="Bound"
-      >ft&#8321;</a
-      ><a name="2564"
-      >
-       </a
-      ><a name="2572" class="Symbol"
+        </a
+      ><a name="2527" class="Symbol"
       >;</a
+      ><a name="2528"
+      > </a
+      ><a name="2529" class="Field"
+      >assoc</a
+      ><a name="2534"
+      >   </a
+      ><a name="2537" class="Symbol"
+      >=</a
+      ><a name="2538"
+      > </a
+      ><a name="2539" href="TypeAlgebra.html#3804" class="Function"
+      >&#215;-assoc</a
+      ><a name="2546"
+      >
+        </a
+      ><a name="2555" class="Symbol"
+      >;</a
+      ><a name="2556"
+      > </a
+      ><a name="2557" class="Field"
+      >&#8729;-cong</a
+      ><a name="2563"
+      >  </a
+      ><a name="2565" class="Symbol"
+      >=</a
+      ><a name="2566"
+      > </a
+      ><a name="2567" href="TypeAlgebra.html#3973" class="Function"
+      >&#215;-cong</a
       ><a name="2573"
-      > </a
-      ><a name="2574" class="Symbol"
-      >{</a
-      ><a name="2575" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2579"
-      > </a
-      ><a name="2580" class="Symbol"
-      >_}</a
-      ><a name="2582"
-      > </a
-      ><a name="2583" class="Symbol"
-      >&#8594;</a
-      ><a name="2584"
-      > </a
-      ><a name="2585" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
-      >cong</a
-      ><a name="2589"
-      > </a
-      ><a name="2590" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2594"
-      > </a
-      ><a name="2595" href="TypeAlgebra.html#2406" class="Bound"
-      >ft&#8322;</a
-      ><a name="2598"
       >
-       </a
-      ><a name="2606" class="Symbol"
-      >})</a
-      ><a name="2608"
+        </a
+      ><a name="2582" class="Symbol"
+      >}</a
+      ><a name="2583"
       >
-
-  </a
-      ><a name="2612" href="TypeAlgebra.html#2612" class="Function"
-      >&#8846;-identity&#737;</a
+      </a
+      ><a name="2590" class="Symbol"
+      >;</a
+      ><a name="2591"
+      > </a
+      ><a name="2592" class="Field"
+      >identity&#737;</a
+      ><a name="2601"
+      > </a
+      ><a name="2602" class="Symbol"
+      >=</a
+      ><a name="2603"
+      > </a
+      ><a name="2604" href="TypeAlgebra.html#4155" class="Function"
+      >&#215;-identity&#737;</a
+      ><a name="2615"
+      >
+      </a
+      ><a name="2622" class="Symbol"
+      >;</a
       ><a name="2623"
       > </a
-      ><a name="2624" class="Symbol"
-      >:</a
-      ><a name="2625"
+      ><a name="2624" class="Field"
+      >comm</a
+      ><a name="2628"
+      >      </a
+      ><a name="2634" class="Symbol"
+      >=</a
+      ><a name="2635"
       > </a
-      ><a name="2626" href="Algebra.FunctionProperties.html#987" class="Function"
-      >LeftIdentity</a
-      ><a name="2638"
-      > </a
-      ><a name="2639" class="Symbol"
-      >(</a
-      ><a name="2640" href="Level.html#350" class="Record"
-      >Lift</a
-      ><a name="2644"
-      > </a
-      ><a name="2645" href="Data.Empty.html#243" class="Datatype"
-      >&#8869;</a
-      ><a name="2646" class="Symbol"
-      >)</a
-      ><a name="2647"
-      > </a
-      ><a name="2648" href="Data.Sum.html#404" class="Datatype Operator"
-      >_&#8846;_</a
-      ><a name="2651"
+      ><a name="2636" href="TypeAlgebra.html#4255" class="Function"
+      >&#215;-comm</a
+      ><a name="2642"
       >
-  </a
-      ><a name="2654" href="TypeAlgebra.html#2612" class="Function"
-      >&#8846;-identity&#737;</a
+      </a
+      ><a name="2649" class="Symbol"
+      >}</a
+      ><a name="2650"
+      >
+    </a
+      ><a name="2655" class="Symbol"
+      >;</a
+      ><a name="2656"
+      > </a
+      ><a name="2657" class="Field"
+      >distrib&#691;</a
       ><a name="2665"
       > </a
       ><a name="2666" class="Symbol"
-      >_</a
+      >=</a
       ><a name="2667"
       > </a
-      ><a name="2668" class="Symbol"
-      >=</a
-      ><a name="2669"
-      > </a
-      ><a name="2670" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="2673"
+      ><a name="2668" href="TypeAlgebra.html#4338" class="Function"
+      >distrib&#691;</a
+      ><a name="2676"
       >
     </a
-      ><a name="2678" href="Data.Sum.html#678" class="Function Operator"
-      >[</a
-      ><a name="2679"
-      > </a
-      ><a name="2680" href="Data.Empty.html#326" class="Function"
-      >&#8869;-elim</a
-      ><a name="2686"
-      > </a
-      ><a name="2687" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="2688"
-      > </a
-      ><a name="2689" href="Level.html#420" class="Field"
-      >lower</a
-      ><a name="2694"
-      > </a
-      ><a name="2695" href="Data.Sum.html#678" class="Function Operator"
-      >,</a
-      ><a name="2696"
-      > </a
-      ><a name="2697" href="Function.html#1006" class="Function"
-      >id</a
-      ><a name="2699"
-      > </a
-      ><a name="2700" href="Data.Sum.html#678" class="Function Operator"
-      >]</a
-      ><a name="2701"
-      >
-    </a
-      ><a name="2706" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2710"
-      >
-    </a
-      ><a name="2715" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="2719"
-      >
-    </a
-      ><a name="2724" class="Symbol"
-      >(&#955;</a
-      ><a name="2726"
-      > </a
-      ><a name="2727" class="Symbol"
-      >{</a
-      ><a name="2728"
-      > </a
-      ><a name="2729" class="Symbol"
-      >{</a
-      ><a name="2730" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2734"
-      > </a
-      ><a name="2735" class="Symbol"
-      >(</a
-      ><a name="2736" href="Level.html#407" class="InductiveConstructor"
-      >lift</a
-      ><a name="2740"
-      > </a
-      ><a name="2741" class="Symbol"
-      >())}</a
-      ><a name="2745"
-      >
-       </a
-      ><a name="2753" class="Symbol"
+      ><a name="2681" class="Symbol"
       >;</a
-      ><a name="2754"
+      ><a name="2682"
       > </a
-      ><a name="2755" class="Symbol"
-      >{</a
-      ><a name="2756" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2760"
+      ><a name="2683" class="Field"
+      >zero&#737;</a
+      ><a name="2688"
+      >    </a
+      ><a name="2692" class="Symbol"
+      >=</a
+      ><a name="2693"
       > </a
-      ><a name="2761" class="Symbol"
-      >_}</a
-      ><a name="2763"
-      > </a
-      ><a name="2764" class="Symbol"
-      >&#8594;</a
-      ><a name="2765"
-      > </a
-      ><a name="2766" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="2770"
+      ><a name="2694" href="TypeAlgebra.html#4696" class="Function"
+      >zero&#737;</a
+      ><a name="2699"
       >
-       </a
-      ><a name="2778" class="Symbol"
+    </a
+      ><a name="2704" class="Symbol"
+      >}</a
+      ><a name="2705"
+      >
+  </a
+      ><a name="2708" class="Symbol"
+      >}</a
+      ><a name="2709"
+      >
+  </a
+      ><a name="2712" class="Keyword"
+      >where</a
+      ><a name="2717"
+      >
+  </a
+      ><a name="2720" class="Keyword"
+      >open</a
+      ><a name="2724"
+      > </a
+      ><a name="2725" href="Algebra.FunctionProperties.html#1" class="Module"
+      >Algebra.FunctionProperties</a
+      ><a name="2751"
+      > </a
+      ><a name="2752" class="Symbol"
+      >(</a
+      ><a name="2753" href="TypeAlgebra.html#874" class="Record Operator"
+      >_&#8773;_</a
+      ><a name="2756"
+      > </a
+      ><a name="2757" class="Symbol"
+      >{</a
+      ><a name="2758"
+      >a </a
+      ><a name="2760" class="Symbol"
+      >=</a
+      ><a name="2761"
+      > </a
+      ><a name="2762" href="TypeAlgebra.html#2032" class="Bound"
+      >&#8467;</a
+      ><a name="2763" class="Symbol"
       >})</a
-      ><a name="2780"
+      ><a name="2765"
       >
 
   </a
-      ><a name="2784" href="TypeAlgebra.html#2784" class="Function"
-      >&#8846;-comm</a
-      ><a name="2790"
-      > </a
-      ><a name="2791" class="Symbol"
-      >:</a
-      ><a name="2792"
-      > </a
-      ><a name="2793" href="Algebra.FunctionProperties.html#914" class="Function"
-      >Commutative</a
-      ><a name="2804"
-      > </a
-      ><a name="2805" href="Data.Sum.html#404" class="Datatype Operator"
-      >_&#8846;_</a
-      ><a name="2808"
+      ><a name="2769" class="Comment"
+      >-- Lemmas.</a
+      ><a name="2779"
       >
   </a
-      ><a name="2811" href="TypeAlgebra.html#2784" class="Function"
-      >&#8846;-comm</a
+      ><a name="2782" href="TypeAlgebra.html#2782" class="Function"
+      >&#8846;-assoc</a
+      ><a name="2789"
+      > </a
+      ><a name="2790" class="Symbol"
+      >:</a
+      ><a name="2791"
+      > </a
+      ><a name="2792" href="Algebra.FunctionProperties.html#827" class="Function"
+      >Associative</a
+      ><a name="2803"
+      > </a
+      ><a name="2804" href="Data.Sum.html#404" class="Datatype Operator"
+      >_&#8846;_</a
+      ><a name="2807"
+      >
+  </a
+      ><a name="2810" href="TypeAlgebra.html#2782" class="Function"
+      >&#8846;-assoc</a
       ><a name="2817"
       > </a
       ><a name="2818" class="Symbol"
@@ -2302,1136 +1645,1879 @@
       ><a name="2821"
       > </a
       ><a name="2822" class="Symbol"
-      >=</a
+      >_</a
       ><a name="2823"
       > </a
-      ><a name="2824" href="TypeAlgebra.html#686" class="InductiveConstructor"
+      ><a name="2824" class="Symbol"
+      >=</a
+      ><a name="2825"
+      > </a
+      ><a name="2826" href="TypeAlgebra.html#942" class="InductiveConstructor"
       >iso</a
-      ><a name="2827"
+      ><a name="2829"
       >
     </a
-      ><a name="2832" href="Data.Sum.html#678" class="Function Operator"
+      ><a name="2834" href="Data.Sum.html#678" class="Function Operator"
       >[</a
-      ><a name="2833"
+      ><a name="2835"
       > </a
-      ><a name="2834" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2838"
+      ><a name="2836" href="Data.Sum.html#678" class="Function Operator"
+      >[</a
+      ><a name="2837"
       > </a
-      ><a name="2839" href="Data.Sum.html#678" class="Function Operator"
-      >,</a
-      ><a name="2840"
-      > </a
-      ><a name="2841" href="Data.Sum.html#460" class="InductiveConstructor"
+      ><a name="2838" href="Data.Sum.html#460" class="InductiveConstructor"
       >inj&#8321;</a
-      ><a name="2845"
+      ><a name="2842"
       > </a
-      ><a name="2846" href="Data.Sum.html#678" class="Function Operator"
-      >]</a
-      ><a name="2847"
-      >
-    </a
-      ><a name="2852" href="Data.Sum.html#678" class="Function Operator"
-      >[</a
-      ><a name="2853"
+      ><a name="2843" href="Data.Sum.html#678" class="Function Operator"
+      >,</a
+      ><a name="2844"
       > </a
-      ><a name="2854" href="Data.Sum.html#485" class="InductiveConstructor"
+      ><a name="2845" href="Data.Sum.html#485" class="InductiveConstructor"
       >inj&#8322;</a
+      ><a name="2849"
+      > </a
+      ><a name="2850" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="2851"
+      > </a
+      ><a name="2852" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="2856"
+      > </a
+      ><a name="2857" href="Data.Sum.html#678" class="Function Operator"
+      >]</a
       ><a name="2858"
       > </a
       ><a name="2859" href="Data.Sum.html#678" class="Function Operator"
       >,</a
       ><a name="2860"
       > </a
-      ><a name="2861" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
+      ><a name="2861" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
       ><a name="2865"
       > </a
-      ><a name="2866" href="Data.Sum.html#678" class="Function Operator"
-      >]</a
+      ><a name="2866" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
       ><a name="2867"
+      > </a
+      ><a name="2868" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="2872"
+      > </a
+      ><a name="2873" href="Data.Sum.html#678" class="Function Operator"
+      >]</a
+      ><a name="2874"
       >
     </a
-      ><a name="2872" class="Symbol"
-      >(&#955;</a
-      ><a name="2874"
+      ><a name="2879" href="Data.Sum.html#678" class="Function Operator"
+      >[</a
+      ><a name="2880"
       > </a
-      ><a name="2875" class="Symbol"
-      >{</a
-      ><a name="2876"
-      > </a
-      ><a name="2877" class="Symbol"
-      >{</a
-      ><a name="2878" href="Data.Sum.html#460" class="InductiveConstructor"
+      ><a name="2881" href="Data.Sum.html#460" class="InductiveConstructor"
       >inj&#8321;</a
-      ><a name="2882"
-      > </a
-      ><a name="2883" class="Symbol"
-      >_}</a
       ><a name="2885"
       > </a
-      ><a name="2886" class="Symbol"
-      >&#8594;</a
+      ><a name="2886" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
       ><a name="2887"
       > </a
-      ><a name="2888" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
+      ><a name="2888" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
       ><a name="2892"
-      >
-       </a
-      ><a name="2900" class="Symbol"
-      >;</a
+      > </a
+      ><a name="2893" href="Data.Sum.html#678" class="Function Operator"
+      >,</a
+      ><a name="2894"
+      > </a
+      ><a name="2895" href="Data.Sum.html#678" class="Function Operator"
+      >[</a
+      ><a name="2896"
+      > </a
+      ><a name="2897" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
       ><a name="2901"
       > </a
-      ><a name="2902" class="Symbol"
-      >{</a
-      ><a name="2903" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="2907"
+      ><a name="2902" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="2903"
       > </a
-      ><a name="2908" class="Symbol"
-      >_}</a
+      ><a name="2904" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="2908"
+      > </a
+      ><a name="2909" href="Data.Sum.html#678" class="Function Operator"
+      >,</a
       ><a name="2910"
       > </a
-      ><a name="2911" class="Symbol"
-      >&#8594;</a
-      ><a name="2912"
+      ><a name="2911" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="2915"
       > </a
-      ><a name="2913" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
+      ><a name="2916" href="Data.Sum.html#678" class="Function Operator"
+      >]</a
       ><a name="2917"
-      >
-       </a
-      ><a name="2925" class="Symbol"
-      >})</a
-      ><a name="2927"
+      > </a
+      ><a name="2918" href="Data.Sum.html#678" class="Function Operator"
+      >]</a
+      ><a name="2919"
       >
     </a
-      ><a name="2932" class="Symbol"
+      ><a name="2924" class="Symbol"
       >(&#955;</a
+      ><a name="2926"
+      > </a
+      ><a name="2927" class="Symbol"
+      >{</a
+      ><a name="2928"
+      > </a
+      ><a name="2929" class="Symbol"
+      >{</a
+      ><a name="2930" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
       ><a name="2934"
       > </a
       ><a name="2935" class="Symbol"
-      >{</a
-      ><a name="2936"
-      > </a
-      ><a name="2937" class="Symbol"
-      >{</a
-      ><a name="2938" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="2942"
-      > </a
-      ><a name="2943" class="Symbol"
       >_}</a
-      ><a name="2945"
-      > </a
-      ><a name="2946" class="Symbol"
+      ><a name="2937"
+      >        </a
+      ><a name="2945" class="Symbol"
       >&#8594;</a
-      ><a name="2947"
+      ><a name="2946"
       > </a
-      ><a name="2948" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      ><a name="2947" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
       >refl</a
-      ><a name="2952"
+      ><a name="2951"
       >
        </a
-      ><a name="2960" class="Symbol"
+      ><a name="2959" class="Symbol"
       >;</a
-      ><a name="2961"
+      ><a name="2960"
       > </a
-      ><a name="2962" class="Symbol"
+      ><a name="2961" class="Symbol"
       >{</a
-      ><a name="2963" href="Data.Sum.html#485" class="InductiveConstructor"
+      ><a name="2962" href="Data.Sum.html#485" class="InductiveConstructor"
       >inj&#8322;</a
-      ><a name="2967"
+      ><a name="2966"
       > </a
-      ><a name="2968" class="Symbol"
-      >_}</a
-      ><a name="2970"
-      > </a
-      ><a name="2971" class="Symbol"
-      >&#8594;</a
+      ><a name="2967" class="Symbol"
+      >(</a
+      ><a name="2968" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
       ><a name="2972"
       > </a
-      ><a name="2973" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      ><a name="2973" class="Symbol"
+      >_)}</a
+      ><a name="2976"
+      > </a
+      ><a name="2977" class="Symbol"
+      >&#8594;</a
+      ><a name="2978"
+      > </a
+      ><a name="2979" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
       >refl</a
-      ><a name="2977"
+      ><a name="2983"
       >
        </a
-      ><a name="2985" class="Symbol"
-      >})</a
-      ><a name="2987"
-      >
-
-  </a
-      ><a name="2991" href="TypeAlgebra.html#2991" class="Function"
-      >&#215;-assoc</a
+      ><a name="2991" class="Symbol"
+      >;</a
+      ><a name="2992"
+      > </a
+      ><a name="2993" class="Symbol"
+      >{</a
+      ><a name="2994" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
       ><a name="2998"
       > </a
       ><a name="2999" class="Symbol"
-      >:</a
-      ><a name="3000"
+      >(</a
+      ><a name="3000" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="3004"
       > </a
-      ><a name="3001" href="Algebra.FunctionProperties.html#827" class="Function"
-      >Associative</a
-      ><a name="3012"
+      ><a name="3005" class="Symbol"
+      >_)}</a
+      ><a name="3008"
       > </a
-      ><a name="3013" href="Data.Product.html#1055" class="Function Operator"
-      >_&#215;_</a
-      ><a name="3016"
+      ><a name="3009" class="Symbol"
+      >&#8594;</a
+      ><a name="3010"
+      > </a
+      ><a name="3011" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="3015"
       >
-  </a
-      ><a name="3019" href="TypeAlgebra.html#2991" class="Function"
-      >&#215;-assoc</a
-      ><a name="3026"
-      > </a
-      ><a name="3027" class="Symbol"
-      >_</a
-      ><a name="3028"
-      > </a
-      ><a name="3029" class="Symbol"
-      >_</a
-      ><a name="3030"
-      > </a
-      ><a name="3031" class="Symbol"
-      >_</a
+       </a
+      ><a name="3023" class="Symbol"
+      >})</a
+      ><a name="3025"
+      >
+    </a
+      ><a name="3030" class="Symbol"
+      >(&#955;</a
       ><a name="3032"
       > </a
       ><a name="3033" class="Symbol"
-      >=</a
+      >{</a
       ><a name="3034"
       > </a
-      ><a name="3035" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="3038"
-      >
-    </a
-      ><a name="3043" href="Data.Product.html#1673" class="Function Operator"
-      >&lt;</a
-      ><a name="3044"
+      ><a name="3035" class="Symbol"
+      >{</a
+      ><a name="3036" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3040"
       > </a
-      ><a name="3045" href="Data.Product.html#525" class="Field"
-      >proj&#8321;</a
+      ><a name="3041" class="Symbol"
+      >(</a
+      ><a name="3042" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3046"
+      > </a
+      ><a name="3047" class="Symbol"
+      >_)}</a
       ><a name="3050"
       > </a
-      ><a name="3051" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
+      ><a name="3051" class="Symbol"
+      >&#8594;</a
       ><a name="3052"
       > </a
-      ><a name="3053" href="Data.Product.html#525" class="Field"
-      >proj&#8321;</a
-      ><a name="3058"
+      ><a name="3053" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="3057"
+      >
+       </a
+      ><a name="3065" class="Symbol"
+      >;</a
+      ><a name="3066"
       > </a
-      ><a name="3059" href="Data.Product.html#1673" class="Function Operator"
-      >,</a
-      ><a name="3060"
+      ><a name="3067" class="Symbol"
+      >{</a
+      ><a name="3068" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3072"
       > </a
-      ><a name="3061" href="Data.Product.html#1673" class="Function Operator"
-      >&lt;</a
-      ><a name="3062"
-      > </a
-      ><a name="3063" href="Data.Product.html#539" class="Field"
-      >proj&#8322;</a
-      ><a name="3068"
-      > </a
-      ><a name="3069" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="3070"
-      > </a
-      ><a name="3071" href="Data.Product.html#525" class="Field"
-      >proj&#8321;</a
-      ><a name="3076"
-      > </a
-      ><a name="3077" href="Data.Product.html#1673" class="Function Operator"
-      >,</a
+      ><a name="3073" class="Symbol"
+      >(</a
+      ><a name="3074" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
       ><a name="3078"
       > </a
-      ><a name="3079" href="Data.Product.html#539" class="Field"
-      >proj&#8322;</a
+      ><a name="3079" class="Symbol"
+      >_)}</a
+      ><a name="3082"
+      > </a
+      ><a name="3083" class="Symbol"
+      >&#8594;</a
       ><a name="3084"
       > </a
-      ><a name="3085" href="Data.Product.html#1673" class="Function Operator"
-      >&gt;</a
-      ><a name="3086"
-      > </a
-      ><a name="3087" href="Data.Product.html#1673" class="Function Operator"
-      >&gt;</a
-      ><a name="3088"
+      ><a name="3085" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="3089"
       >
-    </a
-      ><a name="3093" href="Data.Product.html#1673" class="Function Operator"
-      >&lt;</a
-      ><a name="3094"
+       </a
+      ><a name="3097" class="Symbol"
+      >;</a
+      ><a name="3098"
       > </a
-      ><a name="3095" href="Data.Product.html#1673" class="Function Operator"
-      >&lt;</a
-      ><a name="3096"
-      > </a
-      ><a name="3097" href="Data.Product.html#525" class="Field"
-      >proj&#8321;</a
-      ><a name="3102"
-      > </a
-      ><a name="3103" href="Data.Product.html#1673" class="Function Operator"
-      >,</a
+      ><a name="3099" class="Symbol"
+      >{</a
+      ><a name="3100" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
       ><a name="3104"
       > </a
-      ><a name="3105" href="Data.Product.html#525" class="Field"
-      >proj&#8321;</a
-      ><a name="3110"
+      ><a name="3105" class="Symbol"
+      >_}</a
+      ><a name="3107"
+      >        </a
+      ><a name="3115" class="Symbol"
+      >&#8594;</a
+      ><a name="3116"
       > </a
-      ><a name="3111" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="3112"
-      > </a
-      ><a name="3113" href="Data.Product.html#539" class="Field"
-      >proj&#8322;</a
-      ><a name="3118"
-      > </a
-      ><a name="3119" href="Data.Product.html#1673" class="Function Operator"
-      >&gt;</a
-      ><a name="3120"
-      > </a
-      ><a name="3121" href="Data.Product.html#1673" class="Function Operator"
-      >,</a
-      ><a name="3122"
-      > </a
-      ><a name="3123" href="Data.Product.html#539" class="Field"
-      >proj&#8322;</a
-      ><a name="3128"
-      > </a
-      ><a name="3129" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="3130"
-      > </a
-      ><a name="3131" href="Data.Product.html#539" class="Field"
-      >proj&#8322;</a
-      ><a name="3136"
-      > </a
-      ><a name="3137" href="Data.Product.html#1673" class="Function Operator"
-      >&gt;</a
-      ><a name="3138"
-      >
-    </a
-      ><a name="3143" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      ><a name="3117" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
       >refl</a
-      ><a name="3147"
+      ><a name="3121"
       >
-    </a
-      ><a name="3152" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="3156"
+       </a
+      ><a name="3129" class="Symbol"
+      >})</a
+      ><a name="3131"
       >
 
   </a
-      ><a name="3160" href="TypeAlgebra.html#3160" class="Function"
-      >&#215;-cong</a
-      ><a name="3166"
+      ><a name="3135" href="TypeAlgebra.html#3135" class="Function"
+      >&#8846;-cong</a
+      ><a name="3141"
       > </a
-      ><a name="3167" class="Symbol"
+      ><a name="3142" class="Symbol"
       >:</a
+      ><a name="3143"
+      > </a
+      ><a name="3144" href="Data.Sum.html#404" class="Datatype Operator"
+      >_&#8846;_</a
+      ><a name="3147"
+      > </a
+      ><a name="3148" href="Relation.Binary.Core.html#1531" class="Function Operator"
+      >Preserves&#8322;</a
+      ><a name="3158"
+      > </a
+      ><a name="3159" href="TypeAlgebra.html#874" class="Record Operator"
+      >_&#8773;_</a
+      ><a name="3162"
+      > </a
+      ><a name="3163" href="Relation.Binary.Core.html#1531" class="Function Operator"
+      >&#10230;</a
+      ><a name="3164"
+      > </a
+      ><a name="3165" href="TypeAlgebra.html#874" class="Record Operator"
+      >_&#8773;_</a
       ><a name="3168"
       > </a
-      ><a name="3169" href="Data.Product.html#1055" class="Function Operator"
-      >_&#215;_</a
-      ><a name="3172"
+      ><a name="3169" href="Relation.Binary.Core.html#1531" class="Function Operator"
+      >&#10230;</a
+      ><a name="3170"
       > </a
-      ><a name="3173" href="Relation.Binary.Core.html#1531" class="Function Operator"
-      >Preserves&#8322;</a
+      ><a name="3171" href="TypeAlgebra.html#874" class="Record Operator"
+      >_&#8773;_</a
+      ><a name="3174"
+      >
+  </a
+      ><a name="3177" href="TypeAlgebra.html#3135" class="Function"
+      >&#8846;-cong</a
       ><a name="3183"
       > </a
-      ><a name="3184" href="TypeAlgebra.html#618" class="Record Operator"
-      >_&#8773;_</a
-      ><a name="3187"
+      ><a name="3184" class="Symbol"
+      >(</a
+      ><a name="3185" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="3188"
       > </a
-      ><a name="3188" href="Relation.Binary.Core.html#1531" class="Function Operator"
-      >&#10230;</a
-      ><a name="3189"
+      ><a name="3189" href="TypeAlgebra.html#3189" class="Bound"
+      >t&#8321;</a
+      ><a name="3191"
       > </a
-      ><a name="3190" href="TypeAlgebra.html#618" class="Record Operator"
-      >_&#8773;_</a
-      ><a name="3193"
+      ><a name="3192" href="TypeAlgebra.html#3192" class="Bound"
+      >f&#8321;</a
+      ><a name="3194"
       > </a
-      ><a name="3194" href="Relation.Binary.Core.html#1531" class="Function Operator"
-      >&#10230;</a
-      ><a name="3195"
+      ><a name="3195" href="TypeAlgebra.html#3195" class="Bound"
+      >tf&#8321;</a
+      ><a name="3198"
       > </a
-      ><a name="3196" href="TypeAlgebra.html#618" class="Record Operator"
-      >_&#8773;_</a
-      ><a name="3199"
-      >
-  </a
-      ><a name="3202" href="TypeAlgebra.html#3160" class="Function"
-      >&#215;-cong</a
+      ><a name="3199" href="TypeAlgebra.html#3199" class="Bound"
+      >ft&#8321;</a
+      ><a name="3202" class="Symbol"
+      >)</a
+      ><a name="3203"
+      > </a
+      ><a name="3204" class="Symbol"
+      >(</a
+      ><a name="3205" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
       ><a name="3208"
       > </a
-      ><a name="3209" class="Symbol"
-      >(</a
-      ><a name="3210" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="3213"
+      ><a name="3209" href="TypeAlgebra.html#3209" class="Bound"
+      >t&#8322;</a
+      ><a name="3211"
       > </a
-      ><a name="3214" href="TypeAlgebra.html#3214" class="Bound"
-      >t&#8321;</a
-      ><a name="3216"
+      ><a name="3212" href="TypeAlgebra.html#3212" class="Bound"
+      >f&#8322;</a
+      ><a name="3214"
       > </a
-      ><a name="3217" href="TypeAlgebra.html#3217" class="Bound"
-      >f&#8321;</a
-      ><a name="3219"
+      ><a name="3215" href="TypeAlgebra.html#3215" class="Bound"
+      >tf&#8322;</a
+      ><a name="3218"
       > </a
-      ><a name="3220" href="TypeAlgebra.html#3220" class="Bound"
-      >tf&#8321;</a
+      ><a name="3219" href="TypeAlgebra.html#3219" class="Bound"
+      >ft&#8322;</a
+      ><a name="3222" class="Symbol"
+      >)</a
       ><a name="3223"
       > </a
-      ><a name="3224" href="TypeAlgebra.html#3224" class="Bound"
-      >ft&#8321;</a
-      ><a name="3227" class="Symbol"
-      >)</a
-      ><a name="3228"
+      ><a name="3224" class="Symbol"
+      >=</a
+      ><a name="3225"
       > </a
-      ><a name="3229" class="Symbol"
-      >(</a
-      ><a name="3230" href="TypeAlgebra.html#686" class="InductiveConstructor"
+      ><a name="3226" href="TypeAlgebra.html#942" class="InductiveConstructor"
       >iso</a
-      ><a name="3233"
+      ><a name="3229"
+      >
+    </a
+      ><a name="3234" class="Symbol"
+      >(</a
+      ><a name="3235" href="Data.Sum.html#993" class="Function"
+      >S.map</a
+      ><a name="3240"
       > </a
-      ><a name="3234" href="TypeAlgebra.html#3234" class="Bound"
-      >t&#8322;</a
-      ><a name="3236"
-      > </a
-      ><a name="3237" href="TypeAlgebra.html#3237" class="Bound"
-      >f&#8322;</a
-      ><a name="3239"
-      > </a
-      ><a name="3240" href="TypeAlgebra.html#3240" class="Bound"
-      >tf&#8322;</a
+      ><a name="3241" href="TypeAlgebra.html#3189" class="Bound"
+      >t&#8321;</a
       ><a name="3243"
       > </a
-      ><a name="3244" href="TypeAlgebra.html#3244" class="Bound"
-      >ft&#8322;</a
-      ><a name="3247" class="Symbol"
-      >)</a
-      ><a name="3248"
-      > </a
-      ><a name="3249" class="Symbol"
-      >=</a
-      ><a name="3250"
-      > </a
-      ><a name="3251" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="3254"
-      >
-    </a
-      ><a name="3259" class="Symbol"
-      >(</a
-      ><a name="3260" href="Data.Product.html#1854" class="Function"
-      >P.map</a
-      ><a name="3265"
-      > </a
-      ><a name="3266" href="TypeAlgebra.html#3214" class="Bound"
-      >t&#8321;</a
-      ><a name="3268"
-      > </a
-      ><a name="3269" href="TypeAlgebra.html#3234" class="Bound"
+      ><a name="3244" href="TypeAlgebra.html#3209" class="Bound"
       >t&#8322;</a
-      ><a name="3271" class="Symbol"
+      ><a name="3246" class="Symbol"
       >)</a
-      ><a name="3272"
+      ><a name="3247"
       >
     </a
-      ><a name="3277" class="Symbol"
+      ><a name="3252" class="Symbol"
       >(</a
-      ><a name="3278" href="Data.Product.html#1854" class="Function"
-      >P.map</a
+      ><a name="3253" href="Data.Sum.html#993" class="Function"
+      >S.map</a
+      ><a name="3258"
+      > </a
+      ><a name="3259" href="TypeAlgebra.html#3192" class="Bound"
+      >f&#8321;</a
+      ><a name="3261"
+      > </a
+      ><a name="3262" href="TypeAlgebra.html#3212" class="Bound"
+      >f&#8322;</a
+      ><a name="3264" class="Symbol"
+      >)</a
+      ><a name="3265"
+      >
+    </a
+      ><a name="3270" class="Symbol"
+      >(&#955;</a
+      ><a name="3272"
+      > </a
+      ><a name="3273" class="Symbol"
+      >{</a
+      ><a name="3274"
+      > </a
+      ><a name="3275" class="Symbol"
+      >{</a
+      ><a name="3276" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3280"
+      > </a
+      ><a name="3281" class="Symbol"
+      >_}</a
       ><a name="3283"
       > </a
-      ><a name="3284" href="TypeAlgebra.html#3217" class="Bound"
-      >f&#8321;</a
-      ><a name="3286"
+      ><a name="3284" class="Symbol"
+      >&#8594;</a
+      ><a name="3285"
       > </a
-      ><a name="3287" href="TypeAlgebra.html#3237" class="Bound"
-      >f&#8322;</a
-      ><a name="3289" class="Symbol"
-      >)</a
+      ><a name="3286" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
+      >cong</a
       ><a name="3290"
-      >
-    </a
-      ><a name="3295" class="Symbol"
-      >(</a
-      ><a name="3296" href="Relation.Binary.PropositionalEquality.html#1138" class="Function"
-      >cong&#8322;</a
-      ><a name="3301"
       > </a
-      ><a name="3302" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >_,_</a
-      ><a name="3305"
+      ><a name="3291" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3295"
       > </a
-      ><a name="3306" href="TypeAlgebra.html#3220" class="Bound"
+      ><a name="3296" href="TypeAlgebra.html#3195" class="Bound"
       >tf&#8321;</a
-      ><a name="3309"
-      > </a
-      ><a name="3310" href="TypeAlgebra.html#3240" class="Bound"
-      >tf&#8322;</a
-      ><a name="3313" class="Symbol"
-      >)</a
-      ><a name="3314"
+      ><a name="3299"
       >
-    </a
-      ><a name="3319" class="Symbol"
-      >(</a
-      ><a name="3320" href="Relation.Binary.PropositionalEquality.html#1138" class="Function"
-      >cong&#8322;</a
-      ><a name="3325"
+       </a
+      ><a name="3307" class="Symbol"
+      >;</a
+      ><a name="3308"
       > </a
-      ><a name="3326" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >_,_</a
+      ><a name="3309" class="Symbol"
+      >{</a
+      ><a name="3310" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="3314"
+      > </a
+      ><a name="3315" class="Symbol"
+      >_}</a
+      ><a name="3317"
+      > </a
+      ><a name="3318" class="Symbol"
+      >&#8594;</a
+      ><a name="3319"
+      > </a
+      ><a name="3320" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
+      >cong</a
+      ><a name="3324"
+      > </a
+      ><a name="3325" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
       ><a name="3329"
       > </a
-      ><a name="3330" href="TypeAlgebra.html#3224" class="Bound"
-      >ft&#8321;</a
+      ><a name="3330" href="TypeAlgebra.html#3215" class="Bound"
+      >tf&#8322;</a
       ><a name="3333"
-      > </a
-      ><a name="3334" href="TypeAlgebra.html#3244" class="Bound"
-      >ft&#8322;</a
-      ><a name="3337" class="Symbol"
-      >)</a
-      ><a name="3338"
       >
-
-  </a
-      ><a name="3342" href="TypeAlgebra.html#3342" class="Function"
-      >&#215;-identity&#737;</a
-      ><a name="3353"
+       </a
+      ><a name="3341" class="Symbol"
+      >})</a
+      ><a name="3343"
+      >
+    </a
+      ><a name="3348" class="Symbol"
+      >(&#955;</a
+      ><a name="3350"
       > </a
-      ><a name="3354" class="Symbol"
-      >:</a
-      ><a name="3355"
+      ><a name="3351" class="Symbol"
+      >{</a
+      ><a name="3352"
       > </a
-      ><a name="3356" href="Algebra.FunctionProperties.html#987" class="Function"
-      >LeftIdentity</a
+      ><a name="3353" class="Symbol"
+      >{</a
+      ><a name="3354" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3358"
+      > </a
+      ><a name="3359" class="Symbol"
+      >_}</a
+      ><a name="3361"
+      > </a
+      ><a name="3362" class="Symbol"
+      >&#8594;</a
+      ><a name="3363"
+      > </a
+      ><a name="3364" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
+      >cong</a
       ><a name="3368"
       > </a
-      ><a name="3369" class="Symbol"
-      >(</a
-      ><a name="3370" href="Level.html#350" class="Record"
-      >Lift</a
-      ><a name="3374"
+      ><a name="3369" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3373"
       > </a
-      ><a name="3375" href="Data.Unit.html#653" class="Record"
-      >&#8868;</a
-      ><a name="3376" class="Symbol"
-      >)</a
+      ><a name="3374" href="TypeAlgebra.html#3199" class="Bound"
+      >ft&#8321;</a
       ><a name="3377"
-      > </a
-      ><a name="3378" href="Data.Product.html#1055" class="Function Operator"
-      >_&#215;_</a
-      ><a name="3381"
       >
-  </a
-      ><a name="3384" href="TypeAlgebra.html#3342" class="Function"
-      >&#215;-identity&#737;</a
+       </a
+      ><a name="3385" class="Symbol"
+      >;</a
+      ><a name="3386"
+      > </a
+      ><a name="3387" class="Symbol"
+      >{</a
+      ><a name="3388" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="3392"
+      > </a
+      ><a name="3393" class="Symbol"
+      >_}</a
       ><a name="3395"
       > </a
       ><a name="3396" class="Symbol"
-      >_</a
+      >&#8594;</a
       ><a name="3397"
       > </a
-      ><a name="3398" class="Symbol"
-      >=</a
-      ><a name="3399"
+      ><a name="3398" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
+      >cong</a
+      ><a name="3402"
       > </a
-      ><a name="3400" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
-      ><a name="3403"
+      ><a name="3403" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="3407"
+      > </a
+      ><a name="3408" href="TypeAlgebra.html#3219" class="Bound"
+      >ft&#8322;</a
+      ><a name="3411"
       >
-    </a
-      ><a name="3408" href="Data.Product.html#539" class="Field"
-      >proj&#8322;</a
-      ><a name="3413"
+       </a
+      ><a name="3419" class="Symbol"
+      >})</a
+      ><a name="3421"
       >
-    </a
-      ><a name="3418" href="Data.Product.html#1603" class="Function Operator"
-      >,_</a
-      ><a name="3420"
-      >
-    </a
-      ><a name="3425" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="3429"
-      >
-    </a
-      ><a name="3434" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
+
+  </a
+      ><a name="3425" href="TypeAlgebra.html#3425" class="Function"
+      >&#8846;-identity&#737;</a
+      ><a name="3436"
+      > </a
+      ><a name="3437" class="Symbol"
+      >:</a
       ><a name="3438"
+      > </a
+      ><a name="3439" href="Algebra.FunctionProperties.html#987" class="Function"
+      >LeftIdentity</a
+      ><a name="3451"
+      > </a
+      ><a name="3452" class="Symbol"
+      >(</a
+      ><a name="3453" href="Level.html#350" class="Record"
+      >Lift</a
+      ><a name="3457"
+      > </a
+      ><a name="3458" href="Data.Empty.html#243" class="Datatype"
+      >&#8869;</a
+      ><a name="3459" class="Symbol"
+      >)</a
+      ><a name="3460"
+      > </a
+      ><a name="3461" href="Data.Sum.html#404" class="Datatype Operator"
+      >_&#8846;_</a
+      ><a name="3464"
       >
-
   </a
-      ><a name="3442" href="TypeAlgebra.html#3442" class="Function"
-      >&#215;-comm</a
-      ><a name="3448"
+      ><a name="3467" href="TypeAlgebra.html#3425" class="Function"
+      >&#8846;-identity&#737;</a
+      ><a name="3478"
       > </a
-      ><a name="3449" class="Symbol"
-      >:</a
-      ><a name="3450"
-      > </a
-      ><a name="3451" href="Algebra.FunctionProperties.html#914" class="Function"
-      >Commutative</a
-      ><a name="3462"
-      > </a
-      ><a name="3463" href="Data.Product.html#1055" class="Function Operator"
-      >_&#215;_</a
-      ><a name="3466"
-      >
-  </a
-      ><a name="3469" href="TypeAlgebra.html#3442" class="Function"
-      >&#215;-comm</a
-      ><a name="3475"
-      > </a
-      ><a name="3476" class="Symbol"
+      ><a name="3479" class="Symbol"
       >_</a
-      ><a name="3477"
+      ><a name="3480"
       > </a
-      ><a name="3478" class="Symbol"
-      >_</a
-      ><a name="3479"
-      > </a
-      ><a name="3480" class="Symbol"
+      ><a name="3481" class="Symbol"
       >=</a
-      ><a name="3481"
+      ><a name="3482"
       > </a
-      ><a name="3482" href="TypeAlgebra.html#686" class="InductiveConstructor"
+      ><a name="3483" href="TypeAlgebra.html#942" class="InductiveConstructor"
       >iso</a
-      ><a name="3485"
+      ><a name="3486"
       >
     </a
-      ><a name="3490" href="Data.Product.html#2302" class="Function"
-      >swap</a
-      ><a name="3494"
-      >
-    </a
-      ><a name="3499" href="Data.Product.html#2302" class="Function"
-      >swap</a
-      ><a name="3503"
-      >
-    </a
-      ><a name="3508" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
+      ><a name="3491" href="Data.Sum.html#678" class="Function Operator"
+      >[</a
+      ><a name="3492"
+      > </a
+      ><a name="3493" href="Data.Empty.html#326" class="Function"
+      >&#8869;-elim</a
+      ><a name="3499"
+      > </a
+      ><a name="3500" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="3501"
+      > </a
+      ><a name="3502" href="Level.html#420" class="Field"
+      >lower</a
+      ><a name="3507"
+      > </a
+      ><a name="3508" href="Data.Sum.html#678" class="Function Operator"
+      >,</a
+      ><a name="3509"
+      > </a
+      ><a name="3510" href="Function.html#1006" class="Function"
+      >id</a
       ><a name="3512"
+      > </a
+      ><a name="3513" href="Data.Sum.html#678" class="Function Operator"
+      >]</a
+      ><a name="3514"
       >
     </a
-      ><a name="3517" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="3521"
+      ><a name="3519" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="3523"
       >
-
-  </a
-      ><a name="3525" href="TypeAlgebra.html#3525" class="Function"
-      >distrib&#691;</a
-      ><a name="3533"
-      > </a
-      ><a name="3534" class="Symbol"
-      >:</a
-      ><a name="3535"
-      > </a
-      ><a name="3536" href="Data.Product.html#1055" class="Function Operator"
-      >_&#215;_</a
+    </a
+      ><a name="3528" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="3532"
+      >
+    </a
+      ><a name="3537" class="Symbol"
+      >(&#955;</a
       ><a name="3539"
       > </a
-      ><a name="3540" href="Algebra.FunctionProperties.html#1805" class="Function Operator"
-      >DistributesOver&#691;</a
-      ><a name="3556"
+      ><a name="3540" class="Symbol"
+      >{</a
+      ><a name="3541"
       > </a
-      ><a name="3557" href="Data.Sum.html#404" class="Datatype Operator"
-      >_&#8846;_</a
-      ><a name="3560"
+      ><a name="3542" class="Symbol"
+      >{</a
+      ><a name="3543" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3547"
+      > </a
+      ><a name="3548" class="Symbol"
+      >(</a
+      ><a name="3549" href="Level.html#407" class="InductiveConstructor"
+      >lift</a
+      ><a name="3553"
+      > </a
+      ><a name="3554" class="Symbol"
+      >())}</a
+      ><a name="3558"
       >
-  </a
-      ><a name="3563" href="TypeAlgebra.html#3525" class="Function"
-      >distrib&#691;</a
-      ><a name="3571"
+       </a
+      ><a name="3566" class="Symbol"
+      >;</a
+      ><a name="3567"
       > </a
-      ><a name="3572" class="Symbol"
-      >_</a
+      ><a name="3568" class="Symbol"
+      >{</a
+      ><a name="3569" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
       ><a name="3573"
       > </a
       ><a name="3574" class="Symbol"
-      >_</a
-      ><a name="3575"
+      >_}</a
+      ><a name="3576"
       > </a
-      ><a name="3576" class="Symbol"
-      >_</a
-      ><a name="3577"
+      ><a name="3577" class="Symbol"
+      >&#8594;</a
+      ><a name="3578"
       > </a
-      ><a name="3578" class="Symbol"
-      >=</a
-      ><a name="3579"
-      > </a
-      ><a name="3580" href="TypeAlgebra.html#686" class="InductiveConstructor"
-      >iso</a
+      ><a name="3579" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
       ><a name="3583"
       >
-    </a
-      ><a name="3588" class="Symbol"
-      >(&#955;</a
-      ><a name="3590"
-      > </a
+       </a
       ><a name="3591" class="Symbol"
-      >{</a
-      ><a name="3592"
-      > </a
-      ><a name="3593" class="Symbol"
-      >(</a
-      ><a name="3594" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="3598"
-      > </a
-      ><a name="3599" href="TypeAlgebra.html#3599" class="Bound"
-      >y</a
-      ><a name="3600"
-      > </a
-      ><a name="3601" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >,</a
-      ><a name="3602"
-      > </a
-      ><a name="3603" href="TypeAlgebra.html#3603" class="Bound"
-      >x</a
-      ><a name="3604" class="Symbol"
-      >)</a
-      ><a name="3605"
-      > </a
-      ><a name="3606" class="Symbol"
-      >&#8594;</a
-      ><a name="3607"
-      > </a
-      ><a name="3608" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="3612"
-      > </a
-      ><a name="3613" class="Symbol"
-      >(</a
-      ><a name="3614" href="TypeAlgebra.html#3599" class="Bound"
-      >y</a
-      ><a name="3615"
-      > </a
-      ><a name="3616" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >,</a
-      ><a name="3617"
-      > </a
-      ><a name="3618" href="TypeAlgebra.html#3603" class="Bound"
-      >x</a
-      ><a name="3619" class="Symbol"
-      >)</a
-      ><a name="3620"
-      >
-       </a
-      ><a name="3628" class="Symbol"
-      >;</a
-      ><a name="3629"
-      > </a
-      ><a name="3630" class="Symbol"
-      >(</a
-      ><a name="3631" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="3635"
-      > </a
-      ><a name="3636" href="TypeAlgebra.html#3636" class="Bound"
-      >z</a
-      ><a name="3637"
-      > </a
-      ><a name="3638" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >,</a
-      ><a name="3639"
-      > </a
-      ><a name="3640" href="TypeAlgebra.html#3640" class="Bound"
-      >x</a
-      ><a name="3641" class="Symbol"
-      >)</a
-      ><a name="3642"
-      > </a
-      ><a name="3643" class="Symbol"
-      >&#8594;</a
-      ><a name="3644"
-      > </a
-      ><a name="3645" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="3649"
-      > </a
-      ><a name="3650" class="Symbol"
-      >(</a
-      ><a name="3651" href="TypeAlgebra.html#3636" class="Bound"
-      >z</a
-      ><a name="3652"
-      > </a
-      ><a name="3653" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >,</a
-      ><a name="3654"
-      > </a
-      ><a name="3655" href="TypeAlgebra.html#3640" class="Bound"
-      >x</a
-      ><a name="3656" class="Symbol"
-      >)</a
-      ><a name="3657"
-      >
-       </a
-      ><a name="3665" class="Symbol"
       >})</a
-      ><a name="3667"
-      >
-    </a
-      ><a name="3672" class="Symbol"
-      >(&#955;</a
-      ><a name="3674"
-      > </a
-      ><a name="3675" class="Symbol"
-      >{</a
-      ><a name="3676"
-      > </a
-      ><a name="3677" class="Symbol"
-      >(</a
-      ><a name="3678" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="3682"
-      > </a
-      ><a name="3683" class="Symbol"
-      >(</a
-      ><a name="3684" href="TypeAlgebra.html#3684" class="Bound"
-      >y</a
-      ><a name="3685"
-      > </a
-      ><a name="3686" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >,</a
-      ><a name="3687"
-      > </a
-      ><a name="3688" href="TypeAlgebra.html#3688" class="Bound"
-      >x</a
-      ><a name="3689" class="Symbol"
-      >))</a
-      ><a name="3691"
-      > </a
-      ><a name="3692" class="Symbol"
-      >&#8594;</a
-      ><a name="3693"
-      > </a
-      ><a name="3694" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="3698"
-      > </a
-      ><a name="3699" href="TypeAlgebra.html#3684" class="Bound"
-      >y</a
-      ><a name="3700"
-      > </a
-      ><a name="3701" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >,</a
-      ><a name="3702"
-      > </a
-      ><a name="3703" href="TypeAlgebra.html#3688" class="Bound"
-      >x</a
-      ><a name="3704"
-      >
-       </a
-      ><a name="3712" class="Symbol"
-      >;</a
-      ><a name="3713"
-      > </a
-      ><a name="3714" class="Symbol"
-      >(</a
-      ><a name="3715" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="3719"
-      > </a
-      ><a name="3720" class="Symbol"
-      >(</a
-      ><a name="3721" href="TypeAlgebra.html#3721" class="Bound"
-      >z</a
-      ><a name="3722"
-      > </a
-      ><a name="3723" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >,</a
-      ><a name="3724"
-      > </a
-      ><a name="3725" href="TypeAlgebra.html#3725" class="Bound"
-      >x</a
-      ><a name="3726" class="Symbol"
-      >))</a
-      ><a name="3728"
-      > </a
-      ><a name="3729" class="Symbol"
-      >&#8594;</a
-      ><a name="3730"
-      > </a
-      ><a name="3731" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="3735"
-      > </a
-      ><a name="3736" href="TypeAlgebra.html#3721" class="Bound"
-      >z</a
-      ><a name="3737"
-      > </a
-      ><a name="3738" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >,</a
-      ><a name="3739"
-      > </a
-      ><a name="3740" href="TypeAlgebra.html#3725" class="Bound"
-      >x</a
-      ><a name="3741"
-      >
-       </a
-      ><a name="3749" class="Symbol"
-      >})</a
-      ><a name="3751"
-      >
-    </a
-      ><a name="3756" class="Symbol"
-      >(&#955;</a
-      ><a name="3758"
-      > </a
-      ><a name="3759" class="Symbol"
-      >{</a
-      ><a name="3760"
-      > </a
-      ><a name="3761" class="Symbol"
-      >{</a
-      ><a name="3762" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="3766"
-      > </a
-      ><a name="3767" class="Symbol"
-      >_}</a
-      ><a name="3769"
-      > </a
-      ><a name="3770" class="Symbol"
-      >&#8594;</a
-      ><a name="3771"
-      > </a
-      ><a name="3772" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="3776"
-      >
-       </a
-      ><a name="3784" class="Symbol"
-      >;</a
-      ><a name="3785"
-      > </a
-      ><a name="3786" class="Symbol"
-      >{</a
-      ><a name="3787" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="3791"
-      > </a
-      ><a name="3792" class="Symbol"
-      >_}</a
-      ><a name="3794"
-      > </a
-      ><a name="3795" class="Symbol"
-      >&#8594;</a
-      ><a name="3796"
-      > </a
-      ><a name="3797" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="3801"
-      >
-       </a
-      ><a name="3809" class="Symbol"
-      >})</a
-      ><a name="3811"
-      >
-    </a
-      ><a name="3816" class="Symbol"
-      >(&#955;</a
-      ><a name="3818"
-      > </a
-      ><a name="3819" class="Symbol"
-      >{</a
-      ><a name="3820"
-      > </a
-      ><a name="3821" class="Symbol"
-      >{</a
-      ><a name="3822" href="Data.Sum.html#460" class="InductiveConstructor"
-      >inj&#8321;</a
-      ><a name="3826"
-      > </a
-      ><a name="3827" class="Symbol"
-      >_</a
-      ><a name="3828"
-      > </a
-      ><a name="3829" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >,</a
-      ><a name="3830"
-      > </a
-      ><a name="3831" class="Symbol"
-      >_}</a
-      ><a name="3833"
-      > </a
-      ><a name="3834" class="Symbol"
-      >&#8594;</a
-      ><a name="3835"
-      > </a
-      ><a name="3836" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="3840"
-      >
-       </a
-      ><a name="3848" class="Symbol"
-      >;</a
-      ><a name="3849"
-      > </a
-      ><a name="3850" class="Symbol"
-      >{</a
-      ><a name="3851" href="Data.Sum.html#485" class="InductiveConstructor"
-      >inj&#8322;</a
-      ><a name="3855"
-      > </a
-      ><a name="3856" class="Symbol"
-      >_</a
-      ><a name="3857"
-      > </a
-      ><a name="3858" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >,</a
-      ><a name="3859"
-      > </a
-      ><a name="3860" class="Symbol"
-      >_}</a
-      ><a name="3862"
-      > </a
-      ><a name="3863" class="Symbol"
-      >&#8594;</a
-      ><a name="3864"
-      > </a
-      ><a name="3865" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
-      >refl</a
-      ><a name="3869"
-      >
-       </a
-      ><a name="3877" class="Symbol"
-      >})</a
-      ><a name="3879"
+      ><a name="3593"
       >
 
   </a
-      ><a name="3883" href="TypeAlgebra.html#3883" class="Function"
-      >zero&#737;</a
-      ><a name="3888"
+      ><a name="3597" href="TypeAlgebra.html#3597" class="Function"
+      >&#8846;-comm</a
+      ><a name="3603"
       > </a
-      ><a name="3889" class="Symbol"
+      ><a name="3604" class="Symbol"
       >:</a
-      ><a name="3890"
+      ><a name="3605"
       > </a
-      ><a name="3891" href="Algebra.FunctionProperties.html#1217" class="Function"
-      >LeftZero</a
-      ><a name="3899"
+      ><a name="3606" href="Algebra.FunctionProperties.html#914" class="Function"
+      >Commutative</a
+      ><a name="3617"
       > </a
-      ><a name="3900" class="Symbol"
-      >(</a
-      ><a name="3901" href="Level.html#350" class="Record"
-      >Lift</a
-      ><a name="3905"
-      > </a
-      ><a name="3906" href="Data.Empty.html#243" class="Datatype"
-      >&#8869;</a
-      ><a name="3907" class="Symbol"
-      >)</a
-      ><a name="3908"
-      > </a
-      ><a name="3909" href="Data.Product.html#1055" class="Function Operator"
-      >_&#215;_</a
-      ><a name="3912"
+      ><a name="3618" href="Data.Sum.html#404" class="Datatype Operator"
+      >_&#8846;_</a
+      ><a name="3621"
       >
   </a
-      ><a name="3915" href="TypeAlgebra.html#3883" class="Function"
-      >zero&#737;</a
-      ><a name="3920"
+      ><a name="3624" href="TypeAlgebra.html#3597" class="Function"
+      >&#8846;-comm</a
+      ><a name="3630"
       > </a
-      ><a name="3921" class="Symbol"
+      ><a name="3631" class="Symbol"
       >_</a
-      ><a name="3922"
+      ><a name="3632"
       > </a
-      ><a name="3923" class="Symbol"
+      ><a name="3633" class="Symbol"
+      >_</a
+      ><a name="3634"
+      > </a
+      ><a name="3635" class="Symbol"
       >=</a
-      ><a name="3924"
+      ><a name="3636"
       > </a
-      ><a name="3925" href="TypeAlgebra.html#686" class="InductiveConstructor"
+      ><a name="3637" href="TypeAlgebra.html#942" class="InductiveConstructor"
       >iso</a
-      ><a name="3928"
+      ><a name="3640"
       >
     </a
-      ><a name="3933" href="Data.Product.html#525" class="Field"
-      >proj&#8321;</a
-      ><a name="3938"
-      >
-    </a
-      ><a name="3943" class="Symbol"
-      >(</a
-      ><a name="3944" href="Data.Empty.html#326" class="Function"
-      >&#8869;-elim</a
-      ><a name="3950"
+      ><a name="3645" href="Data.Sum.html#678" class="Function Operator"
+      >[</a
+      ><a name="3646"
       > </a
-      ><a name="3951" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="3952"
+      ><a name="3647" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="3651"
       > </a
-      ><a name="3953" href="Level.html#420" class="Field"
-      >lower</a
-      ><a name="3958" class="Symbol"
-      >)</a
-      ><a name="3959"
+      ><a name="3652" href="Data.Sum.html#678" class="Function Operator"
+      >,</a
+      ><a name="3653"
+      > </a
+      ><a name="3654" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3658"
+      > </a
+      ><a name="3659" href="Data.Sum.html#678" class="Function Operator"
+      >]</a
+      ><a name="3660"
       >
     </a
-      ><a name="3964" class="Symbol"
+      ><a name="3665" href="Data.Sum.html#678" class="Function Operator"
+      >[</a
+      ><a name="3666"
+      > </a
+      ><a name="3667" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="3671"
+      > </a
+      ><a name="3672" href="Data.Sum.html#678" class="Function Operator"
+      >,</a
+      ><a name="3673"
+      > </a
+      ><a name="3674" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3678"
+      > </a
+      ><a name="3679" href="Data.Sum.html#678" class="Function Operator"
+      >]</a
+      ><a name="3680"
+      >
+    </a
+      ><a name="3685" class="Symbol"
       >(&#955;</a
-      ><a name="3966"
+      ><a name="3687"
       > </a
-      ><a name="3967" class="Symbol"
+      ><a name="3688" class="Symbol"
       >{</a
-      ><a name="3968"
+      ><a name="3689"
       > </a
-      ><a name="3969" class="Symbol"
+      ><a name="3690" class="Symbol"
       >{</a
-      ><a name="3970" href="Level.html#407" class="InductiveConstructor"
-      >lift</a
-      ><a name="3974"
+      ><a name="3691" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3695"
       > </a
-      ><a name="3975" class="Symbol"
-      >()}</a
-      ><a name="3978"
+      ><a name="3696" class="Symbol"
+      >_}</a
+      ><a name="3698"
+      > </a
+      ><a name="3699" class="Symbol"
+      >&#8594;</a
+      ><a name="3700"
+      > </a
+      ><a name="3701" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="3705"
       >
        </a
-      ><a name="3986" class="Symbol"
+      ><a name="3713" class="Symbol"
+      >;</a
+      ><a name="3714"
+      > </a
+      ><a name="3715" class="Symbol"
+      >{</a
+      ><a name="3716" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="3720"
+      > </a
+      ><a name="3721" class="Symbol"
+      >_}</a
+      ><a name="3723"
+      > </a
+      ><a name="3724" class="Symbol"
+      >&#8594;</a
+      ><a name="3725"
+      > </a
+      ><a name="3726" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="3730"
+      >
+       </a
+      ><a name="3738" class="Symbol"
       >})</a
-      ><a name="3988"
+      ><a name="3740"
       >
     </a
-      ><a name="3993" class="Symbol"
+      ><a name="3745" class="Symbol"
       >(&#955;</a
-      ><a name="3995"
+      ><a name="3747"
       > </a
-      ><a name="3996" class="Symbol"
+      ><a name="3748" class="Symbol"
       >{</a
-      ><a name="3997"
+      ><a name="3749"
       > </a
-      ><a name="3998" class="Symbol"
+      ><a name="3750" class="Symbol"
       >{</a
-      ><a name="3999" href="Level.html#407" class="InductiveConstructor"
-      >lift</a
-      ><a name="4003"
+      ><a name="3751" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="3755"
       > </a
-      ><a name="4004" class="Symbol"
-      >()</a
+      ><a name="3756" class="Symbol"
+      >_}</a
+      ><a name="3758"
+      > </a
+      ><a name="3759" class="Symbol"
+      >&#8594;</a
+      ><a name="3760"
+      > </a
+      ><a name="3761" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="3765"
+      >
+       </a
+      ><a name="3773" class="Symbol"
+      >;</a
+      ><a name="3774"
+      > </a
+      ><a name="3775" class="Symbol"
+      >{</a
+      ><a name="3776" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="3780"
+      > </a
+      ><a name="3781" class="Symbol"
+      >_}</a
+      ><a name="3783"
+      > </a
+      ><a name="3784" class="Symbol"
+      >&#8594;</a
+      ><a name="3785"
+      > </a
+      ><a name="3786" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="3790"
+      >
+       </a
+      ><a name="3798" class="Symbol"
+      >})</a
+      ><a name="3800"
+      >
+
+  </a
+      ><a name="3804" href="TypeAlgebra.html#3804" class="Function"
+      >&#215;-assoc</a
+      ><a name="3811"
+      > </a
+      ><a name="3812" class="Symbol"
+      >:</a
+      ><a name="3813"
+      > </a
+      ><a name="3814" href="Algebra.FunctionProperties.html#827" class="Function"
+      >Associative</a
+      ><a name="3825"
+      > </a
+      ><a name="3826" href="Data.Product.html#1055" class="Function Operator"
+      >_&#215;_</a
+      ><a name="3829"
+      >
+  </a
+      ><a name="3832" href="TypeAlgebra.html#3804" class="Function"
+      >&#215;-assoc</a
+      ><a name="3839"
+      > </a
+      ><a name="3840" class="Symbol"
+      >_</a
+      ><a name="3841"
+      > </a
+      ><a name="3842" class="Symbol"
+      >_</a
+      ><a name="3843"
+      > </a
+      ><a name="3844" class="Symbol"
+      >_</a
+      ><a name="3845"
+      > </a
+      ><a name="3846" class="Symbol"
+      >=</a
+      ><a name="3847"
+      > </a
+      ><a name="3848" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="3851"
+      >
+    </a
+      ><a name="3856" href="Data.Product.html#1673" class="Function Operator"
+      >&lt;</a
+      ><a name="3857"
+      > </a
+      ><a name="3858" href="Data.Product.html#525" class="Field"
+      >proj&#8321;</a
+      ><a name="3863"
+      > </a
+      ><a name="3864" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="3865"
+      > </a
+      ><a name="3866" href="Data.Product.html#525" class="Field"
+      >proj&#8321;</a
+      ><a name="3871"
+      > </a
+      ><a name="3872" href="Data.Product.html#1673" class="Function Operator"
+      >,</a
+      ><a name="3873"
+      > </a
+      ><a name="3874" href="Data.Product.html#1673" class="Function Operator"
+      >&lt;</a
+      ><a name="3875"
+      > </a
+      ><a name="3876" href="Data.Product.html#539" class="Field"
+      >proj&#8322;</a
+      ><a name="3881"
+      > </a
+      ><a name="3882" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="3883"
+      > </a
+      ><a name="3884" href="Data.Product.html#525" class="Field"
+      >proj&#8321;</a
+      ><a name="3889"
+      > </a
+      ><a name="3890" href="Data.Product.html#1673" class="Function Operator"
+      >,</a
+      ><a name="3891"
+      > </a
+      ><a name="3892" href="Data.Product.html#539" class="Field"
+      >proj&#8322;</a
+      ><a name="3897"
+      > </a
+      ><a name="3898" href="Data.Product.html#1673" class="Function Operator"
+      >&gt;</a
+      ><a name="3899"
+      > </a
+      ><a name="3900" href="Data.Product.html#1673" class="Function Operator"
+      >&gt;</a
+      ><a name="3901"
+      >
+    </a
+      ><a name="3906" href="Data.Product.html#1673" class="Function Operator"
+      >&lt;</a
+      ><a name="3907"
+      > </a
+      ><a name="3908" href="Data.Product.html#1673" class="Function Operator"
+      >&lt;</a
+      ><a name="3909"
+      > </a
+      ><a name="3910" href="Data.Product.html#525" class="Field"
+      >proj&#8321;</a
+      ><a name="3915"
+      > </a
+      ><a name="3916" href="Data.Product.html#1673" class="Function Operator"
+      >,</a
+      ><a name="3917"
+      > </a
+      ><a name="3918" href="Data.Product.html#525" class="Field"
+      >proj&#8321;</a
+      ><a name="3923"
+      > </a
+      ><a name="3924" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="3925"
+      > </a
+      ><a name="3926" href="Data.Product.html#539" class="Field"
+      >proj&#8322;</a
+      ><a name="3931"
+      > </a
+      ><a name="3932" href="Data.Product.html#1673" class="Function Operator"
+      >&gt;</a
+      ><a name="3933"
+      > </a
+      ><a name="3934" href="Data.Product.html#1673" class="Function Operator"
+      >,</a
+      ><a name="3935"
+      > </a
+      ><a name="3936" href="Data.Product.html#539" class="Field"
+      >proj&#8322;</a
+      ><a name="3941"
+      > </a
+      ><a name="3942" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="3943"
+      > </a
+      ><a name="3944" href="Data.Product.html#539" class="Field"
+      >proj&#8322;</a
+      ><a name="3949"
+      > </a
+      ><a name="3950" href="Data.Product.html#1673" class="Function Operator"
+      >&gt;</a
+      ><a name="3951"
+      >
+    </a
+      ><a name="3956" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="3960"
+      >
+    </a
+      ><a name="3965" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="3969"
+      >
+
+  </a
+      ><a name="3973" href="TypeAlgebra.html#3973" class="Function"
+      >&#215;-cong</a
+      ><a name="3979"
+      > </a
+      ><a name="3980" class="Symbol"
+      >:</a
+      ><a name="3981"
+      > </a
+      ><a name="3982" href="Data.Product.html#1055" class="Function Operator"
+      >_&#215;_</a
+      ><a name="3985"
+      > </a
+      ><a name="3986" href="Relation.Binary.Core.html#1531" class="Function Operator"
+      >Preserves&#8322;</a
+      ><a name="3996"
+      > </a
+      ><a name="3997" href="TypeAlgebra.html#874" class="Record Operator"
+      >_&#8773;_</a
+      ><a name="4000"
+      > </a
+      ><a name="4001" href="Relation.Binary.Core.html#1531" class="Function Operator"
+      >&#10230;</a
+      ><a name="4002"
+      > </a
+      ><a name="4003" href="TypeAlgebra.html#874" class="Record Operator"
+      >_&#8773;_</a
       ><a name="4006"
       > </a
-      ><a name="4007" href="Data.Product.html#509" class="InductiveConstructor Operator"
-      >,</a
+      ><a name="4007" href="Relation.Binary.Core.html#1531" class="Function Operator"
+      >&#10230;</a
       ><a name="4008"
       > </a
-      ><a name="4009" class="Symbol"
-      >_</a
-      ><a name="4010"
-      > </a
-      ><a name="4011" class="Symbol"
-      >}</a
+      ><a name="4009" href="TypeAlgebra.html#874" class="Record Operator"
+      >_&#8773;_</a
       ><a name="4012"
       >
+  </a
+      ><a name="4015" href="TypeAlgebra.html#3973" class="Function"
+      >&#215;-cong</a
+      ><a name="4021"
+      > </a
+      ><a name="4022" class="Symbol"
+      >(</a
+      ><a name="4023" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="4026"
+      > </a
+      ><a name="4027" href="TypeAlgebra.html#4027" class="Bound"
+      >t&#8321;</a
+      ><a name="4029"
+      > </a
+      ><a name="4030" href="TypeAlgebra.html#4030" class="Bound"
+      >f&#8321;</a
+      ><a name="4032"
+      > </a
+      ><a name="4033" href="TypeAlgebra.html#4033" class="Bound"
+      >tf&#8321;</a
+      ><a name="4036"
+      > </a
+      ><a name="4037" href="TypeAlgebra.html#4037" class="Bound"
+      >ft&#8321;</a
+      ><a name="4040" class="Symbol"
+      >)</a
+      ><a name="4041"
+      > </a
+      ><a name="4042" class="Symbol"
+      >(</a
+      ><a name="4043" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="4046"
+      > </a
+      ><a name="4047" href="TypeAlgebra.html#4047" class="Bound"
+      >t&#8322;</a
+      ><a name="4049"
+      > </a
+      ><a name="4050" href="TypeAlgebra.html#4050" class="Bound"
+      >f&#8322;</a
+      ><a name="4052"
+      > </a
+      ><a name="4053" href="TypeAlgebra.html#4053" class="Bound"
+      >tf&#8322;</a
+      ><a name="4056"
+      > </a
+      ><a name="4057" href="TypeAlgebra.html#4057" class="Bound"
+      >ft&#8322;</a
+      ><a name="4060" class="Symbol"
+      >)</a
+      ><a name="4061"
+      > </a
+      ><a name="4062" class="Symbol"
+      >=</a
+      ><a name="4063"
+      > </a
+      ><a name="4064" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="4067"
+      >
+    </a
+      ><a name="4072" class="Symbol"
+      >(</a
+      ><a name="4073" href="Data.Product.html#1854" class="Function"
+      >P.map</a
+      ><a name="4078"
+      > </a
+      ><a name="4079" href="TypeAlgebra.html#4027" class="Bound"
+      >t&#8321;</a
+      ><a name="4081"
+      > </a
+      ><a name="4082" href="TypeAlgebra.html#4047" class="Bound"
+      >t&#8322;</a
+      ><a name="4084" class="Symbol"
+      >)</a
+      ><a name="4085"
+      >
+    </a
+      ><a name="4090" class="Symbol"
+      >(</a
+      ><a name="4091" href="Data.Product.html#1854" class="Function"
+      >P.map</a
+      ><a name="4096"
+      > </a
+      ><a name="4097" href="TypeAlgebra.html#4030" class="Bound"
+      >f&#8321;</a
+      ><a name="4099"
+      > </a
+      ><a name="4100" href="TypeAlgebra.html#4050" class="Bound"
+      >f&#8322;</a
+      ><a name="4102" class="Symbol"
+      >)</a
+      ><a name="4103"
+      >
+    </a
+      ><a name="4108" class="Symbol"
+      >(</a
+      ><a name="4109" href="Relation.Binary.PropositionalEquality.html#1138" class="Function"
+      >cong&#8322;</a
+      ><a name="4114"
+      > </a
+      ><a name="4115" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >_,_</a
+      ><a name="4118"
+      > </a
+      ><a name="4119" href="TypeAlgebra.html#4033" class="Bound"
+      >tf&#8321;</a
+      ><a name="4122"
+      > </a
+      ><a name="4123" href="TypeAlgebra.html#4053" class="Bound"
+      >tf&#8322;</a
+      ><a name="4126" class="Symbol"
+      >)</a
+      ><a name="4127"
+      >
+    </a
+      ><a name="4132" class="Symbol"
+      >(</a
+      ><a name="4133" href="Relation.Binary.PropositionalEquality.html#1138" class="Function"
+      >cong&#8322;</a
+      ><a name="4138"
+      > </a
+      ><a name="4139" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >_,_</a
+      ><a name="4142"
+      > </a
+      ><a name="4143" href="TypeAlgebra.html#4037" class="Bound"
+      >ft&#8321;</a
+      ><a name="4146"
+      > </a
+      ><a name="4147" href="TypeAlgebra.html#4057" class="Bound"
+      >ft&#8322;</a
+      ><a name="4150" class="Symbol"
+      >)</a
+      ><a name="4151"
+      >
+
+  </a
+      ><a name="4155" href="TypeAlgebra.html#4155" class="Function"
+      >&#215;-identity&#737;</a
+      ><a name="4166"
+      > </a
+      ><a name="4167" class="Symbol"
+      >:</a
+      ><a name="4168"
+      > </a
+      ><a name="4169" href="Algebra.FunctionProperties.html#987" class="Function"
+      >LeftIdentity</a
+      ><a name="4181"
+      > </a
+      ><a name="4182" class="Symbol"
+      >(</a
+      ><a name="4183" href="Level.html#350" class="Record"
+      >Lift</a
+      ><a name="4187"
+      > </a
+      ><a name="4188" href="Data.Unit.html#653" class="Record"
+      >&#8868;</a
+      ><a name="4189" class="Symbol"
+      >)</a
+      ><a name="4190"
+      > </a
+      ><a name="4191" href="Data.Product.html#1055" class="Function Operator"
+      >_&#215;_</a
+      ><a name="4194"
+      >
+  </a
+      ><a name="4197" href="TypeAlgebra.html#4155" class="Function"
+      >&#215;-identity&#737;</a
+      ><a name="4208"
+      > </a
+      ><a name="4209" class="Symbol"
+      >_</a
+      ><a name="4210"
+      > </a
+      ><a name="4211" class="Symbol"
+      >=</a
+      ><a name="4212"
+      > </a
+      ><a name="4213" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="4216"
+      >
+    </a
+      ><a name="4221" href="Data.Product.html#539" class="Field"
+      >proj&#8322;</a
+      ><a name="4226"
+      >
+    </a
+      ><a name="4231" href="Data.Product.html#1603" class="Function Operator"
+      >,_</a
+      ><a name="4233"
+      >
+    </a
+      ><a name="4238" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="4242"
+      >
+    </a
+      ><a name="4247" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="4251"
+      >
+
+  </a
+      ><a name="4255" href="TypeAlgebra.html#4255" class="Function"
+      >&#215;-comm</a
+      ><a name="4261"
+      > </a
+      ><a name="4262" class="Symbol"
+      >:</a
+      ><a name="4263"
+      > </a
+      ><a name="4264" href="Algebra.FunctionProperties.html#914" class="Function"
+      >Commutative</a
+      ><a name="4275"
+      > </a
+      ><a name="4276" href="Data.Product.html#1055" class="Function Operator"
+      >_&#215;_</a
+      ><a name="4279"
+      >
+  </a
+      ><a name="4282" href="TypeAlgebra.html#4255" class="Function"
+      >&#215;-comm</a
+      ><a name="4288"
+      > </a
+      ><a name="4289" class="Symbol"
+      >_</a
+      ><a name="4290"
+      > </a
+      ><a name="4291" class="Symbol"
+      >_</a
+      ><a name="4292"
+      > </a
+      ><a name="4293" class="Symbol"
+      >=</a
+      ><a name="4294"
+      > </a
+      ><a name="4295" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="4298"
+      >
+    </a
+      ><a name="4303" href="Data.Product.html#2302" class="Function"
+      >swap</a
+      ><a name="4307"
+      >
+    </a
+      ><a name="4312" href="Data.Product.html#2302" class="Function"
+      >swap</a
+      ><a name="4316"
+      >
+    </a
+      ><a name="4321" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="4325"
+      >
+    </a
+      ><a name="4330" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="4334"
+      >
+
+  </a
+      ><a name="4338" href="TypeAlgebra.html#4338" class="Function"
+      >distrib&#691;</a
+      ><a name="4346"
+      > </a
+      ><a name="4347" class="Symbol"
+      >:</a
+      ><a name="4348"
+      > </a
+      ><a name="4349" href="Data.Product.html#1055" class="Function Operator"
+      >_&#215;_</a
+      ><a name="4352"
+      > </a
+      ><a name="4353" href="Algebra.FunctionProperties.html#1805" class="Function Operator"
+      >DistributesOver&#691;</a
+      ><a name="4369"
+      > </a
+      ><a name="4370" href="Data.Sum.html#404" class="Datatype Operator"
+      >_&#8846;_</a
+      ><a name="4373"
+      >
+  </a
+      ><a name="4376" href="TypeAlgebra.html#4338" class="Function"
+      >distrib&#691;</a
+      ><a name="4384"
+      > </a
+      ><a name="4385" class="Symbol"
+      >_</a
+      ><a name="4386"
+      > </a
+      ><a name="4387" class="Symbol"
+      >_</a
+      ><a name="4388"
+      > </a
+      ><a name="4389" class="Symbol"
+      >_</a
+      ><a name="4390"
+      > </a
+      ><a name="4391" class="Symbol"
+      >=</a
+      ><a name="4392"
+      > </a
+      ><a name="4393" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="4396"
+      >
+    </a
+      ><a name="4401" class="Symbol"
+      >(&#955;</a
+      ><a name="4403"
+      > </a
+      ><a name="4404" class="Symbol"
+      >{</a
+      ><a name="4405"
+      > </a
+      ><a name="4406" class="Symbol"
+      >(</a
+      ><a name="4407" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="4411"
+      > </a
+      ><a name="4412" href="TypeAlgebra.html#4412" class="Bound"
+      >y</a
+      ><a name="4413"
+      > </a
+      ><a name="4414" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4415"
+      > </a
+      ><a name="4416" href="TypeAlgebra.html#4416" class="Bound"
+      >x</a
+      ><a name="4417" class="Symbol"
+      >)</a
+      ><a name="4418"
+      > </a
+      ><a name="4419" class="Symbol"
+      >&#8594;</a
+      ><a name="4420"
+      > </a
+      ><a name="4421" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="4425"
+      > </a
+      ><a name="4426" class="Symbol"
+      >(</a
+      ><a name="4427" href="TypeAlgebra.html#4412" class="Bound"
+      >y</a
+      ><a name="4428"
+      > </a
+      ><a name="4429" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4430"
+      > </a
+      ><a name="4431" href="TypeAlgebra.html#4416" class="Bound"
+      >x</a
+      ><a name="4432" class="Symbol"
+      >)</a
+      ><a name="4433"
+      >
        </a
-      ><a name="4020" class="Symbol"
+      ><a name="4441" class="Symbol"
+      >;</a
+      ><a name="4442"
+      > </a
+      ><a name="4443" class="Symbol"
+      >(</a
+      ><a name="4444" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="4448"
+      > </a
+      ><a name="4449" href="TypeAlgebra.html#4449" class="Bound"
+      >z</a
+      ><a name="4450"
+      > </a
+      ><a name="4451" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4452"
+      > </a
+      ><a name="4453" href="TypeAlgebra.html#4453" class="Bound"
+      >x</a
+      ><a name="4454" class="Symbol"
+      >)</a
+      ><a name="4455"
+      > </a
+      ><a name="4456" class="Symbol"
+      >&#8594;</a
+      ><a name="4457"
+      > </a
+      ><a name="4458" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="4462"
+      > </a
+      ><a name="4463" class="Symbol"
+      >(</a
+      ><a name="4464" href="TypeAlgebra.html#4449" class="Bound"
+      >z</a
+      ><a name="4465"
+      > </a
+      ><a name="4466" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4467"
+      > </a
+      ><a name="4468" href="TypeAlgebra.html#4453" class="Bound"
+      >x</a
+      ><a name="4469" class="Symbol"
+      >)</a
+      ><a name="4470"
+      >
+       </a
+      ><a name="4478" class="Symbol"
       >})</a
-      ><a name="4022"
+      ><a name="4480"
+      >
+    </a
+      ><a name="4485" class="Symbol"
+      >(&#955;</a
+      ><a name="4487"
+      > </a
+      ><a name="4488" class="Symbol"
+      >{</a
+      ><a name="4489"
+      > </a
+      ><a name="4490" class="Symbol"
+      >(</a
+      ><a name="4491" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="4495"
+      > </a
+      ><a name="4496" class="Symbol"
+      >(</a
+      ><a name="4497" href="TypeAlgebra.html#4497" class="Bound"
+      >y</a
+      ><a name="4498"
+      > </a
+      ><a name="4499" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4500"
+      > </a
+      ><a name="4501" href="TypeAlgebra.html#4501" class="Bound"
+      >x</a
+      ><a name="4502" class="Symbol"
+      >))</a
+      ><a name="4504"
+      > </a
+      ><a name="4505" class="Symbol"
+      >&#8594;</a
+      ><a name="4506"
+      > </a
+      ><a name="4507" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="4511"
+      > </a
+      ><a name="4512" href="TypeAlgebra.html#4497" class="Bound"
+      >y</a
+      ><a name="4513"
+      > </a
+      ><a name="4514" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4515"
+      > </a
+      ><a name="4516" href="TypeAlgebra.html#4501" class="Bound"
+      >x</a
+      ><a name="4517"
+      >
+       </a
+      ><a name="4525" class="Symbol"
+      >;</a
+      ><a name="4526"
+      > </a
+      ><a name="4527" class="Symbol"
+      >(</a
+      ><a name="4528" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="4532"
+      > </a
+      ><a name="4533" class="Symbol"
+      >(</a
+      ><a name="4534" href="TypeAlgebra.html#4534" class="Bound"
+      >z</a
+      ><a name="4535"
+      > </a
+      ><a name="4536" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4537"
+      > </a
+      ><a name="4538" href="TypeAlgebra.html#4538" class="Bound"
+      >x</a
+      ><a name="4539" class="Symbol"
+      >))</a
+      ><a name="4541"
+      > </a
+      ><a name="4542" class="Symbol"
+      >&#8594;</a
+      ><a name="4543"
+      > </a
+      ><a name="4544" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="4548"
+      > </a
+      ><a name="4549" href="TypeAlgebra.html#4534" class="Bound"
+      >z</a
+      ><a name="4550"
+      > </a
+      ><a name="4551" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4552"
+      > </a
+      ><a name="4553" href="TypeAlgebra.html#4538" class="Bound"
+      >x</a
+      ><a name="4554"
+      >
+       </a
+      ><a name="4562" class="Symbol"
+      >})</a
+      ><a name="4564"
+      >
+    </a
+      ><a name="4569" class="Symbol"
+      >(&#955;</a
+      ><a name="4571"
+      > </a
+      ><a name="4572" class="Symbol"
+      >{</a
+      ><a name="4573"
+      > </a
+      ><a name="4574" class="Symbol"
+      >{</a
+      ><a name="4575" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="4579"
+      > </a
+      ><a name="4580" class="Symbol"
+      >_}</a
+      ><a name="4582"
+      > </a
+      ><a name="4583" class="Symbol"
+      >&#8594;</a
+      ><a name="4584"
+      > </a
+      ><a name="4585" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="4589"
+      >
+       </a
+      ><a name="4597" class="Symbol"
+      >;</a
+      ><a name="4598"
+      > </a
+      ><a name="4599" class="Symbol"
+      >{</a
+      ><a name="4600" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="4604"
+      > </a
+      ><a name="4605" class="Symbol"
+      >_}</a
+      ><a name="4607"
+      > </a
+      ><a name="4608" class="Symbol"
+      >&#8594;</a
+      ><a name="4609"
+      > </a
+      ><a name="4610" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="4614"
+      >
+       </a
+      ><a name="4622" class="Symbol"
+      >})</a
+      ><a name="4624"
+      >
+    </a
+      ><a name="4629" class="Symbol"
+      >(&#955;</a
+      ><a name="4631"
+      > </a
+      ><a name="4632" class="Symbol"
+      >{</a
+      ><a name="4633"
+      > </a
+      ><a name="4634" class="Symbol"
+      >{</a
+      ><a name="4635" href="Data.Sum.html#460" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="4639"
+      > </a
+      ><a name="4640" class="Symbol"
+      >_</a
+      ><a name="4641"
+      > </a
+      ><a name="4642" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4643"
+      > </a
+      ><a name="4644" class="Symbol"
+      >_}</a
+      ><a name="4646"
+      > </a
+      ><a name="4647" class="Symbol"
+      >&#8594;</a
+      ><a name="4648"
+      > </a
+      ><a name="4649" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="4653"
+      >
+       </a
+      ><a name="4661" class="Symbol"
+      >;</a
+      ><a name="4662"
+      > </a
+      ><a name="4663" class="Symbol"
+      >{</a
+      ><a name="4664" href="Data.Sum.html#485" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="4668"
+      > </a
+      ><a name="4669" class="Symbol"
+      >_</a
+      ><a name="4670"
+      > </a
+      ><a name="4671" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4672"
+      > </a
+      ><a name="4673" class="Symbol"
+      >_}</a
+      ><a name="4675"
+      > </a
+      ><a name="4676" class="Symbol"
+      >&#8594;</a
+      ><a name="4677"
+      > </a
+      ><a name="4678" href="Relation.Binary.Core.html#4653" class="InductiveConstructor"
+      >refl</a
+      ><a name="4682"
+      >
+       </a
+      ><a name="4690" class="Symbol"
+      >})</a
+      ><a name="4692"
+      >
+
+  </a
+      ><a name="4696" href="TypeAlgebra.html#4696" class="Function"
+      >zero&#737;</a
+      ><a name="4701"
+      > </a
+      ><a name="4702" class="Symbol"
+      >:</a
+      ><a name="4703"
+      > </a
+      ><a name="4704" href="Algebra.FunctionProperties.html#1217" class="Function"
+      >LeftZero</a
+      ><a name="4712"
+      > </a
+      ><a name="4713" class="Symbol"
+      >(</a
+      ><a name="4714" href="Level.html#350" class="Record"
+      >Lift</a
+      ><a name="4718"
+      > </a
+      ><a name="4719" href="Data.Empty.html#243" class="Datatype"
+      >&#8869;</a
+      ><a name="4720" class="Symbol"
+      >)</a
+      ><a name="4721"
+      > </a
+      ><a name="4722" href="Data.Product.html#1055" class="Function Operator"
+      >_&#215;_</a
+      ><a name="4725"
+      >
+  </a
+      ><a name="4728" href="TypeAlgebra.html#4696" class="Function"
+      >zero&#737;</a
+      ><a name="4733"
+      > </a
+      ><a name="4734" class="Symbol"
+      >_</a
+      ><a name="4735"
+      > </a
+      ><a name="4736" class="Symbol"
+      >=</a
+      ><a name="4737"
+      > </a
+      ><a name="4738" href="TypeAlgebra.html#942" class="InductiveConstructor"
+      >iso</a
+      ><a name="4741"
+      >
+    </a
+      ><a name="4746" href="Data.Product.html#525" class="Field"
+      >proj&#8321;</a
+      ><a name="4751"
+      >
+    </a
+      ><a name="4756" class="Symbol"
+      >(</a
+      ><a name="4757" href="Data.Empty.html#326" class="Function"
+      >&#8869;-elim</a
+      ><a name="4763"
+      > </a
+      ><a name="4764" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="4765"
+      > </a
+      ><a name="4766" href="Level.html#420" class="Field"
+      >lower</a
+      ><a name="4771" class="Symbol"
+      >)</a
+      ><a name="4772"
+      >
+    </a
+      ><a name="4777" class="Symbol"
+      >(&#955;</a
+      ><a name="4779"
+      > </a
+      ><a name="4780" class="Symbol"
+      >{</a
+      ><a name="4781"
+      > </a
+      ><a name="4782" class="Symbol"
+      >{</a
+      ><a name="4783" href="Level.html#407" class="InductiveConstructor"
+      >lift</a
+      ><a name="4787"
+      > </a
+      ><a name="4788" class="Symbol"
+      >()}</a
+      ><a name="4791"
+      >
+       </a
+      ><a name="4799" class="Symbol"
+      >})</a
+      ><a name="4801"
+      >
+    </a
+      ><a name="4806" class="Symbol"
+      >(&#955;</a
+      ><a name="4808"
+      > </a
+      ><a name="4809" class="Symbol"
+      >{</a
+      ><a name="4810"
+      > </a
+      ><a name="4811" class="Symbol"
+      >{</a
+      ><a name="4812" href="Level.html#407" class="InductiveConstructor"
+      >lift</a
+      ><a name="4816"
+      > </a
+      ><a name="4817" class="Symbol"
+      >()</a
+      ><a name="4819"
+      > </a
+      ><a name="4820" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4821"
+      > </a
+      ><a name="4822" class="Symbol"
+      >_</a
+      ><a name="4823"
+      > </a
+      ><a name="4824" class="Symbol"
+      >}</a
+      ><a name="4825"
+      >
+       </a
+      ><a name="4833" class="Symbol"
+      >})</a
+      ><a name="4835"
       >
 </a
       ></pre

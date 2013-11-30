@@ -9,574 +9,590 @@
      /></head
   ><body
   ><pre
-    ><a name="1" class="Keyword"
-      >open</a
-      ><a name="5"
-      > </a
-      ><a name="6" class="Keyword"
-      >import</a
-      ><a name="12"
-      > </a
-      ><a name="13" href="Comonad.Definition.html#1" class="Module"
-      >Comonad.Definition</a
-      ><a name="31"
-      >
-  </a
-      ><a name="34" class="Keyword"
-      >using</a
-      ><a name="39"
-      > </a
-      ><a name="40" class="Symbol"
-      >(</a
-      ><a name="41"
-      >Comonad</a
-      ><a name="48" class="Symbol"
-      >;</a
-      ><a name="49"
-      > </a
-      ><a name="50" class="Keyword"
-      >module</a
-      ><a name="56"
-      > Comonad</a
-      ><a name="64" class="Symbol"
-      >)</a
-      ><a name="65"
-      >
-
-</a
-      ><a name="67" class="Keyword"
-      >module</a
+    ><a name="1" class="Comment"
+      >------------------------------------------------------------------------</a
       ><a name="73"
+      >
+</a
+      ><a name="74" class="Comment"
+      >-- The Cokleisli category for a given comonad.</a
+      ><a name="120"
+      >
+</a
+      ><a name="121" class="Comment"
+      >------------------------------------------------------------------------</a
+      ><a name="193"
+      >
+
+</a
+      ><a name="195" class="Keyword"
+      >open</a
+      ><a name="199"
       > </a
-      ><a name="74" href="Comonad.Cokleisli.html#1" class="Module"
-      >Comonad.Cokleisli</a
-      ><a name="91"
+      ><a name="200" class="Keyword"
+      >import</a
+      ><a name="206"
       > </a
-      ><a name="92" class="Symbol"
-      >{</a
-      ><a name="93" href="Comonad.Cokleisli.html#93" class="Bound"
-      >W</a
-      ><a name="94"
+      ><a name="207" href="Comonad.Definition.html#1" class="Module"
+      >Comonad.Definition</a
+      ><a name="225"
+      >
+  </a
+      ><a name="228" class="Keyword"
+      >using</a
+      ><a name="233"
       > </a
-      ><a name="95" class="Symbol"
-      >:</a
-      ><a name="96"
-      > </a
-      ><a name="97" class="PrimitiveType"
-      >Set</a
-      ><a name="100"
-      > </a
-      ><a name="101" class="Symbol"
-      >&#8594;</a
-      ><a name="102"
-      > </a
-      ><a name="103" class="PrimitiveType"
-      >Set</a
-      ><a name="106" class="Symbol"
-      >}</a
-      ><a name="107"
-      > </a
-      ><a name="108" class="Symbol"
+      ><a name="234" class="Symbol"
       >(</a
-      ><a name="109" href="Comonad.Cokleisli.html#109" class="Bound"
-      >comonad</a
-      ><a name="116"
-      > </a
-      ><a name="117" class="Symbol"
-      >:</a
-      ><a name="118"
-      > </a
-      ><a name="119" href="Comonad.Definition.html#607" class="Record"
+      ><a name="235"
       >Comonad</a
-      ><a name="126"
-      > </a
-      ><a name="127" href="Comonad.Cokleisli.html#93" class="Bound"
-      >W</a
-      ><a name="128" class="Symbol"
-      >)</a
-      ><a name="129"
-      > </a
-      ><a name="130" class="Keyword"
-      >where</a
-      ><a name="135"
-      >
-
-</a
-      ><a name="137" class="Keyword"
-      >open</a
-      ><a name="141"
-      > </a
-      ><a name="142" class="Keyword"
-      >import</a
-      ><a name="148"
-      > </a
-      ><a name="149" href="Function.html#1" class="Module"
-      >Function</a
-      ><a name="157"
-      >
-  </a
-      ><a name="160" class="Keyword"
-      >using</a
-      ><a name="165"
-      > </a
-      ><a name="166" class="Symbol"
-      >(</a
-      ><a name="167"
-      >_&#8728;_</a
-      ><a name="170" class="Symbol"
-      >)</a
-      ><a name="171"
-      >
-</a
-      ><a name="172" class="Keyword"
-      >open</a
-      ><a name="176"
-      > </a
-      ><a name="177" class="Keyword"
-      >import</a
-      ><a name="183"
-      > </a
-      ><a name="184" href="Relation.Binary.PropositionalEquality.html#1" class="Module"
-      >Relation.Binary.PropositionalEquality</a
-      ><a name="221"
-      >
-  </a
-      ><a name="224" class="Keyword"
-      >using</a
-      ><a name="229"
-      > </a
-      ><a name="230" class="Symbol"
-      >(</a
-      ><a name="231"
-      >cong</a
-      ><a name="235" class="Symbol"
+      ><a name="242" class="Symbol"
       >;</a
-      ><a name="236"
-      > sym</a
-      ><a name="240" class="Symbol"
+      ><a name="243"
+      > </a
+      ><a name="244" class="Keyword"
+      >module</a
+      ><a name="250"
+      > Comonad</a
+      ><a name="258" class="Symbol"
       >)</a
-      ><a name="241"
+      ><a name="259"
       >
 
 </a
-      ><a name="243" class="Keyword"
-      >open</a
-      ><a name="247"
+      ><a name="261" class="Keyword"
+      >module</a
+      ><a name="267"
       > </a
-      ><a name="248" class="Keyword"
-      >import</a
-      ><a name="254"
+      ><a name="268" href="Comonad.Cokleisli.html#1" class="Module"
+      >Comonad.Cokleisli</a
+      ><a name="285"
       > </a
-      ><a name="255" href="Category.html#1" class="Module"
-      >Category</a
-      ><a name="263"
-      >
-  </a
-      ><a name="266" class="Keyword"
-      >using</a
-      ><a name="271"
+      ><a name="286" class="Symbol"
+      >{</a
+      ><a name="287" href="Comonad.Cokleisli.html#287" class="Bound"
+      >W</a
+      ><a name="288"
       > </a
-      ><a name="272" class="Symbol"
-      >(</a
-      ><a name="273"
-      >Category</a
-      ><a name="281" class="Symbol"
-      >)</a
-      ><a name="282"
-      >
-</a
-      ><a name="283" class="Keyword"
-      >open</a
-      ><a name="287"
+      ><a name="289" class="Symbol"
+      >:</a
+      ><a name="290"
       > </a
-      ><a name="288" class="Keyword"
-      >import</a
+      ><a name="291" class="PrimitiveType"
+      >Set</a
       ><a name="294"
       > </a
-      ><a name="295" href="FunExt.html#1" class="Module"
-      >FunExt</a
+      ><a name="295" class="Symbol"
+      >&#8594;</a
+      ><a name="296"
+      > </a
+      ><a name="297" class="PrimitiveType"
+      >Set</a
+      ><a name="300" class="Symbol"
+      >}</a
       ><a name="301"
+      > </a
+      ><a name="302" class="Symbol"
+      >(</a
+      ><a name="303" href="Comonad.Cokleisli.html#303" class="Bound"
+      >comonad</a
+      ><a name="310"
+      > </a
+      ><a name="311" class="Symbol"
+      >:</a
+      ><a name="312"
+      > </a
+      ><a name="313" href="Comonad.Definition.html#983" class="Record"
+      >Comonad</a
+      ><a name="320"
+      > </a
+      ><a name="321" href="Comonad.Cokleisli.html#287" class="Bound"
+      >W</a
+      ><a name="322" class="Symbol"
+      >)</a
+      ><a name="323"
+      > </a
+      ><a name="324" class="Keyword"
+      >where</a
+      ><a name="329"
+      >
+
+</a
+      ><a name="331" class="Keyword"
+      >open</a
+      ><a name="335"
+      > </a
+      ><a name="336" class="Keyword"
+      >import</a
+      ><a name="342"
+      > </a
+      ><a name="343" href="Function.html#1" class="Module"
+      >Function</a
+      ><a name="351"
       >
   </a
-      ><a name="304" class="Keyword"
+      ><a name="354" class="Keyword"
       >using</a
-      ><a name="309"
+      ><a name="359"
       > </a
-      ><a name="310" class="Symbol"
+      ><a name="360" class="Symbol"
       >(</a
-      ><a name="311"
-      >ext</a
-      ><a name="314" class="Symbol"
+      ><a name="361"
+      >_&#8728;_</a
+      ><a name="364" class="Symbol"
       >)</a
-      ><a name="315"
+      ><a name="365"
       >
-
 </a
-      ><a name="317" class="Keyword"
+      ><a name="366" class="Keyword"
       >open</a
-      ><a name="321"
+      ><a name="370"
       > </a
-      ><a name="322" href="Comonad.Definition.html#607" class="Module"
-      >Comonad</a
-      ><a name="329"
+      ><a name="371" class="Keyword"
+      >import</a
+      ><a name="377"
       > </a
-      ><a name="330" href="Comonad.Cokleisli.html#109" class="Bound"
-      >comonad</a
-      ><a name="337"
+      ><a name="378" href="Relation.Binary.PropositionalEquality.html#1" class="Module"
+      >Relation.Binary.PropositionalEquality</a
+      ><a name="415"
+      >
+  </a
+      ><a name="418" class="Keyword"
+      >using</a
+      ><a name="423"
+      > </a
+      ><a name="424" class="Symbol"
+      >(</a
+      ><a name="425"
+      >cong</a
+      ><a name="429" class="Symbol"
+      >;</a
+      ><a name="430"
+      > sym</a
+      ><a name="434" class="Symbol"
+      >)</a
+      ><a name="435"
       >
 
 </a
-      ><a name="339" class="Keyword"
-      >infixr</a
-      ><a name="345"
+      ><a name="437" class="Keyword"
+      >open</a
+      ><a name="441"
       > </a
-      ><a name="346" class="Number"
+      ><a name="442" class="Keyword"
+      >import</a
+      ><a name="448"
+      > </a
+      ><a name="449" href="Category.html#1" class="Module"
+      >Category</a
+      ><a name="457"
+      >
+  </a
+      ><a name="460" class="Keyword"
+      >using</a
+      ><a name="465"
+      > </a
+      ><a name="466" class="Symbol"
+      >(</a
+      ><a name="467"
+      >Category</a
+      ><a name="475" class="Symbol"
+      >)</a
+      ><a name="476"
+      >
+</a
+      ><a name="477" class="Keyword"
+      >open</a
+      ><a name="481"
+      > </a
+      ><a name="482" class="Keyword"
+      >import</a
+      ><a name="488"
+      > </a
+      ><a name="489" href="FunExt.html#1" class="Module"
+      >FunExt</a
+      ><a name="495"
+      >
+  </a
+      ><a name="498" class="Keyword"
+      >using</a
+      ><a name="503"
+      > </a
+      ><a name="504" class="Symbol"
+      >(</a
+      ><a name="505"
+      >ext</a
+      ><a name="508" class="Symbol"
+      >)</a
+      ><a name="509"
+      >
+
+</a
+      ><a name="511" class="Keyword"
+      >open</a
+      ><a name="515"
+      > </a
+      ><a name="516" href="Comonad.Definition.html#983" class="Module"
+      >Comonad</a
+      ><a name="523"
+      > </a
+      ><a name="524" href="Comonad.Cokleisli.html#303" class="Bound"
+      >comonad</a
+      ><a name="531"
+      >
+
+</a
+      ><a name="533" class="Keyword"
+      >infixr</a
+      ><a name="539"
+      > </a
+      ><a name="540" class="Number"
       >1</a
-      ><a name="347"
+      ><a name="541"
       > _&#8658;_
 
 </a
-      ><a name="353" href="Comonad.Cokleisli.html#353" class="Function Operator"
+      ><a name="547" href="Comonad.Cokleisli.html#547" class="Function Operator"
       >_&#8658;_</a
-      ><a name="356"
+      ><a name="550"
       > </a
-      ><a name="357" class="Symbol"
+      ><a name="551" class="Symbol"
       >:</a
-      ><a name="358"
+      ><a name="552"
       > </a
-      ><a name="359" class="PrimitiveType"
+      ><a name="553" class="PrimitiveType"
       >Set</a
-      ><a name="362"
+      ><a name="556"
       > </a
-      ><a name="363" class="Symbol"
+      ><a name="557" class="Symbol"
       >&#8594;</a
-      ><a name="364"
+      ><a name="558"
       > </a
-      ><a name="365" class="PrimitiveType"
+      ><a name="559" class="PrimitiveType"
       >Set</a
-      ><a name="368"
+      ><a name="562"
       > </a
-      ><a name="369" class="Symbol"
+      ><a name="563" class="Symbol"
       >&#8594;</a
-      ><a name="370"
+      ><a name="564"
       > </a
-      ><a name="371" class="PrimitiveType"
+      ><a name="565" class="PrimitiveType"
       >Set</a
-      ><a name="374"
+      ><a name="568"
       >
 </a
-      ><a name="375" href="Comonad.Cokleisli.html#375" class="Bound"
+      ><a name="569" href="Comonad.Cokleisli.html#569" class="Bound"
       >A</a
-      ><a name="376"
+      ><a name="570"
       > </a
-      ><a name="377" href="Comonad.Cokleisli.html#353" class="Function Operator"
+      ><a name="571" href="Comonad.Cokleisli.html#547" class="Function Operator"
       >&#8658;</a
-      ><a name="378"
+      ><a name="572"
       > </a
-      ><a name="379" href="Comonad.Cokleisli.html#379" class="Bound"
+      ><a name="573" href="Comonad.Cokleisli.html#573" class="Bound"
       >B</a
-      ><a name="380"
+      ><a name="574"
       > </a
-      ><a name="381" class="Symbol"
+      ><a name="575" class="Symbol"
       >=</a
-      ><a name="382"
+      ><a name="576"
       > </a
-      ><a name="383" href="Comonad.Cokleisli.html#93" class="Bound"
+      ><a name="577" href="Comonad.Cokleisli.html#287" class="Bound"
       >W</a
-      ><a name="384"
+      ><a name="578"
       > </a
-      ><a name="385" href="Comonad.Cokleisli.html#375" class="Bound"
+      ><a name="579" href="Comonad.Cokleisli.html#569" class="Bound"
       >A</a
-      ><a name="386"
+      ><a name="580"
       > </a
-      ><a name="387" class="Symbol"
+      ><a name="581" class="Symbol"
       >&#8594;</a
-      ><a name="388"
+      ><a name="582"
       > </a
-      ><a name="389" href="Comonad.Cokleisli.html#379" class="Bound"
+      ><a name="583" href="Comonad.Cokleisli.html#573" class="Bound"
       >B</a
-      ><a name="390"
+      ><a name="584"
       >
 
 </a
-      ><a name="392" href="Comonad.Cokleisli.html#392" class="Function"
+      ><a name="586" href="Comonad.Cokleisli.html#586" class="Function"
       >category</a
-      ><a name="400"
+      ><a name="594"
       > </a
-      ><a name="401" class="Symbol"
+      ><a name="595" class="Symbol"
       >:</a
-      ><a name="402"
+      ><a name="596"
       > </a
-      ><a name="403" href="Category.html#449" class="Record"
+      ><a name="597" href="Category.html#691" class="Record"
       >Category</a
-      ><a name="411"
+      ><a name="605"
       > </a
-      ><a name="412" href="Comonad.Cokleisli.html#353" class="Function Operator"
+      ><a name="606" href="Comonad.Cokleisli.html#547" class="Function Operator"
       >_&#8658;_</a
-      ><a name="415"
+      ><a name="609"
       >
 </a
-      ><a name="416" href="Comonad.Cokleisli.html#392" class="Function"
+      ><a name="610" href="Comonad.Cokleisli.html#586" class="Function"
       >category</a
-      ><a name="424"
+      ><a name="618"
       > </a
-      ><a name="425" class="Symbol"
+      ><a name="619" class="Symbol"
       >=</a
-      ><a name="426"
+      ><a name="620"
       > </a
-      ><a name="427" class="Keyword"
+      ><a name="621" class="Keyword"
       >record</a
-      ><a name="433"
+      ><a name="627"
       >
   </a
-      ><a name="436" class="Symbol"
-      >{</a
-      ><a name="437"
-      > </a
-      ><a name="438" class="Field Operator"
-      >_&#8728;_</a
-      ><a name="441"
-      > </a
-      ><a name="442" class="Symbol"
-      >=</a
-      ><a name="443"
-      > </a
-      ><a name="444" class="Symbol"
-      >&#955;</a
-      ><a name="445"
-      > </a
-      ><a name="446" href="Comonad.Cokleisli.html#446" class="Bound"
-      >f</a
-      ><a name="447"
-      > </a
-      ><a name="448" href="Comonad.Cokleisli.html#448" class="Bound"
-      >g</a
-      ><a name="449"
-      > </a
-      ><a name="450" class="Symbol"
-      >&#8594;</a
-      ><a name="451"
-      > </a
-      ><a name="452" href="Comonad.Cokleisli.html#446" class="Bound"
-      >f</a
-      ><a name="453"
-      > </a
-      ><a name="454" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="455"
-      > </a
-      ><a name="456" href="Comonad.Definition.html#691" class="Function"
-      >extend</a
-      ><a name="462"
-      > </a
-      ><a name="463" href="Comonad.Cokleisli.html#448" class="Bound"
-      >g</a
-      ><a name="464"
-      >
-  </a
-      ><a name="467" class="Symbol"
-      >;</a
-      ><a name="468"
-      > </a
-      ><a name="469" class="Field"
-      >id</a
-      ><a name="471"
-      >  </a
-      ><a name="473" class="Symbol"
-      >=</a
-      ><a name="474"
-      > </a
-      ><a name="475" href="Comonad.Definition.html#656" class="Function"
-      >extract</a
-      ><a name="482"
-      >
-  </a
-      ><a name="485" class="Symbol"
-      >;</a
-      ><a name="486"
-      > </a
-      ><a name="487" class="Field"
-      >isCategory</a
-      ><a name="497"
-      > </a
-      ><a name="498" class="Symbol"
-      >=</a
-      ><a name="499"
-      > </a
-      ><a name="500" class="Keyword"
-      >record</a
-      ><a name="506"
-      >
-    </a
-      ><a name="511" class="Symbol"
-      >{</a
-      ><a name="512"
-      > </a
-      ><a name="513" class="Field"
-      >id&#691;</a
-      ><a name="516"
-      >   </a
-      ><a name="519" class="Symbol"
-      >=</a
-      ><a name="520"
-      > </a
-      ><a name="521" class="Symbol"
-      >&#955;</a
-      ><a name="522"
-      > </a
-      ><a name="523" href="Comonad.Cokleisli.html#523" class="Bound"
-      >f</a
-      ><a name="524"
-      >     </a
-      ><a name="529" class="Symbol"
-      >&#8594;</a
-      ><a name="530"
-      > </a
-      ><a name="531" href="FunExt.html#143" class="Postulate"
-      >ext</a
-      ><a name="534"
-      > </a
-      ><a name="535" class="Symbol"
-      >(</a
-      ><a name="536" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
-      >cong</a
-      ><a name="540"
-      > </a
-      ><a name="541" href="Comonad.Cokleisli.html#523" class="Bound"
-      >f</a
-      ><a name="542"
-      > </a
-      ><a name="543" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
-      ><a name="544"
-      > </a
-      ><a name="545" href="Comonad.Definition.html#333" class="Function"
-      >extract-id&#691;</a
-      ><a name="556" class="Symbol"
-      >)</a
-      ><a name="557"
-      >
-    </a
-      ><a name="562" class="Symbol"
-      >;</a
-      ><a name="563"
-      > </a
-      ><a name="564" class="Field"
-      >id&#737;</a
-      ><a name="567"
-      >   </a
-      ><a name="570" class="Symbol"
-      >=</a
-      ><a name="571"
-      > </a
-      ><a name="572" class="Symbol"
-      >&#955;</a
-      ><a name="573"
-      > </a
-      ><a name="574" href="Comonad.Cokleisli.html#574" class="Bound"
-      >f</a
-      ><a name="575"
-      >     </a
-      ><a name="580" class="Symbol"
-      >&#8594;</a
-      ><a name="581"
-      > </a
-      ><a name="582" href="FunExt.html#143" class="Postulate"
-      >ext</a
-      ><a name="585"
-      > </a
-      ><a name="586" class="Symbol"
-      >(</a
-      ><a name="587" href="Comonad.Definition.html#396" class="Function"
-      >extract-id&#737;</a
-      ><a name="598"
-      > </a
-      ><a name="599" class="Symbol"
-      >_)</a
-      ><a name="601"
-      >
-    </a
-      ><a name="606" class="Symbol"
-      >;</a
-      ><a name="607"
-      > </a
-      ><a name="608" class="Field"
-      >assoc</a
-      ><a name="613"
-      > </a
-      ><a name="614" class="Symbol"
-      >=</a
-      ><a name="615"
-      > </a
-      ><a name="616" class="Symbol"
-      >&#955;</a
-      ><a name="617"
-      > </a
-      ><a name="618" href="Comonad.Cokleisli.html#618" class="Bound"
-      >f</a
-      ><a name="619"
-      > </a
-      ><a name="620" href="Comonad.Cokleisli.html#620" class="Bound"
-      >g</a
-      ><a name="621"
-      > </a
-      ><a name="622" href="Comonad.Cokleisli.html#622" class="Bound"
-      >h</a
-      ><a name="623"
-      > </a
-      ><a name="624" class="Symbol"
-      >&#8594;</a
-      ><a name="625"
-      > </a
-      ><a name="626" href="FunExt.html#143" class="Postulate"
-      >ext</a
-      ><a name="629"
-      > </a
       ><a name="630" class="Symbol"
-      >(</a
-      ><a name="631" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
-      >cong</a
+      >{</a
+      ><a name="631"
+      > </a
+      ><a name="632" class="Field Operator"
+      >_&#8728;_</a
       ><a name="635"
       > </a
-      ><a name="636" href="Comonad.Cokleisli.html#618" class="Bound"
-      >f</a
+      ><a name="636" class="Symbol"
+      >=</a
       ><a name="637"
       > </a
-      ><a name="638" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
+      ><a name="638" class="Symbol"
+      >&#955;</a
       ><a name="639"
       > </a
-      ><a name="640" href="Relation.Binary.PropositionalEquality.Core.html#565" class="Function"
-      >sym</a
+      ><a name="640" href="Comonad.Cokleisli.html#640" class="Bound"
+      >f</a
+      ><a name="641"
+      > </a
+      ><a name="642" href="Comonad.Cokleisli.html#642" class="Bound"
+      >g</a
       ><a name="643"
       > </a
-      ><a name="644" href="Function.html#713" class="Function Operator"
-      >&#8728;</a
+      ><a name="644" class="Symbol"
+      >&#8594;</a
       ><a name="645"
       > </a
-      ><a name="646" href="Comonad.Definition.html#481" class="Function"
-      >extend-asso</a
-      ><a name="657"
+      ><a name="646" href="Comonad.Cokleisli.html#640" class="Bound"
+      >f</a
+      ><a name="647"
       > </a
-      ><a name="658" href="Comonad.Cokleisli.html#620" class="Bound"
+      ><a name="648" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="649"
+      > </a
+      ><a name="650" href="Comonad.Definition.html#1067" class="Function"
+      >extend</a
+      ><a name="656"
+      > </a
+      ><a name="657" href="Comonad.Cokleisli.html#642" class="Bound"
       >g</a
-      ><a name="659"
-      > </a
-      ><a name="660" href="Comonad.Cokleisli.html#622" class="Bound"
-      >h</a
-      ><a name="661" class="Symbol"
-      >)</a
-      ><a name="662"
-      >
-    </a
-      ><a name="667" class="Symbol"
-      >}</a
-      ><a name="668"
+      ><a name="658"
       >
   </a
-      ><a name="671" class="Symbol"
+      ><a name="661" class="Symbol"
+      >;</a
+      ><a name="662"
+      > </a
+      ><a name="663" class="Field"
+      >id</a
+      ><a name="665"
+      >  </a
+      ><a name="667" class="Symbol"
+      >=</a
+      ><a name="668"
+      > </a
+      ><a name="669" href="Comonad.Definition.html#1032" class="Function"
+      >extract</a
+      ><a name="676"
+      >
+  </a
+      ><a name="679" class="Symbol"
+      >;</a
+      ><a name="680"
+      > </a
+      ><a name="681" class="Field"
+      >isCategory</a
+      ><a name="691"
+      > </a
+      ><a name="692" class="Symbol"
+      >=</a
+      ><a name="693"
+      > </a
+      ><a name="694" class="Keyword"
+      >record</a
+      ><a name="700"
+      >
+    </a
+      ><a name="705" class="Symbol"
+      >{</a
+      ><a name="706"
+      > </a
+      ><a name="707" class="Field"
+      >id&#691;</a
+      ><a name="710"
+      >   </a
+      ><a name="713" class="Symbol"
+      >=</a
+      ><a name="714"
+      > </a
+      ><a name="715" class="Symbol"
+      >&#955;</a
+      ><a name="716"
+      > </a
+      ><a name="717" href="Comonad.Cokleisli.html#717" class="Bound"
+      >f</a
+      ><a name="718"
+      >     </a
+      ><a name="723" class="Symbol"
+      >&#8594;</a
+      ><a name="724"
+      > </a
+      ><a name="725" href="FunExt.html#328" class="Postulate"
+      >ext</a
+      ><a name="728"
+      > </a
+      ><a name="729" class="Symbol"
+      >(</a
+      ><a name="730" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
+      >cong</a
+      ><a name="734"
+      > </a
+      ><a name="735" href="Comonad.Cokleisli.html#717" class="Bound"
+      >f</a
+      ><a name="736"
+      > </a
+      ><a name="737" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="738"
+      > </a
+      ><a name="739" href="Comonad.Definition.html#686" class="Function"
+      >extract-id&#691;</a
+      ><a name="750" class="Symbol"
+      >)</a
+      ><a name="751"
+      >
+    </a
+      ><a name="756" class="Symbol"
+      >;</a
+      ><a name="757"
+      > </a
+      ><a name="758" class="Field"
+      >id&#737;</a
+      ><a name="761"
+      >   </a
+      ><a name="764" class="Symbol"
+      >=</a
+      ><a name="765"
+      > </a
+      ><a name="766" class="Symbol"
+      >&#955;</a
+      ><a name="767"
+      > </a
+      ><a name="768" href="Comonad.Cokleisli.html#768" class="Bound"
+      >f</a
+      ><a name="769"
+      >     </a
+      ><a name="774" class="Symbol"
+      >&#8594;</a
+      ><a name="775"
+      > </a
+      ><a name="776" href="FunExt.html#328" class="Postulate"
+      >ext</a
+      ><a name="779"
+      > </a
+      ><a name="780" class="Symbol"
+      >(</a
+      ><a name="781" href="Comonad.Definition.html#749" class="Function"
+      >extract-id&#737;</a
+      ><a name="792"
+      > </a
+      ><a name="793" class="Symbol"
+      >_)</a
+      ><a name="795"
+      >
+    </a
+      ><a name="800" class="Symbol"
+      >;</a
+      ><a name="801"
+      > </a
+      ><a name="802" class="Field"
+      >assoc</a
+      ><a name="807"
+      > </a
+      ><a name="808" class="Symbol"
+      >=</a
+      ><a name="809"
+      > </a
+      ><a name="810" class="Symbol"
+      >&#955;</a
+      ><a name="811"
+      > </a
+      ><a name="812" href="Comonad.Cokleisli.html#812" class="Bound"
+      >f</a
+      ><a name="813"
+      > </a
+      ><a name="814" href="Comonad.Cokleisli.html#814" class="Bound"
+      >g</a
+      ><a name="815"
+      > </a
+      ><a name="816" href="Comonad.Cokleisli.html#816" class="Bound"
+      >h</a
+      ><a name="817"
+      > </a
+      ><a name="818" class="Symbol"
+      >&#8594;</a
+      ><a name="819"
+      > </a
+      ><a name="820" href="FunExt.html#328" class="Postulate"
+      >ext</a
+      ><a name="823"
+      > </a
+      ><a name="824" class="Symbol"
+      >(</a
+      ><a name="825" href="Relation.Binary.PropositionalEquality.html#1034" class="Function"
+      >cong</a
+      ><a name="829"
+      > </a
+      ><a name="830" href="Comonad.Cokleisli.html#812" class="Bound"
+      >f</a
+      ><a name="831"
+      > </a
+      ><a name="832" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="833"
+      > </a
+      ><a name="834" href="Relation.Binary.PropositionalEquality.Core.html#565" class="Function"
+      >sym</a
+      ><a name="837"
+      > </a
+      ><a name="838" href="Function.html#713" class="Function Operator"
+      >&#8728;</a
+      ><a name="839"
+      > </a
+      ><a name="840" href="Comonad.Definition.html#834" class="Function"
+      >extend-asso</a
+      ><a name="851"
+      > </a
+      ><a name="852" href="Comonad.Cokleisli.html#814" class="Bound"
+      >g</a
+      ><a name="853"
+      > </a
+      ><a name="854" href="Comonad.Cokleisli.html#816" class="Bound"
+      >h</a
+      ><a name="855" class="Symbol"
+      >)</a
+      ><a name="856"
+      >
+    </a
+      ><a name="861" class="Symbol"
       >}</a
-      ><a name="672"
+      ><a name="862"
+      >
+  </a
+      ><a name="865" class="Symbol"
+      >}</a
+      ><a name="866"
       >
 </a
       ></pre
