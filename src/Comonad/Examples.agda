@@ -1,3 +1,7 @@
+------------------------------------------------------------------------
+-- Examples of concrete comonad instances.
+------------------------------------------------------------------------
+
 module Comonad.Examples where
 
 open import Lib.Algebra.Structures
@@ -16,8 +20,7 @@ open import Comonad.Definition
 open import FunExt
   using (ext)
 
---
-
+-- Identity comonad.
 Id : Set → Set
 Id X = X
 
@@ -32,8 +35,7 @@ id-Comonad = record
     }
   }
 
---
-
+-- Store comonad.
 Store : Set → Set → Set
 Store S A = (S → A) × S
 
@@ -48,8 +50,7 @@ store-Comonad S = record
     }
   }
 
---
-
+-- Reader comonad.
 Reader : Set → Set → Set
 Reader M A = M → A
 
@@ -74,8 +75,7 @@ reader-Comonad M _∙_ ε isMonoid = record
   open IsMonoid isMonoid
     using (identity; assoc)
 
---
-
+-- Coproduct of two comonads.
 data _+_ (F G : Set → Set) (A : Set) : Set where
   left  : F A → (F + G) A
   right : G A → (F + G) A
@@ -107,8 +107,7 @@ data _+_ (F G : Set → Set) (A : Set) : Set where
   module F = Comonad f
   module G = Comonad g
 
---
-
+-- Environment comonad (also known as coreader comonad).
 Env : Set → Set → Set
 Env E A = E × A
 
@@ -123,8 +122,7 @@ env-comonad E = record
     }
   }
 
---
-
+-- Comonad for non-empty list.
 data NonEmpty (A : Set) : Set where
   [_] : A → NonEmpty A
   _∷_ : A → NonEmpty A → NonEmpty A
@@ -149,8 +147,7 @@ nonEmpty-comonad = record
     }
   }
 
---
-
+-- Comonad for list zipper.
 Zipper : Set → Set
 Zipper A = List A × A × List A
 

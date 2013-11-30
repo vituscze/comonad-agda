@@ -1,3 +1,11 @@
+------------------------------------------------------------------------
+-- The definitions from Comonad.Definition are indeed equivalent.
+--
+-- Sometimes, one of the definitions is easier to implement and this
+-- gives us the ability to define comonad either way and get the
+-- other one for free.
+------------------------------------------------------------------------
+
 module Comonad.Equivalence where
 
 open import Lib.Function
@@ -12,6 +20,7 @@ open import Comonad.Definition
 open import FunExt
   using (ext)
 
+-- (fmap, extract, duplicate) comonad derived from (extract, extend) comonad.
 comonad→comonad′ : ∀ {W} → Comonad W → Comonad′ W
 comonad→comonad′ comonad = record
   { fmap      = λ f → extend (f ∘ extract)
@@ -45,6 +54,7 @@ comonad→comonad′ comonad = record
   where
   open Comonad comonad
 
+-- (extract, extend) comonad derived from (fmap, extract, duplicate) comonad.
 comonad′→comonad : ∀ {W} → Comonad′ W → Comonad W
 comonad′→comonad comonad = record
   { extract   = extract
@@ -64,6 +74,8 @@ comonad′→comonad comonad = record
   where
   open Comonad′ comonad
 
+-- comonad→comonad′ and comonad′→comonad form an isomorphism with regards
+-- to extract and extend operations.
 module Comonad-Id {W : Set → Set} (comonad : Comonad W) where
   open Comonad comonad
   open Comonad (comonad′→comonad (comonad→comonad′ comonad))
@@ -80,6 +92,8 @@ module Comonad-Id {W : Set → Set} (comonad : Comonad W) where
     trans (extend-asso (f ∘ extract) id _) $
           (cong (flip extend _) (ext (cong f ∘ extract-idˡ id)))
 
+-- comonad′→comonad and comonad→comonad′ form an isomorphism with regards
+-- to fmap, extract and duplicate operations.
 module Comonad′-Id {W : Set → Set} (comonad : Comonad′ W) where
   open Comonad′ comonad
   open Comonad′ (comonad→comonad′ (comonad′→comonad comonad))

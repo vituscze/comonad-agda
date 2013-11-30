@@ -1,8 +1,13 @@
+------------------------------------------------------------------------
+-- Definition of category operations and their laws.
+------------------------------------------------------------------------
+
 module Category where
 
 open import Lib.Relation.Binary.PropositionalEquality
   using (_≡_)
 
+-- Category laws.
 record IsCategory
        (_⇒_ : Set → Set → Set)
        (_∘_ : ∀ {A B C} → (B ⇒ C) → (A ⇒ B) → (A ⇒ C))
@@ -15,6 +20,7 @@ record IsCategory
     assoc : ∀ {A B C D} (f : C ⇒ D) (g : B ⇒ C) (h : A ⇒ B) →
       f ∘ (g ∘ h) ≡ (f ∘ g) ∘ h
 
+-- Category operations.
 record Category
        (_⇒_ : Set → Set → Set) : Set₁ where
   infixr 9 _∘_

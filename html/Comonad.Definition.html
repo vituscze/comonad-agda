@@ -9,1033 +9,729 @@
      /></head
   ><body
   ><pre
-    ><a name="1" class="Keyword"
+    ><a name="1" class="Comment"
+      >------------------------------------------------------------------------</a
+      ><a name="73"
+      >
+</a
+      ><a name="74" class="Comment"
+      >-- Two commonly used comonad definitions.</a
+      ><a name="115"
+      >
+</a
+      ><a name="116" class="Comment"
+      >------------------------------------------------------------------------</a
+      ><a name="188"
+      >
+
+</a
+      ><a name="190" class="Keyword"
       >module</a
-      ><a name="7"
+      ><a name="196"
       > </a
-      ><a name="8" href="Comonad.Definition.html#1" class="Module"
+      ><a name="197" href="Comonad.Definition.html#1" class="Module"
       >Comonad.Definition</a
-      ><a name="26"
-      > </a
-      ><a name="27" class="Keyword"
-      >where</a
-      ><a name="32"
-      >
-
-</a
-      ><a name="34" class="Keyword"
-      >open</a
-      ><a name="38"
-      > </a
-      ><a name="39" class="Keyword"
-      >import</a
-      ><a name="45"
-      > </a
-      ><a name="46" href="Lib.Function.html#1" class="Module"
-      >Lib.Function</a
-      ><a name="58"
-      >
-  </a
-      ><a name="61" class="Keyword"
-      >using</a
-      ><a name="66"
-      > </a
-      ><a name="67" class="Symbol"
-      >(</a
-      ><a name="68"
-      >_&#8728;_</a
-      ><a name="71" class="Symbol"
-      >;</a
-      ><a name="72"
-      > id</a
-      ><a name="75" class="Symbol"
-      >)</a
-      ><a name="76"
-      >
-</a
-      ><a name="77" class="Keyword"
-      >open</a
-      ><a name="81"
-      > </a
-      ><a name="82" class="Keyword"
-      >import</a
-      ><a name="88"
-      > </a
-      ><a name="89" href="Lib.Relation.Binary.PropositionalEquality.html#1" class="Module"
-      >Lib.Relation.Binary.PropositionalEquality</a
-      ><a name="130"
-      >
-  </a
-      ><a name="133" class="Keyword"
-      >using</a
-      ><a name="138"
-      > </a
-      ><a name="139" class="Symbol"
-      >(</a
-      ><a name="140"
-      >_&#8801;_</a
-      ><a name="143" class="Symbol"
-      >)</a
-      ><a name="144"
-      >
-
-</a
-      ><a name="146" class="Comment"
-      >-- Comonad definition using extract and extend.</a
-      ><a name="193"
-      >
-</a
-      ><a name="194" class="Keyword"
-      >record</a
-      ><a name="200"
-      > </a
-      ><a name="201" href="Comonad.Definition.html#201" class="Record"
-      >IsComonad</a
-      ><a name="210"
-      > </a
-      ><a name="211" class="Symbol"
-      >{</a
-      ><a name="212" href="Comonad.Definition.html#212" class="Bound"
-      >W</a
-      ><a name="213"
-      > </a
-      ><a name="214" class="Symbol"
-      >:</a
       ><a name="215"
       > </a
-      ><a name="216" class="PrimitiveType"
-      >Set</a
-      ><a name="219"
-      > </a
-      ><a name="220" class="Symbol"
-      >&#8594;</a
-      ><a name="221"
-      > </a
-      ><a name="222" class="PrimitiveType"
-      >Set</a
-      ><a name="225" class="Symbol"
-      >}</a
-      ><a name="226"
-      >
-       </a
-      ><a name="234" class="Symbol"
-      >(</a
-      ><a name="235" href="Comonad.Definition.html#235" class="Bound"
-      >extract</a
-      ><a name="242"
-      > </a
-      ><a name="243" class="Symbol"
-      >:</a
-      ><a name="244"
-      > </a
-      ><a name="245" class="Symbol"
-      >&#8704;</a
-      ><a name="246"
-      > </a
-      ><a name="247" class="Symbol"
-      >{</a
-      ><a name="248" href="Comonad.Definition.html#248" class="Bound"
-      >A</a
-      ><a name="249" class="Symbol"
-      >}</a
-      ><a name="250"
-      >   </a
-      ><a name="253" class="Symbol"
-      >&#8594;</a
-      ><a name="254"
-      >  </a
-      ><a name="256" href="Comonad.Definition.html#212" class="Bound"
-      >W</a
-      ><a name="257"
-      > </a
-      ><a name="258" href="Comonad.Definition.html#248" class="Bound"
-      >A</a
-      ><a name="259"
-      > </a
-      ><a name="260" class="Symbol"
-      >&#8594;</a
-      ><a name="261"
-      > </a
-      ><a name="262" href="Comonad.Definition.html#248" class="Bound"
-      >A</a
-      ><a name="263" class="Symbol"
-      >)</a
-      ><a name="264"
-      >
-       </a
-      ><a name="272" class="Symbol"
-      >(</a
-      ><a name="273" href="Comonad.Definition.html#273" class="Bound"
-      >extend</a
-      ><a name="279"
-      >  </a
-      ><a name="281" class="Symbol"
-      >:</a
-      ><a name="282"
-      > </a
-      ><a name="283" class="Symbol"
-      >&#8704;</a
-      ><a name="284"
-      > </a
-      ><a name="285" class="Symbol"
-      >{</a
-      ><a name="286" href="Comonad.Definition.html#286" class="Bound"
-      >A</a
-      ><a name="287"
-      > </a
-      ><a name="288" href="Comonad.Definition.html#288" class="Bound"
-      >B</a
-      ><a name="289" class="Symbol"
-      >}</a
-      ><a name="290"
-      > </a
-      ><a name="291" class="Symbol"
-      >&#8594;</a
-      ><a name="292"
-      > </a
-      ><a name="293" class="Symbol"
-      >(</a
-      ><a name="294" href="Comonad.Definition.html#212" class="Bound"
-      >W</a
-      ><a name="295"
-      > </a
-      ><a name="296" href="Comonad.Definition.html#286" class="Bound"
-      >A</a
-      ><a name="297"
-      > </a
-      ><a name="298" class="Symbol"
-      >&#8594;</a
-      ><a name="299"
-      > </a
-      ><a name="300" href="Comonad.Definition.html#288" class="Bound"
-      >B</a
-      ><a name="301" class="Symbol"
-      >)</a
-      ><a name="302"
-      > </a
-      ><a name="303" class="Symbol"
-      >&#8594;</a
-      ><a name="304"
-      > </a
-      ><a name="305" href="Comonad.Definition.html#212" class="Bound"
-      >W</a
-      ><a name="306"
-      > </a
-      ><a name="307" href="Comonad.Definition.html#286" class="Bound"
-      >A</a
-      ><a name="308"
-      > </a
-      ><a name="309" class="Symbol"
-      >&#8594;</a
-      ><a name="310"
-      > </a
-      ><a name="311" href="Comonad.Definition.html#212" class="Bound"
-      >W</a
-      ><a name="312"
-      > </a
-      ><a name="313" href="Comonad.Definition.html#288" class="Bound"
-      >B</a
-      ><a name="314" class="Symbol"
-      >)</a
-      ><a name="315"
-      > </a
-      ><a name="316" class="Symbol"
-      >:</a
-      ><a name="317"
-      > </a
-      ><a name="318" class="PrimitiveType"
-      >Set&#8321;</a
-      ><a name="322"
-      > </a
-      ><a name="323" class="Keyword"
+      ><a name="216" class="Keyword"
       >where</a
-      ><a name="328"
-      >
-  </a
-      ><a name="331" class="Keyword"
-      >field</a
-      ><a name="336"
-      >
-    </a
-      ><a name="341" href="Comonad.Definition.html#341" class="Field"
-      >extract-id&#691;</a
-      ><a name="352"
-      > </a
-      ><a name="353" class="Symbol"
-      >:</a
-      ><a name="354"
-      > </a
-      ><a name="355" class="Symbol"
-      >&#8704;</a
-      ><a name="356"
-      > </a
-      ><a name="357" class="Symbol"
-      >{</a
-      ><a name="358" href="Comonad.Definition.html#358" class="Bound"
-      >A</a
-      ><a name="359" class="Symbol"
-      >}</a
-      ><a name="360"
-      > </a
-      ><a name="361" class="Symbol"
-      >(</a
-      ><a name="362" href="Comonad.Definition.html#362" class="Bound"
-      >x</a
-      ><a name="363"
-      > </a
-      ><a name="364" class="Symbol"
-      >:</a
-      ><a name="365"
-      > </a
-      ><a name="366" href="Comonad.Definition.html#212" class="Bound"
-      >W</a
-      ><a name="367"
-      > </a
-      ><a name="368" href="Comonad.Definition.html#358" class="Bound"
-      >A</a
-      ><a name="369" class="Symbol"
-      >)</a
-      ><a name="370"
-      > </a
-      ><a name="371" class="Symbol"
-      >&#8594;</a
-      ><a name="372"
-      >
-      </a
-      ><a name="379" href="Comonad.Definition.html#273" class="Bound"
-      >extend</a
-      ><a name="385"
-      > </a
-      ><a name="386" href="Comonad.Definition.html#235" class="Bound"
-      >extract</a
-      ><a name="393"
-      > </a
-      ><a name="394" href="Comonad.Definition.html#362" class="Bound"
-      >x</a
-      ><a name="395"
-      > </a
-      ><a name="396" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="397"
-      > </a
-      ><a name="398" href="Comonad.Definition.html#362" class="Bound"
-      >x</a
-      ><a name="399"
-      >
-    </a
-      ><a name="404" href="Comonad.Definition.html#404" class="Field"
-      >extract-id&#737;</a
-      ><a name="415"
-      > </a
-      ><a name="416" class="Symbol"
-      >:</a
-      ><a name="417"
-      > </a
-      ><a name="418" class="Symbol"
-      >&#8704;</a
-      ><a name="419"
-      > </a
-      ><a name="420" class="Symbol"
-      >{</a
-      ><a name="421" href="Comonad.Definition.html#421" class="Bound"
-      >A</a
-      ><a name="422"
-      > </a
-      ><a name="423" href="Comonad.Definition.html#423" class="Bound"
-      >B</a
-      ><a name="424" class="Symbol"
-      >}</a
-      ><a name="425"
-      > </a
-      ><a name="426" class="Symbol"
-      >(</a
-      ><a name="427" href="Comonad.Definition.html#427" class="Bound"
-      >f</a
-      ><a name="428"
-      > </a
-      ><a name="429" class="Symbol"
-      >:</a
-      ><a name="430"
-      > </a
-      ><a name="431" href="Comonad.Definition.html#212" class="Bound"
-      >W</a
-      ><a name="432"
-      > </a
-      ><a name="433" href="Comonad.Definition.html#421" class="Bound"
-      >A</a
-      ><a name="434"
-      > </a
-      ><a name="435" class="Symbol"
-      >&#8594;</a
-      ><a name="436"
-      > </a
-      ><a name="437" href="Comonad.Definition.html#423" class="Bound"
-      >B</a
-      ><a name="438" class="Symbol"
-      >)</a
-      ><a name="439"
-      > </a
-      ><a name="440" class="Symbol"
-      >(</a
-      ><a name="441" href="Comonad.Definition.html#441" class="Bound"
-      >x</a
-      ><a name="442"
-      > </a
-      ><a name="443" class="Symbol"
-      >:</a
-      ><a name="444"
-      > </a
-      ><a name="445" href="Comonad.Definition.html#212" class="Bound"
-      >W</a
-      ><a name="446"
-      > </a
-      ><a name="447" href="Comonad.Definition.html#421" class="Bound"
-      >A</a
-      ><a name="448" class="Symbol"
-      >)</a
-      ><a name="449"
-      > </a
-      ><a name="450" class="Symbol"
-      >&#8594;</a
-      ><a name="451"
-      >
-      </a
-      ><a name="458" href="Comonad.Definition.html#235" class="Bound"
-      >extract</a
-      ><a name="465"
-      > </a
-      ><a name="466" class="Symbol"
-      >(</a
-      ><a name="467" href="Comonad.Definition.html#273" class="Bound"
-      >extend</a
-      ><a name="473"
-      > </a
-      ><a name="474" href="Comonad.Definition.html#427" class="Bound"
-      >f</a
-      ><a name="475"
-      > </a
-      ><a name="476" href="Comonad.Definition.html#441" class="Bound"
-      >x</a
-      ><a name="477" class="Symbol"
-      >)</a
-      ><a name="478"
-      > </a
-      ><a name="479" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="480"
-      > </a
-      ><a name="481" href="Comonad.Definition.html#427" class="Bound"
-      >f</a
-      ><a name="482"
-      > </a
-      ><a name="483" href="Comonad.Definition.html#441" class="Bound"
-      >x</a
-      ><a name="484"
-      >
-    </a
-      ><a name="489" href="Comonad.Definition.html#489" class="Field"
-      >extend-asso</a
-      ><a name="500"
-      > </a
-      ><a name="501" class="Symbol"
-      >:</a
-      ><a name="502"
-      > </a
-      ><a name="503" class="Symbol"
-      >&#8704;</a
-      ><a name="504"
-      > </a
-      ><a name="505" class="Symbol"
-      >{</a
-      ><a name="506" href="Comonad.Definition.html#506" class="Bound"
-      >A</a
-      ><a name="507"
-      > </a
-      ><a name="508" href="Comonad.Definition.html#508" class="Bound"
-      >B</a
-      ><a name="509"
-      > </a
-      ><a name="510" href="Comonad.Definition.html#510" class="Bound"
-      >C</a
-      ><a name="511" class="Symbol"
-      >}</a
-      ><a name="512"
-      > </a
-      ><a name="513" class="Symbol"
-      >(</a
-      ><a name="514" href="Comonad.Definition.html#514" class="Bound"
-      >f</a
-      ><a name="515"
-      > </a
-      ><a name="516" class="Symbol"
-      >:</a
-      ><a name="517"
-      > </a
-      ><a name="518" href="Comonad.Definition.html#212" class="Bound"
-      >W</a
-      ><a name="519"
-      > </a
-      ><a name="520" href="Comonad.Definition.html#508" class="Bound"
-      >B</a
-      ><a name="521"
-      > </a
-      ><a name="522" class="Symbol"
-      >&#8594;</a
-      ><a name="523"
-      > </a
-      ><a name="524" href="Comonad.Definition.html#510" class="Bound"
-      >C</a
-      ><a name="525" class="Symbol"
-      >)</a
-      ><a name="526"
-      > </a
-      ><a name="527" class="Symbol"
-      >(</a
-      ><a name="528" href="Comonad.Definition.html#528" class="Bound"
-      >g</a
-      ><a name="529"
-      > </a
-      ><a name="530" class="Symbol"
-      >:</a
-      ><a name="531"
-      > </a
-      ><a name="532" href="Comonad.Definition.html#212" class="Bound"
-      >W</a
-      ><a name="533"
-      > </a
-      ><a name="534" href="Comonad.Definition.html#506" class="Bound"
-      >A</a
-      ><a name="535"
-      > </a
-      ><a name="536" class="Symbol"
-      >&#8594;</a
-      ><a name="537"
-      > </a
-      ><a name="538" href="Comonad.Definition.html#508" class="Bound"
-      >B</a
-      ><a name="539" class="Symbol"
-      >)</a
-      ><a name="540"
-      > </a
-      ><a name="541" class="Symbol"
-      >(</a
-      ><a name="542" href="Comonad.Definition.html#542" class="Bound"
-      >x</a
-      ><a name="543"
-      > </a
-      ><a name="544" class="Symbol"
-      >:</a
-      ><a name="545"
-      > </a
-      ><a name="546" href="Comonad.Definition.html#212" class="Bound"
-      >W</a
-      ><a name="547"
-      > </a
-      ><a name="548" href="Comonad.Definition.html#506" class="Bound"
-      >A</a
-      ><a name="549" class="Symbol"
-      >)</a
-      ><a name="550"
-      > </a
-      ><a name="551" class="Symbol"
-      >&#8594;</a
-      ><a name="552"
-      >
-      </a
-      ><a name="559" href="Comonad.Definition.html#273" class="Bound"
-      >extend</a
-      ><a name="565"
-      > </a
-      ><a name="566" href="Comonad.Definition.html#514" class="Bound"
-      >f</a
-      ><a name="567"
-      > </a
-      ><a name="568" class="Symbol"
-      >(</a
-      ><a name="569" href="Comonad.Definition.html#273" class="Bound"
-      >extend</a
-      ><a name="575"
-      > </a
-      ><a name="576" href="Comonad.Definition.html#528" class="Bound"
-      >g</a
-      ><a name="577"
-      > </a
-      ><a name="578" href="Comonad.Definition.html#542" class="Bound"
-      >x</a
-      ><a name="579" class="Symbol"
-      >)</a
-      ><a name="580"
-      > </a
-      ><a name="581" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="582"
-      > </a
-      ><a name="583" href="Comonad.Definition.html#273" class="Bound"
-      >extend</a
-      ><a name="589"
-      > </a
-      ><a name="590" class="Symbol"
-      >(</a
-      ><a name="591" href="Comonad.Definition.html#514" class="Bound"
-      >f</a
-      ><a name="592"
-      > </a
-      ><a name="593" href="Lib.Function.html#55" class="Function Operator"
-      >&#8728;</a
-      ><a name="594"
-      > </a
-      ><a name="595" href="Comonad.Definition.html#273" class="Bound"
-      >extend</a
-      ><a name="601"
-      > </a
-      ><a name="602" href="Comonad.Definition.html#528" class="Bound"
-      >g</a
-      ><a name="603" class="Symbol"
-      >)</a
-      ><a name="604"
-      > </a
-      ><a name="605" href="Comonad.Definition.html#542" class="Bound"
-      >x</a
-      ><a name="606"
+      ><a name="221"
       >
 
 </a
-      ><a name="608" class="Keyword"
+      ><a name="223" class="Keyword"
+      >open</a
+      ><a name="227"
+      > </a
+      ><a name="228" class="Keyword"
+      >import</a
+      ><a name="234"
+      > </a
+      ><a name="235" href="Lib.Function.html#1" class="Module"
+      >Lib.Function</a
+      ><a name="247"
+      >
+  </a
+      ><a name="250" class="Keyword"
+      >using</a
+      ><a name="255"
+      > </a
+      ><a name="256" class="Symbol"
+      >(</a
+      ><a name="257"
+      >_&#8728;_</a
+      ><a name="260" class="Symbol"
+      >;</a
+      ><a name="261"
+      > id</a
+      ><a name="264" class="Symbol"
+      >)</a
+      ><a name="265"
+      >
+</a
+      ><a name="266" class="Keyword"
+      >open</a
+      ><a name="270"
+      > </a
+      ><a name="271" class="Keyword"
+      >import</a
+      ><a name="277"
+      > </a
+      ><a name="278" href="Lib.Relation.Binary.PropositionalEquality.html#1" class="Module"
+      >Lib.Relation.Binary.PropositionalEquality</a
+      ><a name="319"
+      >
+  </a
+      ><a name="322" class="Keyword"
+      >using</a
+      ><a name="327"
+      > </a
+      ><a name="328" class="Symbol"
+      >(</a
+      ><a name="329"
+      >_&#8801;_</a
+      ><a name="332" class="Symbol"
+      >)</a
+      ><a name="333"
+      >
+
+</a
+      ><a name="335" class="Comment"
+      >------------------------------------------------------------------------</a
+      ><a name="407"
+      >
+</a
+      ><a name="408" class="Comment"
+      >-- Comonad definition using extract and extend.</a
+      ><a name="455"
+      >
+</a
+      ><a name="456" class="Comment"
+      >------------------------------------------------------------------------</a
+      ><a name="528"
+      >
+
+</a
+      ><a name="530" class="Comment"
+      >-- Comonad laws.</a
+      ><a name="546"
+      >
+</a
+      ><a name="547" class="Keyword"
       >record</a
+      ><a name="553"
+      > </a
+      ><a name="554" href="Comonad.Definition.html#554" class="Record"
+      >IsComonad</a
+      ><a name="563"
+      > </a
+      ><a name="564" class="Symbol"
+      >{</a
+      ><a name="565" href="Comonad.Definition.html#565" class="Bound"
+      >W</a
+      ><a name="566"
+      > </a
+      ><a name="567" class="Symbol"
+      >:</a
+      ><a name="568"
+      > </a
+      ><a name="569" class="PrimitiveType"
+      >Set</a
+      ><a name="572"
+      > </a
+      ><a name="573" class="Symbol"
+      >&#8594;</a
+      ><a name="574"
+      > </a
+      ><a name="575" class="PrimitiveType"
+      >Set</a
+      ><a name="578" class="Symbol"
+      >}</a
+      ><a name="579"
+      >
+       </a
+      ><a name="587" class="Symbol"
+      >(</a
+      ><a name="588" href="Comonad.Definition.html#588" class="Bound"
+      >extract</a
+      ><a name="595"
+      > </a
+      ><a name="596" class="Symbol"
+      >:</a
+      ><a name="597"
+      > </a
+      ><a name="598" class="Symbol"
+      >&#8704;</a
+      ><a name="599"
+      > </a
+      ><a name="600" class="Symbol"
+      >{</a
+      ><a name="601" href="Comonad.Definition.html#601" class="Bound"
+      >A</a
+      ><a name="602" class="Symbol"
+      >}</a
+      ><a name="603"
+      >   </a
+      ><a name="606" class="Symbol"
+      >&#8594;</a
+      ><a name="607"
+      >  </a
+      ><a name="609" href="Comonad.Definition.html#565" class="Bound"
+      >W</a
+      ><a name="610"
+      > </a
+      ><a name="611" href="Comonad.Definition.html#601" class="Bound"
+      >A</a
+      ><a name="612"
+      > </a
+      ><a name="613" class="Symbol"
+      >&#8594;</a
       ><a name="614"
       > </a
-      ><a name="615" href="Comonad.Definition.html#615" class="Record"
-      >Comonad</a
-      ><a name="622"
-      > </a
-      ><a name="623" class="Symbol"
-      >(</a
-      ><a name="624" href="Comonad.Definition.html#624" class="Bound"
-      >W</a
-      ><a name="625"
-      > </a
-      ><a name="626" class="Symbol"
-      >:</a
-      ><a name="627"
-      > </a
-      ><a name="628" class="PrimitiveType"
-      >Set</a
-      ><a name="631"
-      > </a
-      ><a name="632" class="Symbol"
-      >&#8594;</a
-      ><a name="633"
-      > </a
-      ><a name="634" class="PrimitiveType"
-      >Set</a
-      ><a name="637" class="Symbol"
+      ><a name="615" href="Comonad.Definition.html#601" class="Bound"
+      >A</a
+      ><a name="616" class="Symbol"
       >)</a
-      ><a name="638"
-      > </a
-      ><a name="639" class="Symbol"
+      ><a name="617"
+      >
+       </a
+      ><a name="625" class="Symbol"
+      >(</a
+      ><a name="626" href="Comonad.Definition.html#626" class="Bound"
+      >extend</a
+      ><a name="632"
+      >  </a
+      ><a name="634" class="Symbol"
       >:</a
+      ><a name="635"
+      > </a
+      ><a name="636" class="Symbol"
+      >&#8704;</a
+      ><a name="637"
+      > </a
+      ><a name="638" class="Symbol"
+      >{</a
+      ><a name="639" href="Comonad.Definition.html#639" class="Bound"
+      >A</a
       ><a name="640"
       > </a
-      ><a name="641" class="PrimitiveType"
-      >Set&#8321;</a
+      ><a name="641" href="Comonad.Definition.html#641" class="Bound"
+      >B</a
+      ><a name="642" class="Symbol"
+      >}</a
+      ><a name="643"
+      > </a
+      ><a name="644" class="Symbol"
+      >&#8594;</a
       ><a name="645"
       > </a
-      ><a name="646" class="Keyword"
-      >where</a
-      ><a name="651"
-      >
-  </a
-      ><a name="654" class="Keyword"
-      >field</a
+      ><a name="646" class="Symbol"
+      >(</a
+      ><a name="647" href="Comonad.Definition.html#565" class="Bound"
+      >W</a
+      ><a name="648"
+      > </a
+      ><a name="649" href="Comonad.Definition.html#639" class="Bound"
+      >A</a
+      ><a name="650"
+      > </a
+      ><a name="651" class="Symbol"
+      >&#8594;</a
+      ><a name="652"
+      > </a
+      ><a name="653" href="Comonad.Definition.html#641" class="Bound"
+      >B</a
+      ><a name="654" class="Symbol"
+      >)</a
+      ><a name="655"
+      > </a
+      ><a name="656" class="Symbol"
+      >&#8594;</a
+      ><a name="657"
+      > </a
+      ><a name="658" href="Comonad.Definition.html#565" class="Bound"
+      >W</a
       ><a name="659"
-      >
-    </a
-      ><a name="664" href="Comonad.Definition.html#664" class="Field"
-      >extract</a
-      ><a name="671"
-      >   </a
-      ><a name="674" class="Symbol"
+      > </a
+      ><a name="660" href="Comonad.Definition.html#639" class="Bound"
+      >A</a
+      ><a name="661"
+      > </a
+      ><a name="662" class="Symbol"
+      >&#8594;</a
+      ><a name="663"
+      > </a
+      ><a name="664" href="Comonad.Definition.html#565" class="Bound"
+      >W</a
+      ><a name="665"
+      > </a
+      ><a name="666" href="Comonad.Definition.html#641" class="Bound"
+      >B</a
+      ><a name="667" class="Symbol"
+      >)</a
+      ><a name="668"
+      > </a
+      ><a name="669" class="Symbol"
       >:</a
+      ><a name="670"
+      > </a
+      ><a name="671" class="PrimitiveType"
+      >Set&#8321;</a
       ><a name="675"
       > </a
-      ><a name="676" class="Symbol"
-      >&#8704;</a
-      ><a name="677"
-      > </a
-      ><a name="678" class="Symbol"
-      >{</a
-      ><a name="679" href="Comonad.Definition.html#679" class="Bound"
-      >A</a
-      ><a name="680" class="Symbol"
-      >}</a
+      ><a name="676" class="Keyword"
+      >where</a
       ><a name="681"
-      >   </a
-      ><a name="684" class="Symbol"
-      >&#8594;</a
-      ><a name="685"
-      >  </a
-      ><a name="687" href="Comonad.Definition.html#624" class="Bound"
-      >W</a
-      ><a name="688"
-      > </a
-      ><a name="689" href="Comonad.Definition.html#679" class="Bound"
-      >A</a
-      ><a name="690"
-      > </a
-      ><a name="691" class="Symbol"
-      >&#8594;</a
-      ><a name="692"
-      > </a
-      ><a name="693" href="Comonad.Definition.html#679" class="Bound"
-      >A</a
-      ><a name="694"
+      >
+  </a
+      ><a name="684" class="Keyword"
+      >field</a
+      ><a name="689"
       >
     </a
-      ><a name="699" href="Comonad.Definition.html#699" class="Field"
-      >extend</a
+      ><a name="694" href="Comonad.Definition.html#694" class="Field"
+      >extract-id&#691;</a
       ><a name="705"
-      >    </a
-      ><a name="709" class="Symbol"
+      > </a
+      ><a name="706" class="Symbol"
       >:</a
-      ><a name="710"
+      ><a name="707"
       > </a
-      ><a name="711" class="Symbol"
+      ><a name="708" class="Symbol"
       >&#8704;</a
-      ><a name="712"
+      ><a name="709"
       > </a
-      ><a name="713" class="Symbol"
+      ><a name="710" class="Symbol"
       >{</a
-      ><a name="714" href="Comonad.Definition.html#714" class="Bound"
+      ><a name="711" href="Comonad.Definition.html#711" class="Bound"
       >A</a
-      ><a name="715"
-      > </a
-      ><a name="716" href="Comonad.Definition.html#716" class="Bound"
-      >B</a
-      ><a name="717" class="Symbol"
+      ><a name="712" class="Symbol"
       >}</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Symbol"
+      >(</a
+      ><a name="715" href="Comonad.Definition.html#715" class="Bound"
+      >x</a
+      ><a name="716"
+      > </a
+      ><a name="717" class="Symbol"
+      >:</a
       ><a name="718"
       > </a
-      ><a name="719" class="Symbol"
-      >&#8594;</a
+      ><a name="719" href="Comonad.Definition.html#565" class="Bound"
+      >W</a
       ><a name="720"
       > </a
-      ><a name="721" class="Symbol"
-      >(</a
-      ><a name="722" href="Comonad.Definition.html#624" class="Bound"
-      >W</a
+      ><a name="721" href="Comonad.Definition.html#711" class="Bound"
+      >A</a
+      ><a name="722" class="Symbol"
+      >)</a
       ><a name="723"
       > </a
-      ><a name="724" href="Comonad.Definition.html#714" class="Bound"
-      >A</a
+      ><a name="724" class="Symbol"
+      >&#8594;</a
       ><a name="725"
-      > </a
-      ><a name="726" class="Symbol"
-      >&#8594;</a
-      ><a name="727"
-      > </a
-      ><a name="728" href="Comonad.Definition.html#716" class="Bound"
-      >B</a
-      ><a name="729" class="Symbol"
-      >)</a
-      ><a name="730"
-      > </a
-      ><a name="731" class="Symbol"
-      >&#8594;</a
-      ><a name="732"
-      > </a
-      ><a name="733" href="Comonad.Definition.html#624" class="Bound"
-      >W</a
-      ><a name="734"
-      > </a
-      ><a name="735" href="Comonad.Definition.html#714" class="Bound"
-      >A</a
-      ><a name="736"
-      > </a
-      ><a name="737" class="Symbol"
-      >&#8594;</a
+      >
+      </a
+      ><a name="732" href="Comonad.Definition.html#626" class="Bound"
+      >extend</a
       ><a name="738"
       > </a
-      ><a name="739" href="Comonad.Definition.html#624" class="Bound"
-      >W</a
-      ><a name="740"
+      ><a name="739" href="Comonad.Definition.html#588" class="Bound"
+      >extract</a
+      ><a name="746"
       > </a
-      ><a name="741" href="Comonad.Definition.html#716" class="Bound"
-      >B</a
-      ><a name="742"
+      ><a name="747" href="Comonad.Definition.html#715" class="Bound"
+      >x</a
+      ><a name="748"
+      > </a
+      ><a name="749" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="750"
+      > </a
+      ><a name="751" href="Comonad.Definition.html#715" class="Bound"
+      >x</a
+      ><a name="752"
       >
     </a
-      ><a name="747" href="Comonad.Definition.html#747" class="Field"
-      >isComonad</a
-      ><a name="756"
-      > </a
-      ><a name="757" class="Symbol"
-      >:</a
-      ><a name="758"
-      > </a
-      ><a name="759" href="Comonad.Definition.html#201" class="Record"
-      >IsComonad</a
+      ><a name="757" href="Comonad.Definition.html#757" class="Field"
+      >extract-id&#737;</a
       ><a name="768"
       > </a
-      ><a name="769" href="Comonad.Definition.html#664" class="Bound"
-      >extract</a
-      ><a name="776"
-      > </a
-      ><a name="777" href="Comonad.Definition.html#699" class="Bound"
-      >extend</a
-      ><a name="783"
-      >
-
-  </a
-      ><a name="787" class="Keyword"
-      >open</a
-      ><a name="791"
-      > </a
-      ><a name="792" href="Comonad.Definition.html#201" class="Module"
-      >IsComonad</a
-      ><a name="801"
-      > </a
-      ><a name="802" href="Comonad.Definition.html#747" class="Field"
-      >isComonad</a
-      ><a name="811"
-      > </a
-      ><a name="812" class="Keyword"
-      >public</a
-      ><a name="818"
-      >
-
-</a
-      ><a name="820" class="Comment"
-      >-- Comonad definition using fmap, extract and duplicate.</a
-      ><a name="876"
-      >
-</a
-      ><a name="877" class="Keyword"
-      >record</a
-      ><a name="883"
-      > </a
-      ><a name="884" href="Comonad.Definition.html#884" class="Record"
-      >IsComonad&#8242;</a
-      ><a name="894"
-      > </a
-      ><a name="895" class="Symbol"
-      >{</a
-      ><a name="896" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
-      ><a name="897"
-      > </a
-      ><a name="898" class="Symbol"
+      ><a name="769" class="Symbol"
       >:</a
-      ><a name="899"
+      ><a name="770"
       > </a
-      ><a name="900" class="PrimitiveType"
-      >Set</a
+      ><a name="771" class="Symbol"
+      >&#8704;</a
+      ><a name="772"
+      > </a
+      ><a name="773" class="Symbol"
+      >{</a
+      ><a name="774" href="Comonad.Definition.html#774" class="Bound"
+      >A</a
+      ><a name="775"
+      > </a
+      ><a name="776" href="Comonad.Definition.html#776" class="Bound"
+      >B</a
+      ><a name="777" class="Symbol"
+      >}</a
+      ><a name="778"
+      > </a
+      ><a name="779" class="Symbol"
+      >(</a
+      ><a name="780" href="Comonad.Definition.html#780" class="Bound"
+      >f</a
+      ><a name="781"
+      > </a
+      ><a name="782" class="Symbol"
+      >:</a
+      ><a name="783"
+      > </a
+      ><a name="784" href="Comonad.Definition.html#565" class="Bound"
+      >W</a
+      ><a name="785"
+      > </a
+      ><a name="786" href="Comonad.Definition.html#774" class="Bound"
+      >A</a
+      ><a name="787"
+      > </a
+      ><a name="788" class="Symbol"
+      >&#8594;</a
+      ><a name="789"
+      > </a
+      ><a name="790" href="Comonad.Definition.html#776" class="Bound"
+      >B</a
+      ><a name="791" class="Symbol"
+      >)</a
+      ><a name="792"
+      > </a
+      ><a name="793" class="Symbol"
+      >(</a
+      ><a name="794" href="Comonad.Definition.html#794" class="Bound"
+      >x</a
+      ><a name="795"
+      > </a
+      ><a name="796" class="Symbol"
+      >:</a
+      ><a name="797"
+      > </a
+      ><a name="798" href="Comonad.Definition.html#565" class="Bound"
+      >W</a
+      ><a name="799"
+      > </a
+      ><a name="800" href="Comonad.Definition.html#774" class="Bound"
+      >A</a
+      ><a name="801" class="Symbol"
+      >)</a
+      ><a name="802"
+      > </a
+      ><a name="803" class="Symbol"
+      >&#8594;</a
+      ><a name="804"
+      >
+      </a
+      ><a name="811" href="Comonad.Definition.html#588" class="Bound"
+      >extract</a
+      ><a name="818"
+      > </a
+      ><a name="819" class="Symbol"
+      >(</a
+      ><a name="820" href="Comonad.Definition.html#626" class="Bound"
+      >extend</a
+      ><a name="826"
+      > </a
+      ><a name="827" href="Comonad.Definition.html#780" class="Bound"
+      >f</a
+      ><a name="828"
+      > </a
+      ><a name="829" href="Comonad.Definition.html#794" class="Bound"
+      >x</a
+      ><a name="830" class="Symbol"
+      >)</a
+      ><a name="831"
+      > </a
+      ><a name="832" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="833"
+      > </a
+      ><a name="834" href="Comonad.Definition.html#780" class="Bound"
+      >f</a
+      ><a name="835"
+      > </a
+      ><a name="836" href="Comonad.Definition.html#794" class="Bound"
+      >x</a
+      ><a name="837"
+      >
+    </a
+      ><a name="842" href="Comonad.Definition.html#842" class="Field"
+      >extend-asso</a
+      ><a name="853"
+      > </a
+      ><a name="854" class="Symbol"
+      >:</a
+      ><a name="855"
+      > </a
+      ><a name="856" class="Symbol"
+      >&#8704;</a
+      ><a name="857"
+      > </a
+      ><a name="858" class="Symbol"
+      >{</a
+      ><a name="859" href="Comonad.Definition.html#859" class="Bound"
+      >A</a
+      ><a name="860"
+      > </a
+      ><a name="861" href="Comonad.Definition.html#861" class="Bound"
+      >B</a
+      ><a name="862"
+      > </a
+      ><a name="863" href="Comonad.Definition.html#863" class="Bound"
+      >C</a
+      ><a name="864" class="Symbol"
+      >}</a
+      ><a name="865"
+      > </a
+      ><a name="866" class="Symbol"
+      >(</a
+      ><a name="867" href="Comonad.Definition.html#867" class="Bound"
+      >f</a
+      ><a name="868"
+      > </a
+      ><a name="869" class="Symbol"
+      >:</a
+      ><a name="870"
+      > </a
+      ><a name="871" href="Comonad.Definition.html#565" class="Bound"
+      >W</a
+      ><a name="872"
+      > </a
+      ><a name="873" href="Comonad.Definition.html#861" class="Bound"
+      >B</a
+      ><a name="874"
+      > </a
+      ><a name="875" class="Symbol"
+      >&#8594;</a
+      ><a name="876"
+      > </a
+      ><a name="877" href="Comonad.Definition.html#863" class="Bound"
+      >C</a
+      ><a name="878" class="Symbol"
+      >)</a
+      ><a name="879"
+      > </a
+      ><a name="880" class="Symbol"
+      >(</a
+      ><a name="881" href="Comonad.Definition.html#881" class="Bound"
+      >g</a
+      ><a name="882"
+      > </a
+      ><a name="883" class="Symbol"
+      >:</a
+      ><a name="884"
+      > </a
+      ><a name="885" href="Comonad.Definition.html#565" class="Bound"
+      >W</a
+      ><a name="886"
+      > </a
+      ><a name="887" href="Comonad.Definition.html#859" class="Bound"
+      >A</a
+      ><a name="888"
+      > </a
+      ><a name="889" class="Symbol"
+      >&#8594;</a
+      ><a name="890"
+      > </a
+      ><a name="891" href="Comonad.Definition.html#861" class="Bound"
+      >B</a
+      ><a name="892" class="Symbol"
+      >)</a
+      ><a name="893"
+      > </a
+      ><a name="894" class="Symbol"
+      >(</a
+      ><a name="895" href="Comonad.Definition.html#895" class="Bound"
+      >x</a
+      ><a name="896"
+      > </a
+      ><a name="897" class="Symbol"
+      >:</a
+      ><a name="898"
+      > </a
+      ><a name="899" href="Comonad.Definition.html#565" class="Bound"
+      >W</a
+      ><a name="900"
+      > </a
+      ><a name="901" href="Comonad.Definition.html#859" class="Bound"
+      >A</a
+      ><a name="902" class="Symbol"
+      >)</a
       ><a name="903"
       > </a
       ><a name="904" class="Symbol"
       >&#8594;</a
       ><a name="905"
-      > </a
-      ><a name="906" class="PrimitiveType"
-      >Set</a
-      ><a name="909" class="Symbol"
-      >}</a
-      ><a name="910"
       >
-         </a
-      ><a name="920" class="Symbol"
+      </a
+      ><a name="912" href="Comonad.Definition.html#626" class="Bound"
+      >extend</a
+      ><a name="918"
+      > </a
+      ><a name="919" href="Comonad.Definition.html#867" class="Bound"
+      >f</a
+      ><a name="920"
+      > </a
+      ><a name="921" class="Symbol"
       >(</a
-      ><a name="921" href="Comonad.Definition.html#921" class="Bound"
-      >fmap</a
-      ><a name="925"
-      >      </a
-      ><a name="931" class="Symbol"
-      >:</a
-      ><a name="932"
+      ><a name="922" href="Comonad.Definition.html#626" class="Bound"
+      >extend</a
+      ><a name="928"
       > </a
-      ><a name="933" class="Symbol"
-      >&#8704;</a
-      ><a name="934"
+      ><a name="929" href="Comonad.Definition.html#881" class="Bound"
+      >g</a
+      ><a name="930"
       > </a
-      ><a name="935" class="Symbol"
-      >{</a
-      ><a name="936" href="Comonad.Definition.html#936" class="Bound"
-      >A</a
-      ><a name="937"
+      ><a name="931" href="Comonad.Definition.html#895" class="Bound"
+      >x</a
+      ><a name="932" class="Symbol"
+      >)</a
+      ><a name="933"
       > </a
-      ><a name="938" href="Comonad.Definition.html#938" class="Bound"
-      >B</a
-      ><a name="939" class="Symbol"
-      >}</a
-      ><a name="940"
+      ><a name="934" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="935"
       > </a
-      ><a name="941" class="Symbol"
-      >&#8594;</a
+      ><a name="936" href="Comonad.Definition.html#626" class="Bound"
+      >extend</a
       ><a name="942"
       > </a
       ><a name="943" class="Symbol"
       >(</a
-      ><a name="944" href="Comonad.Definition.html#936" class="Bound"
-      >A</a
+      ><a name="944" href="Comonad.Definition.html#867" class="Bound"
+      >f</a
       ><a name="945"
       > </a
-      ><a name="946" class="Symbol"
-      >&#8594;</a
+      ><a name="946" href="Lib.Function.html#55" class="Function Operator"
+      >&#8728;</a
       ><a name="947"
       > </a
-      ><a name="948" href="Comonad.Definition.html#938" class="Bound"
-      >B</a
-      ><a name="949" class="Symbol"
-      >)</a
-      ><a name="950"
-      > </a
-      ><a name="951" class="Symbol"
-      >&#8594;</a
-      ><a name="952"
-      > </a
-      ><a name="953" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
+      ><a name="948" href="Comonad.Definition.html#626" class="Bound"
+      >extend</a
       ><a name="954"
       > </a
-      ><a name="955" href="Comonad.Definition.html#936" class="Bound"
-      >A</a
-      ><a name="956"
-      > </a
-      ><a name="957" class="Symbol"
-      >&#8594;</a
-      ><a name="958"
-      > </a
-      ><a name="959" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
-      ><a name="960"
-      > </a
-      ><a name="961" href="Comonad.Definition.html#938" class="Bound"
-      >B</a
-      ><a name="962" class="Symbol"
+      ><a name="955" href="Comonad.Definition.html#881" class="Bound"
+      >g</a
+      ><a name="956" class="Symbol"
       >)</a
-      ><a name="963"
+      ><a name="957"
+      > </a
+      ><a name="958" href="Comonad.Definition.html#895" class="Bound"
+      >x</a
+      ><a name="959"
       >
-         </a
-      ><a name="973" class="Symbol"
+
+</a
+      ><a name="961" class="Comment"
+      >-- Comonad operations.</a
+      ><a name="983"
+      >
+</a
+      ><a name="984" class="Keyword"
+      >record</a
+      ><a name="990"
+      > </a
+      ><a name="991" href="Comonad.Definition.html#991" class="Record"
+      >Comonad</a
+      ><a name="998"
+      > </a
+      ><a name="999" class="Symbol"
       >(</a
-      ><a name="974" href="Comonad.Definition.html#974" class="Bound"
-      >extract</a
-      ><a name="981"
-      >   </a
-      ><a name="984" class="Symbol"
-      >:</a
-      ><a name="985"
-      > </a
-      ><a name="986" class="Symbol"
-      >&#8704;</a
-      ><a name="987"
-      > </a
-      ><a name="988" class="Symbol"
-      >{</a
-      ><a name="989" href="Comonad.Definition.html#989" class="Bound"
-      >A</a
-      ><a name="990" class="Symbol"
-      >}</a
-      ><a name="991"
-      >   </a
-      ><a name="994" class="Symbol"
-      >&#8594;</a
-      ><a name="995"
-      > </a
-      ><a name="996" href="Comonad.Definition.html#896" class="Bound"
+      ><a name="1000" href="Comonad.Definition.html#1000" class="Bound"
       >W</a
-      ><a name="997"
-      > </a
-      ><a name="998" href="Comonad.Definition.html#989" class="Bound"
-      >A</a
-      ><a name="999"
-      > </a
-      ><a name="1000" class="Symbol"
-      >&#8594;</a
       ><a name="1001"
       > </a
-      ><a name="1002" href="Comonad.Definition.html#989" class="Bound"
-      >A</a
-      ><a name="1003" class="Symbol"
-      >)</a
-      ><a name="1004"
-      >
-         </a
-      ><a name="1014" class="Symbol"
-      >(</a
-      ><a name="1015" href="Comonad.Definition.html#1015" class="Bound"
-      >duplicate</a
-      ><a name="1024"
-      > </a
-      ><a name="1025" class="Symbol"
+      ><a name="1002" class="Symbol"
       >:</a
-      ><a name="1026"
+      ><a name="1003"
       > </a
-      ><a name="1027" class="Symbol"
-      >&#8704;</a
-      ><a name="1028"
+      ><a name="1004" class="PrimitiveType"
+      >Set</a
+      ><a name="1007"
       > </a
-      ><a name="1029" class="Symbol"
-      >{</a
-      ><a name="1030" href="Comonad.Definition.html#1030" class="Bound"
-      >A</a
-      ><a name="1031" class="Symbol"
-      >}</a
-      ><a name="1032"
-      >   </a
-      ><a name="1035" class="Symbol"
+      ><a name="1008" class="Symbol"
       >&#8594;</a
-      ><a name="1036"
+      ><a name="1009"
       > </a
-      ><a name="1037" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
-      ><a name="1038"
+      ><a name="1010" class="PrimitiveType"
+      >Set</a
+      ><a name="1013" class="Symbol"
+      >)</a
+      ><a name="1014"
       > </a
-      ><a name="1039" href="Comonad.Definition.html#1030" class="Bound"
-      >A</a
-      ><a name="1040"
+      ><a name="1015" class="Symbol"
+      >:</a
+      ><a name="1016"
       > </a
-      ><a name="1041" class="Symbol"
-      >&#8594;</a
-      ><a name="1042"
+      ><a name="1017" class="PrimitiveType"
+      >Set&#8321;</a
+      ><a name="1021"
       > </a
-      ><a name="1043" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
-      ><a name="1044"
-      > </a
-      ><a name="1045" class="Symbol"
-      >(</a
-      ><a name="1046" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
+      ><a name="1022" class="Keyword"
+      >where</a
+      ><a name="1027"
+      >
+  </a
+      ><a name="1030" class="Keyword"
+      >field</a
+      ><a name="1035"
+      >
+    </a
+      ><a name="1040" href="Comonad.Definition.html#1040" class="Field"
+      >extract</a
       ><a name="1047"
-      > </a
-      ><a name="1048" href="Comonad.Definition.html#1030" class="Bound"
-      >A</a
-      ><a name="1049" class="Symbol"
-      >))</a
+      >   </a
+      ><a name="1050" class="Symbol"
+      >:</a
       ><a name="1051"
       > </a
       ><a name="1052" class="Symbol"
-      >:</a
+      >&#8704;</a
       ><a name="1053"
       > </a
-      ><a name="1054" class="PrimitiveType"
-      >Set&#8321;</a
-      ><a name="1058"
-      > </a
-      ><a name="1059" class="Keyword"
-      >where</a
+      ><a name="1054" class="Symbol"
+      >{</a
+      ><a name="1055" href="Comonad.Definition.html#1055" class="Bound"
+      >A</a
+      ><a name="1056" class="Symbol"
+      >}</a
+      ><a name="1057"
+      >   </a
+      ><a name="1060" class="Symbol"
+      >&#8594;</a
+      ><a name="1061"
+      >  </a
+      ><a name="1063" href="Comonad.Definition.html#1000" class="Bound"
+      >W</a
       ><a name="1064"
-      >
-  </a
-      ><a name="1067" class="Keyword"
-      >field</a
-      ><a name="1072"
+      > </a
+      ><a name="1065" href="Comonad.Definition.html#1055" class="Bound"
+      >A</a
+      ><a name="1066"
+      > </a
+      ><a name="1067" class="Symbol"
+      >&#8594;</a
+      ><a name="1068"
+      > </a
+      ><a name="1069" href="Comonad.Definition.html#1055" class="Bound"
+      >A</a
+      ><a name="1070"
       >
     </a
-      ><a name="1077" href="Comonad.Definition.html#1077" class="Field"
-      >fmap-id</a
-      ><a name="1084"
-      > </a
+      ><a name="1075" href="Comonad.Definition.html#1075" class="Field"
+      >extend</a
+      ><a name="1081"
+      >    </a
       ><a name="1085" class="Symbol"
       >:</a
       ><a name="1086"
@@ -1048,937 +744,1314 @@
       >{</a
       ><a name="1090" href="Comonad.Definition.html#1090" class="Bound"
       >A</a
-      ><a name="1091" class="Symbol"
-      >}</a
-      ><a name="1092"
+      ><a name="1091"
       > </a
+      ><a name="1092" href="Comonad.Definition.html#1092" class="Bound"
+      >B</a
       ><a name="1093" class="Symbol"
+      >}</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" class="Symbol"
+      >&#8594;</a
+      ><a name="1096"
+      > </a
+      ><a name="1097" class="Symbol"
       >(</a
-      ><a name="1094" href="Comonad.Definition.html#1094" class="Bound"
-      >x</a
-      ><a name="1095"
-      > </a
-      ><a name="1096" class="Symbol"
-      >:</a
-      ><a name="1097"
-      > </a
-      ><a name="1098" href="Comonad.Definition.html#896" class="Bound"
+      ><a name="1098" href="Comonad.Definition.html#1000" class="Bound"
       >W</a
       ><a name="1099"
       > </a
       ><a name="1100" href="Comonad.Definition.html#1090" class="Bound"
       >A</a
-      ><a name="1101" class="Symbol"
-      >)</a
-      ><a name="1102"
+      ><a name="1101"
       > </a
-      ><a name="1103" class="Symbol"
+      ><a name="1102" class="Symbol"
       >&#8594;</a
-      ><a name="1104"
-      >
-      </a
-      ><a name="1111" href="Comonad.Definition.html#921" class="Bound"
-      >fmap</a
-      ><a name="1115"
+      ><a name="1103"
       > </a
-      ><a name="1116" href="Lib.Function.html#299" class="Function"
-      >id</a
+      ><a name="1104" href="Comonad.Definition.html#1092" class="Bound"
+      >B</a
+      ><a name="1105" class="Symbol"
+      >)</a
+      ><a name="1106"
+      > </a
+      ><a name="1107" class="Symbol"
+      >&#8594;</a
+      ><a name="1108"
+      > </a
+      ><a name="1109" href="Comonad.Definition.html#1000" class="Bound"
+      >W</a
+      ><a name="1110"
+      > </a
+      ><a name="1111" href="Comonad.Definition.html#1090" class="Bound"
+      >A</a
+      ><a name="1112"
+      > </a
+      ><a name="1113" class="Symbol"
+      >&#8594;</a
+      ><a name="1114"
+      > </a
+      ><a name="1115" href="Comonad.Definition.html#1000" class="Bound"
+      >W</a
+      ><a name="1116"
+      > </a
+      ><a name="1117" href="Comonad.Definition.html#1092" class="Bound"
+      >B</a
       ><a name="1118"
-      > </a
-      ><a name="1119" href="Comonad.Definition.html#1094" class="Bound"
-      >x</a
-      ><a name="1120"
-      > </a
-      ><a name="1121" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="1122"
-      > </a
-      ><a name="1123" href="Comonad.Definition.html#1094" class="Bound"
-      >x</a
-      ><a name="1124"
       >
     </a
-      ><a name="1129" href="Comonad.Definition.html#1129" class="Field"
-      >fmap-&#8728;</a
-      ><a name="1135"
-      >  </a
-      ><a name="1137" class="Symbol"
+      ><a name="1123" href="Comonad.Definition.html#1123" class="Field"
+      >isComonad</a
+      ><a name="1132"
+      > </a
+      ><a name="1133" class="Symbol"
       >:</a
-      ><a name="1138"
+      ><a name="1134"
       > </a
-      ><a name="1139" class="Symbol"
-      >&#8704;</a
-      ><a name="1140"
+      ><a name="1135" href="Comonad.Definition.html#554" class="Record"
+      >IsComonad</a
+      ><a name="1144"
       > </a
-      ><a name="1141" class="Symbol"
-      >{</a
-      ><a name="1142" href="Comonad.Definition.html#1142" class="Bound"
-      >A</a
-      ><a name="1143"
+      ><a name="1145" href="Comonad.Definition.html#1040" class="Bound"
+      >extract</a
+      ><a name="1152"
       > </a
-      ><a name="1144" href="Comonad.Definition.html#1144" class="Bound"
-      >B</a
-      ><a name="1145"
-      > </a
-      ><a name="1146" href="Comonad.Definition.html#1146" class="Bound"
-      >C</a
-      ><a name="1147" class="Symbol"
-      >}</a
-      ><a name="1148"
-      > </a
-      ><a name="1149" class="Symbol"
-      >(</a
-      ><a name="1150" href="Comonad.Definition.html#1150" class="Bound"
-      >f</a
-      ><a name="1151"
-      > </a
-      ><a name="1152" class="Symbol"
-      >:</a
-      ><a name="1153"
-      > </a
-      ><a name="1154" href="Comonad.Definition.html#1144" class="Bound"
-      >B</a
-      ><a name="1155"
-      > </a
-      ><a name="1156" class="Symbol"
-      >&#8594;</a
-      ><a name="1157"
-      > </a
-      ><a name="1158" href="Comonad.Definition.html#1146" class="Bound"
-      >C</a
-      ><a name="1159" class="Symbol"
-      >)</a
-      ><a name="1160"
-      > </a
-      ><a name="1161" class="Symbol"
-      >(</a
-      ><a name="1162" href="Comonad.Definition.html#1162" class="Bound"
-      >g</a
-      ><a name="1163"
-      > </a
-      ><a name="1164" class="Symbol"
-      >:</a
-      ><a name="1165"
-      > </a
-      ><a name="1166" href="Comonad.Definition.html#1142" class="Bound"
-      >A</a
+      ><a name="1153" href="Comonad.Definition.html#1075" class="Bound"
+      >extend</a
+      ><a name="1159"
+      >
+
+  </a
+      ><a name="1163" class="Keyword"
+      >open</a
       ><a name="1167"
       > </a
-      ><a name="1168" class="Symbol"
-      >&#8594;</a
-      ><a name="1169"
-      > </a
-      ><a name="1170" href="Comonad.Definition.html#1144" class="Bound"
-      >B</a
-      ><a name="1171" class="Symbol"
-      >)</a
-      ><a name="1172"
-      > </a
-      ><a name="1173" class="Symbol"
-      >(</a
-      ><a name="1174" href="Comonad.Definition.html#1174" class="Bound"
-      >x</a
-      ><a name="1175"
-      > </a
-      ><a name="1176" class="Symbol"
-      >:</a
+      ><a name="1168" href="Comonad.Definition.html#554" class="Module"
+      >IsComonad</a
       ><a name="1177"
       > </a
-      ><a name="1178" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
-      ><a name="1179"
-      > </a
-      ><a name="1180" href="Comonad.Definition.html#1142" class="Bound"
-      >A</a
-      ><a name="1181" class="Symbol"
-      >)</a
-      ><a name="1182"
-      > </a
-      ><a name="1183" class="Symbol"
-      >&#8594;</a
-      ><a name="1184"
-      >
-      </a
-      ><a name="1191" href="Comonad.Definition.html#921" class="Bound"
-      >fmap</a
-      ><a name="1195"
-      > </a
-      ><a name="1196" class="Symbol"
-      >(</a
-      ><a name="1197" href="Comonad.Definition.html#1150" class="Bound"
-      >f</a
-      ><a name="1198"
-      > </a
-      ><a name="1199" href="Lib.Function.html#55" class="Function Operator"
-      >&#8728;</a
-      ><a name="1200"
-      > </a
-      ><a name="1201" href="Comonad.Definition.html#1162" class="Bound"
-      >g</a
-      ><a name="1202" class="Symbol"
-      >)</a
-      ><a name="1203"
-      > </a
-      ><a name="1204" href="Comonad.Definition.html#1174" class="Bound"
-      >x</a
-      ><a name="1205"
-      > </a
-      ><a name="1206" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="1207"
-      > </a
-      ><a name="1208" href="Comonad.Definition.html#921" class="Bound"
-      >fmap</a
-      ><a name="1212"
-      > </a
-      ><a name="1213" href="Comonad.Definition.html#1150" class="Bound"
-      >f</a
-      ><a name="1214"
-      > </a
-      ><a name="1215" class="Symbol"
-      >(</a
-      ><a name="1216" href="Comonad.Definition.html#921" class="Bound"
-      >fmap</a
-      ><a name="1220"
-      > </a
-      ><a name="1221" href="Comonad.Definition.html#1162" class="Bound"
-      >g</a
-      ><a name="1222"
-      > </a
-      ><a name="1223" href="Comonad.Definition.html#1174" class="Bound"
-      >x</a
-      ><a name="1224" class="Symbol"
-      >)</a
-      ><a name="1225"
-      >
-
-    </a
-      ><a name="1231" href="Comonad.Definition.html#1231" class="Field"
-      >ext-outer</a
-      ><a name="1240"
-      > </a
-      ><a name="1241" class="Symbol"
-      >:</a
-      ><a name="1242"
-      > </a
-      ><a name="1243" class="Symbol"
-      >&#8704;</a
-      ><a name="1244"
-      > </a
-      ><a name="1245" class="Symbol"
-      >{</a
-      ><a name="1246" href="Comonad.Definition.html#1246" class="Bound"
-      >A</a
-      ><a name="1247" class="Symbol"
-      >}</a
-      ><a name="1248"
-      > </a
-      ><a name="1249" class="Symbol"
-      >(</a
-      ><a name="1250" href="Comonad.Definition.html#1250" class="Bound"
-      >x</a
-      ><a name="1251"
-      > </a
-      ><a name="1252" class="Symbol"
-      >:</a
-      ><a name="1253"
-      > </a
-      ><a name="1254" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
-      ><a name="1255"
-      > </a
-      ><a name="1256" href="Comonad.Definition.html#1246" class="Bound"
-      >A</a
-      ><a name="1257" class="Symbol"
-      >)</a
-      ><a name="1258"
-      > </a
-      ><a name="1259" class="Symbol"
-      >&#8594;</a
-      ><a name="1260"
-      >
-      </a
-      ><a name="1267" href="Comonad.Definition.html#974" class="Bound"
-      >extract</a
-      ><a name="1274"
-      > </a
-      ><a name="1275" class="Symbol"
-      >(</a
-      ><a name="1276" href="Comonad.Definition.html#1015" class="Bound"
-      >duplicate</a
-      ><a name="1285"
-      > </a
-      ><a name="1286" href="Comonad.Definition.html#1250" class="Bound"
-      >x</a
-      ><a name="1287" class="Symbol"
-      >)</a
-      ><a name="1288"
-      > </a
-      ><a name="1289" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="1290"
-      > </a
-      ><a name="1291" href="Comonad.Definition.html#1250" class="Bound"
-      >x</a
-      ><a name="1292"
-      >
-    </a
-      ><a name="1297" href="Comonad.Definition.html#1297" class="Field"
-      >ext-inner</a
-      ><a name="1306"
-      > </a
-      ><a name="1307" class="Symbol"
-      >:</a
-      ><a name="1308"
-      > </a
-      ><a name="1309" class="Symbol"
-      >&#8704;</a
-      ><a name="1310"
-      > </a
-      ><a name="1311" class="Symbol"
-      >{</a
-      ><a name="1312" href="Comonad.Definition.html#1312" class="Bound"
-      >A</a
-      ><a name="1313" class="Symbol"
-      >}</a
-      ><a name="1314"
-      > </a
-      ><a name="1315" class="Symbol"
-      >(</a
-      ><a name="1316" href="Comonad.Definition.html#1316" class="Bound"
-      >x</a
-      ><a name="1317"
-      > </a
-      ><a name="1318" class="Symbol"
-      >:</a
-      ><a name="1319"
-      > </a
-      ><a name="1320" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
-      ><a name="1321"
-      > </a
-      ><a name="1322" href="Comonad.Definition.html#1312" class="Bound"
-      >A</a
-      ><a name="1323" class="Symbol"
-      >)</a
-      ><a name="1324"
-      > </a
-      ><a name="1325" class="Symbol"
-      >&#8594;</a
-      ><a name="1326"
-      >
-      </a
-      ><a name="1333" href="Comonad.Definition.html#921" class="Bound"
-      >fmap</a
-      ><a name="1337"
-      > </a
-      ><a name="1338" href="Comonad.Definition.html#974" class="Bound"
-      >extract</a
-      ><a name="1345"
-      > </a
-      ><a name="1346" class="Symbol"
-      >(</a
-      ><a name="1347" href="Comonad.Definition.html#1015" class="Bound"
-      >duplicate</a
-      ><a name="1356"
-      > </a
-      ><a name="1357" href="Comonad.Definition.html#1316" class="Bound"
-      >x</a
-      ><a name="1358" class="Symbol"
-      >)</a
-      ><a name="1359"
-      > </a
-      ><a name="1360" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="1361"
-      > </a
-      ><a name="1362" href="Comonad.Definition.html#1316" class="Bound"
-      >x</a
-      ><a name="1363"
-      >
-    </a
-      ><a name="1368" href="Comonad.Definition.html#1368" class="Field"
-      >dup-dup</a
-      ><a name="1375"
-      >   </a
-      ><a name="1378" class="Symbol"
-      >:</a
-      ><a name="1379"
-      > </a
-      ><a name="1380" class="Symbol"
-      >&#8704;</a
-      ><a name="1381"
-      > </a
-      ><a name="1382" class="Symbol"
-      >{</a
-      ><a name="1383" href="Comonad.Definition.html#1383" class="Bound"
-      >A</a
-      ><a name="1384" class="Symbol"
-      >}</a
-      ><a name="1385"
-      > </a
-      ><a name="1386" class="Symbol"
-      >(</a
-      ><a name="1387" href="Comonad.Definition.html#1387" class="Bound"
-      >x</a
-      ><a name="1388"
-      > </a
-      ><a name="1389" class="Symbol"
-      >:</a
-      ><a name="1390"
-      > </a
-      ><a name="1391" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
-      ><a name="1392"
-      > </a
-      ><a name="1393" href="Comonad.Definition.html#1383" class="Bound"
-      >A</a
-      ><a name="1394" class="Symbol"
-      >)</a
-      ><a name="1395"
-      > </a
-      ><a name="1396" class="Symbol"
-      >&#8594;</a
-      ><a name="1397"
-      >
-      </a
-      ><a name="1404" href="Comonad.Definition.html#1015" class="Bound"
-      >duplicate</a
-      ><a name="1413"
-      > </a
-      ><a name="1414" class="Symbol"
-      >(</a
-      ><a name="1415" href="Comonad.Definition.html#1015" class="Bound"
-      >duplicate</a
-      ><a name="1424"
-      > </a
-      ><a name="1425" href="Comonad.Definition.html#1387" class="Bound"
-      >x</a
-      ><a name="1426" class="Symbol"
-      >)</a
-      ><a name="1427"
-      > </a
-      ><a name="1428" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="1429"
-      > </a
-      ><a name="1430" href="Comonad.Definition.html#921" class="Bound"
-      >fmap</a
-      ><a name="1434"
-      > </a
-      ><a name="1435" href="Comonad.Definition.html#1015" class="Bound"
-      >duplicate</a
-      ><a name="1444"
-      > </a
-      ><a name="1445" class="Symbol"
-      >(</a
-      ><a name="1446" href="Comonad.Definition.html#1015" class="Bound"
-      >duplicate</a
-      ><a name="1455"
-      > </a
-      ><a name="1456" href="Comonad.Definition.html#1387" class="Bound"
-      >x</a
-      ><a name="1457" class="Symbol"
-      >)</a
-      ><a name="1458"
-      >
-
-    </a
-      ><a name="1464" href="Comonad.Definition.html#1464" class="Field"
-      >dup-nat</a
-      ><a name="1471"
-      > </a
-      ><a name="1472" class="Symbol"
-      >:</a
-      ><a name="1473"
-      > </a
-      ><a name="1474" class="Symbol"
-      >&#8704;</a
-      ><a name="1475"
-      > </a
-      ><a name="1476" class="Symbol"
-      >{</a
-      ><a name="1477" href="Comonad.Definition.html#1477" class="Bound"
-      >A</a
-      ><a name="1478"
-      > </a
-      ><a name="1479" href="Comonad.Definition.html#1479" class="Bound"
-      >B</a
-      ><a name="1480" class="Symbol"
-      >}</a
-      ><a name="1481"
-      > </a
-      ><a name="1482" class="Symbol"
-      >(</a
-      ><a name="1483" href="Comonad.Definition.html#1483" class="Bound"
-      >f</a
-      ><a name="1484"
-      > </a
-      ><a name="1485" class="Symbol"
-      >:</a
-      ><a name="1486"
-      > </a
-      ><a name="1487" href="Comonad.Definition.html#1477" class="Bound"
-      >A</a
-      ><a name="1488"
-      > </a
-      ><a name="1489" class="Symbol"
-      >&#8594;</a
-      ><a name="1490"
-      > </a
-      ><a name="1491" href="Comonad.Definition.html#1479" class="Bound"
-      >B</a
-      ><a name="1492" class="Symbol"
-      >)</a
-      ><a name="1493"
-      > </a
-      ><a name="1494" class="Symbol"
-      >(</a
-      ><a name="1495" href="Comonad.Definition.html#1495" class="Bound"
-      >x</a
-      ><a name="1496"
-      > </a
-      ><a name="1497" class="Symbol"
-      >:</a
-      ><a name="1498"
-      > </a
-      ><a name="1499" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
-      ><a name="1500"
-      > </a
-      ><a name="1501" href="Comonad.Definition.html#1477" class="Bound"
-      >A</a
-      ><a name="1502" class="Symbol"
-      >)</a
-      ><a name="1503"
-      > </a
-      ><a name="1504" class="Symbol"
-      >&#8594;</a
-      ><a name="1505"
-      >
-      </a
-      ><a name="1512" href="Comonad.Definition.html#921" class="Bound"
-      >fmap</a
-      ><a name="1516"
-      > </a
-      ><a name="1517" class="Symbol"
-      >(</a
-      ><a name="1518" href="Comonad.Definition.html#921" class="Bound"
-      >fmap</a
-      ><a name="1522"
-      > </a
-      ><a name="1523" href="Comonad.Definition.html#1483" class="Bound"
-      >f</a
-      ><a name="1524" class="Symbol"
-      >)</a
-      ><a name="1525"
-      > </a
-      ><a name="1526" class="Symbol"
-      >(</a
-      ><a name="1527" href="Comonad.Definition.html#1015" class="Bound"
-      >duplicate</a
-      ><a name="1536"
-      > </a
-      ><a name="1537" href="Comonad.Definition.html#1495" class="Bound"
-      >x</a
-      ><a name="1538" class="Symbol"
-      >)</a
-      ><a name="1539"
-      > </a
-      ><a name="1540" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="1541"
-      > </a
-      ><a name="1542" href="Comonad.Definition.html#1015" class="Bound"
-      >duplicate</a
-      ><a name="1551"
-      > </a
-      ><a name="1552" class="Symbol"
-      >(</a
-      ><a name="1553" href="Comonad.Definition.html#921" class="Bound"
-      >fmap</a
-      ><a name="1557"
-      > </a
-      ><a name="1558" href="Comonad.Definition.html#1483" class="Bound"
-      >f</a
-      ><a name="1559"
-      > </a
-      ><a name="1560" href="Comonad.Definition.html#1495" class="Bound"
-      >x</a
-      ><a name="1561" class="Symbol"
-      >)</a
-      ><a name="1562"
-      >
-    </a
-      ><a name="1567" href="Comonad.Definition.html#1567" class="Field"
-      >ext-nat</a
-      ><a name="1574"
-      > </a
-      ><a name="1575" class="Symbol"
-      >:</a
-      ><a name="1576"
-      > </a
-      ><a name="1577" class="Symbol"
-      >&#8704;</a
-      ><a name="1578"
-      > </a
-      ><a name="1579" class="Symbol"
-      >{</a
-      ><a name="1580" href="Comonad.Definition.html#1580" class="Bound"
-      >A</a
-      ><a name="1581"
-      > </a
-      ><a name="1582" href="Comonad.Definition.html#1582" class="Bound"
-      >B</a
-      ><a name="1583" class="Symbol"
-      >}</a
-      ><a name="1584"
-      > </a
-      ><a name="1585" class="Symbol"
-      >(</a
-      ><a name="1586" href="Comonad.Definition.html#1586" class="Bound"
-      >f</a
-      ><a name="1587"
-      > </a
-      ><a name="1588" class="Symbol"
-      >:</a
-      ><a name="1589"
-      > </a
-      ><a name="1590" href="Comonad.Definition.html#1580" class="Bound"
-      >A</a
-      ><a name="1591"
-      > </a
-      ><a name="1592" class="Symbol"
-      >&#8594;</a
-      ><a name="1593"
-      > </a
-      ><a name="1594" href="Comonad.Definition.html#1582" class="Bound"
-      >B</a
-      ><a name="1595" class="Symbol"
-      >)</a
-      ><a name="1596"
-      > </a
-      ><a name="1597" class="Symbol"
-      >(</a
-      ><a name="1598" href="Comonad.Definition.html#1598" class="Bound"
-      >x</a
-      ><a name="1599"
-      > </a
-      ><a name="1600" class="Symbol"
-      >:</a
-      ><a name="1601"
-      > </a
-      ><a name="1602" href="Comonad.Definition.html#896" class="Bound"
-      >W</a
-      ><a name="1603"
-      > </a
-      ><a name="1604" href="Comonad.Definition.html#1580" class="Bound"
-      >A</a
-      ><a name="1605" class="Symbol"
-      >)</a
-      ><a name="1606"
-      > </a
-      ><a name="1607" class="Symbol"
-      >&#8594;</a
-      ><a name="1608"
-      >
-      </a
-      ><a name="1615" href="Comonad.Definition.html#1586" class="Bound"
-      >f</a
-      ><a name="1616"
-      > </a
-      ><a name="1617" class="Symbol"
-      >(</a
-      ><a name="1618" href="Comonad.Definition.html#974" class="Bound"
-      >extract</a
-      ><a name="1625"
-      > </a
-      ><a name="1626" href="Comonad.Definition.html#1598" class="Bound"
-      >x</a
-      ><a name="1627" class="Symbol"
-      >)</a
-      ><a name="1628"
-      > </a
-      ><a name="1629" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="1630"
-      > </a
-      ><a name="1631" href="Comonad.Definition.html#974" class="Bound"
-      >extract</a
-      ><a name="1638"
-      > </a
-      ><a name="1639" class="Symbol"
-      >(</a
-      ><a name="1640" href="Comonad.Definition.html#921" class="Bound"
-      >fmap</a
-      ><a name="1644"
-      > </a
-      ><a name="1645" href="Comonad.Definition.html#1586" class="Bound"
-      >f</a
-      ><a name="1646"
-      > </a
-      ><a name="1647" href="Comonad.Definition.html#1598" class="Bound"
-      >x</a
-      ><a name="1648" class="Symbol"
-      >)</a
-      ><a name="1649"
+      ><a name="1178" href="Comonad.Definition.html#1123" class="Field"
+      >isComonad</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" class="Keyword"
+      >public</a
+      ><a name="1194"
       >
 
 </a
-      ><a name="1651" class="Keyword"
+      ><a name="1196" class="Comment"
+      >------------------------------------------------------------------------</a
+      ><a name="1268"
+      >
+</a
+      ><a name="1269" class="Comment"
+      >-- Comonad definition using fmap, extract and duplicate.</a
+      ><a name="1325"
+      >
+</a
+      ><a name="1326" class="Comment"
+      >--</a
+      ><a name="1328"
+      >
+</a
+      ><a name="1329" class="Comment"
+      >-- Note that for simplicity, functor operation and laws are</a
+      ><a name="1388"
+      >
+</a
+      ><a name="1389" class="Comment"
+      >-- baked into this definition.</a
+      ><a name="1419"
+      >
+</a
+      ><a name="1420" class="Comment"
+      >------------------------------------------------------------------------</a
+      ><a name="1492"
+      >
+
+</a
+      ><a name="1494" class="Comment"
+      >-- Comonad laws.</a
+      ><a name="1510"
+      >
+</a
+      ><a name="1511" class="Keyword"
       >record</a
-      ><a name="1657"
+      ><a name="1517"
       > </a
-      ><a name="1658" href="Comonad.Definition.html#1658" class="Record"
-      >Comonad&#8242;</a
-      ><a name="1666"
+      ><a name="1518" href="Comonad.Definition.html#1518" class="Record"
+      >IsComonad&#8242;</a
+      ><a name="1528"
       > </a
-      ><a name="1667" class="Symbol"
-      >(</a
-      ><a name="1668" href="Comonad.Definition.html#1668" class="Bound"
+      ><a name="1529" class="Symbol"
+      >{</a
+      ><a name="1530" href="Comonad.Definition.html#1530" class="Bound"
       >W</a
-      ><a name="1669"
+      ><a name="1531"
       > </a
-      ><a name="1670" class="Symbol"
+      ><a name="1532" class="Symbol"
       >:</a
-      ><a name="1671"
+      ><a name="1533"
       > </a
-      ><a name="1672" class="PrimitiveType"
+      ><a name="1534" class="PrimitiveType"
       >Set</a
-      ><a name="1675"
+      ><a name="1537"
       > </a
-      ><a name="1676" class="Symbol"
+      ><a name="1538" class="Symbol"
       >&#8594;</a
-      ><a name="1677"
+      ><a name="1539"
       > </a
-      ><a name="1678" class="PrimitiveType"
+      ><a name="1540" class="PrimitiveType"
       >Set</a
-      ><a name="1681" class="Symbol"
-      >)</a
-      ><a name="1682"
-      > </a
-      ><a name="1683" class="Symbol"
+      ><a name="1543" class="Symbol"
+      >}</a
+      ><a name="1544"
+      >
+         </a
+      ><a name="1554" class="Symbol"
+      >(</a
+      ><a name="1555" href="Comonad.Definition.html#1555" class="Bound"
+      >fmap</a
+      ><a name="1559"
+      >      </a
+      ><a name="1565" class="Symbol"
       >:</a
-      ><a name="1684"
+      ><a name="1566"
       > </a
-      ><a name="1685" class="PrimitiveType"
+      ><a name="1567" class="Symbol"
+      >&#8704;</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" class="Symbol"
+      >{</a
+      ><a name="1570" href="Comonad.Definition.html#1570" class="Bound"
+      >A</a
+      ><a name="1571"
+      > </a
+      ><a name="1572" href="Comonad.Definition.html#1572" class="Bound"
+      >B</a
+      ><a name="1573" class="Symbol"
+      >}</a
+      ><a name="1574"
+      > </a
+      ><a name="1575" class="Symbol"
+      >&#8594;</a
+      ><a name="1576"
+      > </a
+      ><a name="1577" class="Symbol"
+      >(</a
+      ><a name="1578" href="Comonad.Definition.html#1570" class="Bound"
+      >A</a
+      ><a name="1579"
+      > </a
+      ><a name="1580" class="Symbol"
+      >&#8594;</a
+      ><a name="1581"
+      > </a
+      ><a name="1582" href="Comonad.Definition.html#1572" class="Bound"
+      >B</a
+      ><a name="1583" class="Symbol"
+      >)</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" class="Symbol"
+      >&#8594;</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" href="Comonad.Definition.html#1570" class="Bound"
+      >A</a
+      ><a name="1590"
+      > </a
+      ><a name="1591" class="Symbol"
+      >&#8594;</a
+      ><a name="1592"
+      > </a
+      ><a name="1593" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="1594"
+      > </a
+      ><a name="1595" href="Comonad.Definition.html#1572" class="Bound"
+      >B</a
+      ><a name="1596" class="Symbol"
+      >)</a
+      ><a name="1597"
+      >
+         </a
+      ><a name="1607" class="Symbol"
+      >(</a
+      ><a name="1608" href="Comonad.Definition.html#1608" class="Bound"
+      >extract</a
+      ><a name="1615"
+      >   </a
+      ><a name="1618" class="Symbol"
+      >:</a
+      ><a name="1619"
+      > </a
+      ><a name="1620" class="Symbol"
+      >&#8704;</a
+      ><a name="1621"
+      > </a
+      ><a name="1622" class="Symbol"
+      >{</a
+      ><a name="1623" href="Comonad.Definition.html#1623" class="Bound"
+      >A</a
+      ><a name="1624" class="Symbol"
+      >}</a
+      ><a name="1625"
+      >   </a
+      ><a name="1628" class="Symbol"
+      >&#8594;</a
+      ><a name="1629"
+      > </a
+      ><a name="1630" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" href="Comonad.Definition.html#1623" class="Bound"
+      >A</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" class="Symbol"
+      >&#8594;</a
+      ><a name="1635"
+      > </a
+      ><a name="1636" href="Comonad.Definition.html#1623" class="Bound"
+      >A</a
+      ><a name="1637" class="Symbol"
+      >)</a
+      ><a name="1638"
+      >
+         </a
+      ><a name="1648" class="Symbol"
+      >(</a
+      ><a name="1649" href="Comonad.Definition.html#1649" class="Bound"
+      >duplicate</a
+      ><a name="1658"
+      > </a
+      ><a name="1659" class="Symbol"
+      >:</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" class="Symbol"
+      >&#8704;</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" class="Symbol"
+      >{</a
+      ><a name="1664" href="Comonad.Definition.html#1664" class="Bound"
+      >A</a
+      ><a name="1665" class="Symbol"
+      >}</a
+      ><a name="1666"
+      >   </a
+      ><a name="1669" class="Symbol"
+      >&#8594;</a
+      ><a name="1670"
+      > </a
+      ><a name="1671" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="1672"
+      > </a
+      ><a name="1673" href="Comonad.Definition.html#1664" class="Bound"
+      >A</a
+      ><a name="1674"
+      > </a
+      ><a name="1675" class="Symbol"
+      >&#8594;</a
+      ><a name="1676"
+      > </a
+      ><a name="1677" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="1678"
+      > </a
+      ><a name="1679" class="Symbol"
+      >(</a
+      ><a name="1680" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" href="Comonad.Definition.html#1664" class="Bound"
+      >A</a
+      ><a name="1683" class="Symbol"
+      >))</a
+      ><a name="1685"
+      > </a
+      ><a name="1686" class="Symbol"
+      >:</a
+      ><a name="1687"
+      > </a
+      ><a name="1688" class="PrimitiveType"
       >Set&#8321;</a
-      ><a name="1689"
+      ><a name="1692"
       > </a
-      ><a name="1690" class="Keyword"
+      ><a name="1693" class="Keyword"
       >where</a
-      ><a name="1695"
+      ><a name="1698"
       >
   </a
-      ><a name="1698" class="Keyword"
+      ><a name="1701" class="Keyword"
       >field</a
-      ><a name="1703"
+      ><a name="1706"
       >
     </a
-      ><a name="1708" href="Comonad.Definition.html#1708" class="Field"
-      >fmap</a
-      ><a name="1712"
-      >      </a
-      ><a name="1718" class="Symbol"
+      ><a name="1711" href="Comonad.Definition.html#1711" class="Field"
+      >fmap-id</a
+      ><a name="1718"
+      > </a
+      ><a name="1719" class="Symbol"
       >:</a
-      ><a name="1719"
+      ><a name="1720"
       > </a
-      ><a name="1720" class="Symbol"
+      ><a name="1721" class="Symbol"
       >&#8704;</a
-      ><a name="1721"
+      ><a name="1722"
       > </a
-      ><a name="1722" class="Symbol"
+      ><a name="1723" class="Symbol"
       >{</a
-      ><a name="1723" href="Comonad.Definition.html#1723" class="Bound"
+      ><a name="1724" href="Comonad.Definition.html#1724" class="Bound"
       >A</a
-      ><a name="1724"
-      > </a
-      ><a name="1725" href="Comonad.Definition.html#1725" class="Bound"
-      >B</a
-      ><a name="1726" class="Symbol"
+      ><a name="1725" class="Symbol"
       >}</a
-      ><a name="1727"
+      ><a name="1726"
       > </a
-      ><a name="1728" class="Symbol"
-      >&#8594;</a
+      ><a name="1727" class="Symbol"
+      >(</a
+      ><a name="1728" href="Comonad.Definition.html#1728" class="Bound"
+      >x</a
       ><a name="1729"
       > </a
       ><a name="1730" class="Symbol"
-      >(</a
-      ><a name="1731" href="Comonad.Definition.html#1723" class="Bound"
+      >:</a
+      ><a name="1731"
+      > </a
+      ><a name="1732" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="1733"
+      > </a
+      ><a name="1734" href="Comonad.Definition.html#1724" class="Bound"
       >A</a
-      ><a name="1732"
-      > </a
-      ><a name="1733" class="Symbol"
-      >&#8594;</a
-      ><a name="1734"
-      > </a
-      ><a name="1735" href="Comonad.Definition.html#1725" class="Bound"
-      >B</a
-      ><a name="1736" class="Symbol"
+      ><a name="1735" class="Symbol"
       >)</a
-      ><a name="1737"
+      ><a name="1736"
       > </a
-      ><a name="1738" class="Symbol"
+      ><a name="1737" class="Symbol"
       >&#8594;</a
-      ><a name="1739"
-      > </a
-      ><a name="1740" href="Comonad.Definition.html#1668" class="Bound"
-      >W</a
-      ><a name="1741"
-      > </a
-      ><a name="1742" href="Comonad.Definition.html#1723" class="Bound"
-      >A</a
-      ><a name="1743"
-      > </a
-      ><a name="1744" class="Symbol"
-      >&#8594;</a
-      ><a name="1745"
-      > </a
-      ><a name="1746" href="Comonad.Definition.html#1668" class="Bound"
-      >W</a
-      ><a name="1747"
-      > </a
-      ><a name="1748" href="Comonad.Definition.html#1725" class="Bound"
-      >B</a
+      ><a name="1738"
+      >
+      </a
+      ><a name="1745" href="Comonad.Definition.html#1555" class="Bound"
+      >fmap</a
       ><a name="1749"
+      > </a
+      ><a name="1750" href="Lib.Function.html#299" class="Function"
+      >id</a
+      ><a name="1752"
+      > </a
+      ><a name="1753" href="Comonad.Definition.html#1728" class="Bound"
+      >x</a
+      ><a name="1754"
+      > </a
+      ><a name="1755" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1756"
+      > </a
+      ><a name="1757" href="Comonad.Definition.html#1728" class="Bound"
+      >x</a
+      ><a name="1758"
       >
     </a
-      ><a name="1754" href="Comonad.Definition.html#1754" class="Field"
-      >extract</a
-      ><a name="1761"
-      >   </a
-      ><a name="1764" class="Symbol"
+      ><a name="1763" href="Comonad.Definition.html#1763" class="Field"
+      >fmap-&#8728;</a
+      ><a name="1769"
+      >  </a
+      ><a name="1771" class="Symbol"
       >:</a
-      ><a name="1765"
+      ><a name="1772"
       > </a
-      ><a name="1766" class="Symbol"
+      ><a name="1773" class="Symbol"
       >&#8704;</a
-      ><a name="1767"
+      ><a name="1774"
       > </a
-      ><a name="1768" class="Symbol"
+      ><a name="1775" class="Symbol"
       >{</a
-      ><a name="1769" href="Comonad.Definition.html#1769" class="Bound"
+      ><a name="1776" href="Comonad.Definition.html#1776" class="Bound"
       >A</a
-      ><a name="1770" class="Symbol"
-      >}</a
-      ><a name="1771"
-      >   </a
-      ><a name="1774" class="Symbol"
-      >&#8594;</a
-      ><a name="1775"
-      > </a
-      ><a name="1776" href="Comonad.Definition.html#1668" class="Bound"
-      >W</a
       ><a name="1777"
       > </a
-      ><a name="1778" href="Comonad.Definition.html#1769" class="Bound"
-      >A</a
+      ><a name="1778" href="Comonad.Definition.html#1778" class="Bound"
+      >B</a
       ><a name="1779"
       > </a
-      ><a name="1780" class="Symbol"
-      >&#8594;</a
-      ><a name="1781"
+      ><a name="1780" href="Comonad.Definition.html#1780" class="Bound"
+      >C</a
+      ><a name="1781" class="Symbol"
+      >}</a
+      ><a name="1782"
       > </a
-      ><a name="1782" href="Comonad.Definition.html#1769" class="Bound"
-      >A</a
-      ><a name="1783"
-      >
-    </a
-      ><a name="1788" href="Comonad.Definition.html#1788" class="Field"
-      >duplicate</a
+      ><a name="1783" class="Symbol"
+      >(</a
+      ><a name="1784" href="Comonad.Definition.html#1784" class="Bound"
+      >f</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" class="Symbol"
+      >:</a
+      ><a name="1787"
+      > </a
+      ><a name="1788" href="Comonad.Definition.html#1778" class="Bound"
+      >B</a
+      ><a name="1789"
+      > </a
+      ><a name="1790" class="Symbol"
+      >&#8594;</a
+      ><a name="1791"
+      > </a
+      ><a name="1792" href="Comonad.Definition.html#1780" class="Bound"
+      >C</a
+      ><a name="1793" class="Symbol"
+      >)</a
+      ><a name="1794"
+      > </a
+      ><a name="1795" class="Symbol"
+      >(</a
+      ><a name="1796" href="Comonad.Definition.html#1796" class="Bound"
+      >g</a
       ><a name="1797"
       > </a
       ><a name="1798" class="Symbol"
       >:</a
       ><a name="1799"
       > </a
-      ><a name="1800" class="Symbol"
-      >&#8704;</a
+      ><a name="1800" href="Comonad.Definition.html#1776" class="Bound"
+      >A</a
       ><a name="1801"
       > </a
       ><a name="1802" class="Symbol"
-      >{</a
-      ><a name="1803" href="Comonad.Definition.html#1803" class="Bound"
-      >A</a
-      ><a name="1804" class="Symbol"
-      >}</a
-      ><a name="1805"
-      >   </a
-      ><a name="1808" class="Symbol"
       >&#8594;</a
+      ><a name="1803"
+      > </a
+      ><a name="1804" href="Comonad.Definition.html#1778" class="Bound"
+      >B</a
+      ><a name="1805" class="Symbol"
+      >)</a
+      ><a name="1806"
+      > </a
+      ><a name="1807" class="Symbol"
+      >(</a
+      ><a name="1808" href="Comonad.Definition.html#1808" class="Bound"
+      >x</a
       ><a name="1809"
       > </a
-      ><a name="1810" href="Comonad.Definition.html#1668" class="Bound"
-      >W</a
+      ><a name="1810" class="Symbol"
+      >:</a
       ><a name="1811"
       > </a
-      ><a name="1812" href="Comonad.Definition.html#1803" class="Bound"
-      >A</a
+      ><a name="1812" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
       ><a name="1813"
       > </a
-      ><a name="1814" class="Symbol"
-      >&#8594;</a
-      ><a name="1815"
-      > </a
-      ><a name="1816" href="Comonad.Definition.html#1668" class="Bound"
-      >W</a
-      ><a name="1817"
-      > </a
-      ><a name="1818" class="Symbol"
-      >(</a
-      ><a name="1819" href="Comonad.Definition.html#1668" class="Bound"
-      >W</a
-      ><a name="1820"
-      > </a
-      ><a name="1821" href="Comonad.Definition.html#1803" class="Bound"
+      ><a name="1814" href="Comonad.Definition.html#1776" class="Bound"
       >A</a
-      ><a name="1822" class="Symbol"
+      ><a name="1815" class="Symbol"
       >)</a
-      ><a name="1823"
+      ><a name="1816"
+      > </a
+      ><a name="1817" class="Symbol"
+      >&#8594;</a
+      ><a name="1818"
       >
-    </a
-      ><a name="1828" href="Comonad.Definition.html#1828" class="Field"
-      >isComonad</a
+      </a
+      ><a name="1825" href="Comonad.Definition.html#1555" class="Bound"
+      >fmap</a
+      ><a name="1829"
+      > </a
+      ><a name="1830" class="Symbol"
+      >(</a
+      ><a name="1831" href="Comonad.Definition.html#1784" class="Bound"
+      >f</a
+      ><a name="1832"
+      > </a
+      ><a name="1833" href="Lib.Function.html#55" class="Function Operator"
+      >&#8728;</a
+      ><a name="1834"
+      > </a
+      ><a name="1835" href="Comonad.Definition.html#1796" class="Bound"
+      >g</a
+      ><a name="1836" class="Symbol"
+      >)</a
       ><a name="1837"
       > </a
-      ><a name="1838" class="Symbol"
-      >:</a
+      ><a name="1838" href="Comonad.Definition.html#1808" class="Bound"
+      >x</a
       ><a name="1839"
       > </a
-      ><a name="1840" href="Comonad.Definition.html#884" class="Record"
-      >IsComonad&#8242;</a
-      ><a name="1850"
+      ><a name="1840" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1841"
       > </a
-      ><a name="1851" href="Comonad.Definition.html#1708" class="Bound"
+      ><a name="1842" href="Comonad.Definition.html#1555" class="Bound"
       >fmap</a
-      ><a name="1855"
+      ><a name="1846"
       > </a
-      ><a name="1856" href="Comonad.Definition.html#1754" class="Bound"
+      ><a name="1847" href="Comonad.Definition.html#1784" class="Bound"
+      >f</a
+      ><a name="1848"
+      > </a
+      ><a name="1849" class="Symbol"
+      >(</a
+      ><a name="1850" href="Comonad.Definition.html#1555" class="Bound"
+      >fmap</a
+      ><a name="1854"
+      > </a
+      ><a name="1855" href="Comonad.Definition.html#1796" class="Bound"
+      >g</a
+      ><a name="1856"
+      > </a
+      ><a name="1857" href="Comonad.Definition.html#1808" class="Bound"
+      >x</a
+      ><a name="1858" class="Symbol"
+      >)</a
+      ><a name="1859"
+      >
+
+    </a
+      ><a name="1865" href="Comonad.Definition.html#1865" class="Field"
+      >ext-outer</a
+      ><a name="1874"
+      > </a
+      ><a name="1875" class="Symbol"
+      >:</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" class="Symbol"
+      >&#8704;</a
+      ><a name="1878"
+      > </a
+      ><a name="1879" class="Symbol"
+      >{</a
+      ><a name="1880" href="Comonad.Definition.html#1880" class="Bound"
+      >A</a
+      ><a name="1881" class="Symbol"
+      >}</a
+      ><a name="1882"
+      > </a
+      ><a name="1883" class="Symbol"
+      >(</a
+      ><a name="1884" href="Comonad.Definition.html#1884" class="Bound"
+      >x</a
+      ><a name="1885"
+      > </a
+      ><a name="1886" class="Symbol"
+      >:</a
+      ><a name="1887"
+      > </a
+      ><a name="1888" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="1889"
+      > </a
+      ><a name="1890" href="Comonad.Definition.html#1880" class="Bound"
+      >A</a
+      ><a name="1891" class="Symbol"
+      >)</a
+      ><a name="1892"
+      > </a
+      ><a name="1893" class="Symbol"
+      >&#8594;</a
+      ><a name="1894"
+      >
+      </a
+      ><a name="1901" href="Comonad.Definition.html#1608" class="Bound"
       >extract</a
-      ><a name="1863"
+      ><a name="1908"
       > </a
-      ><a name="1864" href="Comonad.Definition.html#1788" class="Bound"
+      ><a name="1909" class="Symbol"
+      >(</a
+      ><a name="1910" href="Comonad.Definition.html#1649" class="Bound"
       >duplicate</a
-      ><a name="1873"
+      ><a name="1919"
+      > </a
+      ><a name="1920" href="Comonad.Definition.html#1884" class="Bound"
+      >x</a
+      ><a name="1921" class="Symbol"
+      >)</a
+      ><a name="1922"
+      > </a
+      ><a name="1923" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1924"
+      > </a
+      ><a name="1925" href="Comonad.Definition.html#1884" class="Bound"
+      >x</a
+      ><a name="1926"
+      >
+    </a
+      ><a name="1931" href="Comonad.Definition.html#1931" class="Field"
+      >ext-inner</a
+      ><a name="1940"
+      > </a
+      ><a name="1941" class="Symbol"
+      >:</a
+      ><a name="1942"
+      > </a
+      ><a name="1943" class="Symbol"
+      >&#8704;</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" class="Symbol"
+      >{</a
+      ><a name="1946" href="Comonad.Definition.html#1946" class="Bound"
+      >A</a
+      ><a name="1947" class="Symbol"
+      >}</a
+      ><a name="1948"
+      > </a
+      ><a name="1949" class="Symbol"
+      >(</a
+      ><a name="1950" href="Comonad.Definition.html#1950" class="Bound"
+      >x</a
+      ><a name="1951"
+      > </a
+      ><a name="1952" class="Symbol"
+      >:</a
+      ><a name="1953"
+      > </a
+      ><a name="1954" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="1955"
+      > </a
+      ><a name="1956" href="Comonad.Definition.html#1946" class="Bound"
+      >A</a
+      ><a name="1957" class="Symbol"
+      >)</a
+      ><a name="1958"
+      > </a
+      ><a name="1959" class="Symbol"
+      >&#8594;</a
+      ><a name="1960"
+      >
+      </a
+      ><a name="1967" href="Comonad.Definition.html#1555" class="Bound"
+      >fmap</a
+      ><a name="1971"
+      > </a
+      ><a name="1972" href="Comonad.Definition.html#1608" class="Bound"
+      >extract</a
+      ><a name="1979"
+      > </a
+      ><a name="1980" class="Symbol"
+      >(</a
+      ><a name="1981" href="Comonad.Definition.html#1649" class="Bound"
+      >duplicate</a
+      ><a name="1990"
+      > </a
+      ><a name="1991" href="Comonad.Definition.html#1950" class="Bound"
+      >x</a
+      ><a name="1992" class="Symbol"
+      >)</a
+      ><a name="1993"
+      > </a
+      ><a name="1994" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1995"
+      > </a
+      ><a name="1996" href="Comonad.Definition.html#1950" class="Bound"
+      >x</a
+      ><a name="1997"
+      >
+    </a
+      ><a name="2002" href="Comonad.Definition.html#2002" class="Field"
+      >dup-dup</a
+      ><a name="2009"
+      >   </a
+      ><a name="2012" class="Symbol"
+      >:</a
+      ><a name="2013"
+      > </a
+      ><a name="2014" class="Symbol"
+      >&#8704;</a
+      ><a name="2015"
+      > </a
+      ><a name="2016" class="Symbol"
+      >{</a
+      ><a name="2017" href="Comonad.Definition.html#2017" class="Bound"
+      >A</a
+      ><a name="2018" class="Symbol"
+      >}</a
+      ><a name="2019"
+      > </a
+      ><a name="2020" class="Symbol"
+      >(</a
+      ><a name="2021" href="Comonad.Definition.html#2021" class="Bound"
+      >x</a
+      ><a name="2022"
+      > </a
+      ><a name="2023" class="Symbol"
+      >:</a
+      ><a name="2024"
+      > </a
+      ><a name="2025" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="2026"
+      > </a
+      ><a name="2027" href="Comonad.Definition.html#2017" class="Bound"
+      >A</a
+      ><a name="2028" class="Symbol"
+      >)</a
+      ><a name="2029"
+      > </a
+      ><a name="2030" class="Symbol"
+      >&#8594;</a
+      ><a name="2031"
+      >
+      </a
+      ><a name="2038" href="Comonad.Definition.html#1649" class="Bound"
+      >duplicate</a
+      ><a name="2047"
+      > </a
+      ><a name="2048" class="Symbol"
+      >(</a
+      ><a name="2049" href="Comonad.Definition.html#1649" class="Bound"
+      >duplicate</a
+      ><a name="2058"
+      > </a
+      ><a name="2059" href="Comonad.Definition.html#2021" class="Bound"
+      >x</a
+      ><a name="2060" class="Symbol"
+      >)</a
+      ><a name="2061"
+      > </a
+      ><a name="2062" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2063"
+      > </a
+      ><a name="2064" href="Comonad.Definition.html#1555" class="Bound"
+      >fmap</a
+      ><a name="2068"
+      > </a
+      ><a name="2069" href="Comonad.Definition.html#1649" class="Bound"
+      >duplicate</a
+      ><a name="2078"
+      > </a
+      ><a name="2079" class="Symbol"
+      >(</a
+      ><a name="2080" href="Comonad.Definition.html#1649" class="Bound"
+      >duplicate</a
+      ><a name="2089"
+      > </a
+      ><a name="2090" href="Comonad.Definition.html#2021" class="Bound"
+      >x</a
+      ><a name="2091" class="Symbol"
+      >)</a
+      ><a name="2092"
+      >
+
+    </a
+      ><a name="2098" href="Comonad.Definition.html#2098" class="Field"
+      >dup-nat</a
+      ><a name="2105"
+      > </a
+      ><a name="2106" class="Symbol"
+      >:</a
+      ><a name="2107"
+      > </a
+      ><a name="2108" class="Symbol"
+      >&#8704;</a
+      ><a name="2109"
+      > </a
+      ><a name="2110" class="Symbol"
+      >{</a
+      ><a name="2111" href="Comonad.Definition.html#2111" class="Bound"
+      >A</a
+      ><a name="2112"
+      > </a
+      ><a name="2113" href="Comonad.Definition.html#2113" class="Bound"
+      >B</a
+      ><a name="2114" class="Symbol"
+      >}</a
+      ><a name="2115"
+      > </a
+      ><a name="2116" class="Symbol"
+      >(</a
+      ><a name="2117" href="Comonad.Definition.html#2117" class="Bound"
+      >f</a
+      ><a name="2118"
+      > </a
+      ><a name="2119" class="Symbol"
+      >:</a
+      ><a name="2120"
+      > </a
+      ><a name="2121" href="Comonad.Definition.html#2111" class="Bound"
+      >A</a
+      ><a name="2122"
+      > </a
+      ><a name="2123" class="Symbol"
+      >&#8594;</a
+      ><a name="2124"
+      > </a
+      ><a name="2125" href="Comonad.Definition.html#2113" class="Bound"
+      >B</a
+      ><a name="2126" class="Symbol"
+      >)</a
+      ><a name="2127"
+      > </a
+      ><a name="2128" class="Symbol"
+      >(</a
+      ><a name="2129" href="Comonad.Definition.html#2129" class="Bound"
+      >x</a
+      ><a name="2130"
+      > </a
+      ><a name="2131" class="Symbol"
+      >:</a
+      ><a name="2132"
+      > </a
+      ><a name="2133" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="2134"
+      > </a
+      ><a name="2135" href="Comonad.Definition.html#2111" class="Bound"
+      >A</a
+      ><a name="2136" class="Symbol"
+      >)</a
+      ><a name="2137"
+      > </a
+      ><a name="2138" class="Symbol"
+      >&#8594;</a
+      ><a name="2139"
+      >
+      </a
+      ><a name="2146" href="Comonad.Definition.html#1555" class="Bound"
+      >fmap</a
+      ><a name="2150"
+      > </a
+      ><a name="2151" class="Symbol"
+      >(</a
+      ><a name="2152" href="Comonad.Definition.html#1555" class="Bound"
+      >fmap</a
+      ><a name="2156"
+      > </a
+      ><a name="2157" href="Comonad.Definition.html#2117" class="Bound"
+      >f</a
+      ><a name="2158" class="Symbol"
+      >)</a
+      ><a name="2159"
+      > </a
+      ><a name="2160" class="Symbol"
+      >(</a
+      ><a name="2161" href="Comonad.Definition.html#1649" class="Bound"
+      >duplicate</a
+      ><a name="2170"
+      > </a
+      ><a name="2171" href="Comonad.Definition.html#2129" class="Bound"
+      >x</a
+      ><a name="2172" class="Symbol"
+      >)</a
+      ><a name="2173"
+      > </a
+      ><a name="2174" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2175"
+      > </a
+      ><a name="2176" href="Comonad.Definition.html#1649" class="Bound"
+      >duplicate</a
+      ><a name="2185"
+      > </a
+      ><a name="2186" class="Symbol"
+      >(</a
+      ><a name="2187" href="Comonad.Definition.html#1555" class="Bound"
+      >fmap</a
+      ><a name="2191"
+      > </a
+      ><a name="2192" href="Comonad.Definition.html#2117" class="Bound"
+      >f</a
+      ><a name="2193"
+      > </a
+      ><a name="2194" href="Comonad.Definition.html#2129" class="Bound"
+      >x</a
+      ><a name="2195" class="Symbol"
+      >)</a
+      ><a name="2196"
+      >
+    </a
+      ><a name="2201" href="Comonad.Definition.html#2201" class="Field"
+      >ext-nat</a
+      ><a name="2208"
+      > </a
+      ><a name="2209" class="Symbol"
+      >:</a
+      ><a name="2210"
+      > </a
+      ><a name="2211" class="Symbol"
+      >&#8704;</a
+      ><a name="2212"
+      > </a
+      ><a name="2213" class="Symbol"
+      >{</a
+      ><a name="2214" href="Comonad.Definition.html#2214" class="Bound"
+      >A</a
+      ><a name="2215"
+      > </a
+      ><a name="2216" href="Comonad.Definition.html#2216" class="Bound"
+      >B</a
+      ><a name="2217" class="Symbol"
+      >}</a
+      ><a name="2218"
+      > </a
+      ><a name="2219" class="Symbol"
+      >(</a
+      ><a name="2220" href="Comonad.Definition.html#2220" class="Bound"
+      >f</a
+      ><a name="2221"
+      > </a
+      ><a name="2222" class="Symbol"
+      >:</a
+      ><a name="2223"
+      > </a
+      ><a name="2224" href="Comonad.Definition.html#2214" class="Bound"
+      >A</a
+      ><a name="2225"
+      > </a
+      ><a name="2226" class="Symbol"
+      >&#8594;</a
+      ><a name="2227"
+      > </a
+      ><a name="2228" href="Comonad.Definition.html#2216" class="Bound"
+      >B</a
+      ><a name="2229" class="Symbol"
+      >)</a
+      ><a name="2230"
+      > </a
+      ><a name="2231" class="Symbol"
+      >(</a
+      ><a name="2232" href="Comonad.Definition.html#2232" class="Bound"
+      >x</a
+      ><a name="2233"
+      > </a
+      ><a name="2234" class="Symbol"
+      >:</a
+      ><a name="2235"
+      > </a
+      ><a name="2236" href="Comonad.Definition.html#1530" class="Bound"
+      >W</a
+      ><a name="2237"
+      > </a
+      ><a name="2238" href="Comonad.Definition.html#2214" class="Bound"
+      >A</a
+      ><a name="2239" class="Symbol"
+      >)</a
+      ><a name="2240"
+      > </a
+      ><a name="2241" class="Symbol"
+      >&#8594;</a
+      ><a name="2242"
+      >
+      </a
+      ><a name="2249" href="Comonad.Definition.html#2220" class="Bound"
+      >f</a
+      ><a name="2250"
+      > </a
+      ><a name="2251" class="Symbol"
+      >(</a
+      ><a name="2252" href="Comonad.Definition.html#1608" class="Bound"
+      >extract</a
+      ><a name="2259"
+      > </a
+      ><a name="2260" href="Comonad.Definition.html#2232" class="Bound"
+      >x</a
+      ><a name="2261" class="Symbol"
+      >)</a
+      ><a name="2262"
+      > </a
+      ><a name="2263" href="Lib.Relation.Binary.PropositionalEquality.html#75" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2264"
+      > </a
+      ><a name="2265" href="Comonad.Definition.html#1608" class="Bound"
+      >extract</a
+      ><a name="2272"
+      > </a
+      ><a name="2273" class="Symbol"
+      >(</a
+      ><a name="2274" href="Comonad.Definition.html#1555" class="Bound"
+      >fmap</a
+      ><a name="2278"
+      > </a
+      ><a name="2279" href="Comonad.Definition.html#2220" class="Bound"
+      >f</a
+      ><a name="2280"
+      > </a
+      ><a name="2281" href="Comonad.Definition.html#2232" class="Bound"
+      >x</a
+      ><a name="2282" class="Symbol"
+      >)</a
+      ><a name="2283"
+      >
+
+</a
+      ><a name="2285" class="Comment"
+      >-- Comonad operations.</a
+      ><a name="2307"
+      >
+</a
+      ><a name="2308" class="Keyword"
+      >record</a
+      ><a name="2314"
+      > </a
+      ><a name="2315" href="Comonad.Definition.html#2315" class="Record"
+      >Comonad&#8242;</a
+      ><a name="2323"
+      > </a
+      ><a name="2324" class="Symbol"
+      >(</a
+      ><a name="2325" href="Comonad.Definition.html#2325" class="Bound"
+      >W</a
+      ><a name="2326"
+      > </a
+      ><a name="2327" class="Symbol"
+      >:</a
+      ><a name="2328"
+      > </a
+      ><a name="2329" class="PrimitiveType"
+      >Set</a
+      ><a name="2332"
+      > </a
+      ><a name="2333" class="Symbol"
+      >&#8594;</a
+      ><a name="2334"
+      > </a
+      ><a name="2335" class="PrimitiveType"
+      >Set</a
+      ><a name="2338" class="Symbol"
+      >)</a
+      ><a name="2339"
+      > </a
+      ><a name="2340" class="Symbol"
+      >:</a
+      ><a name="2341"
+      > </a
+      ><a name="2342" class="PrimitiveType"
+      >Set&#8321;</a
+      ><a name="2346"
+      > </a
+      ><a name="2347" class="Keyword"
+      >where</a
+      ><a name="2352"
+      >
+  </a
+      ><a name="2355" class="Keyword"
+      >field</a
+      ><a name="2360"
+      >
+    </a
+      ><a name="2365" href="Comonad.Definition.html#2365" class="Field"
+      >fmap</a
+      ><a name="2369"
+      >      </a
+      ><a name="2375" class="Symbol"
+      >:</a
+      ><a name="2376"
+      > </a
+      ><a name="2377" class="Symbol"
+      >&#8704;</a
+      ><a name="2378"
+      > </a
+      ><a name="2379" class="Symbol"
+      >{</a
+      ><a name="2380" href="Comonad.Definition.html#2380" class="Bound"
+      >A</a
+      ><a name="2381"
+      > </a
+      ><a name="2382" href="Comonad.Definition.html#2382" class="Bound"
+      >B</a
+      ><a name="2383" class="Symbol"
+      >}</a
+      ><a name="2384"
+      > </a
+      ><a name="2385" class="Symbol"
+      >&#8594;</a
+      ><a name="2386"
+      > </a
+      ><a name="2387" class="Symbol"
+      >(</a
+      ><a name="2388" href="Comonad.Definition.html#2380" class="Bound"
+      >A</a
+      ><a name="2389"
+      > </a
+      ><a name="2390" class="Symbol"
+      >&#8594;</a
+      ><a name="2391"
+      > </a
+      ><a name="2392" href="Comonad.Definition.html#2382" class="Bound"
+      >B</a
+      ><a name="2393" class="Symbol"
+      >)</a
+      ><a name="2394"
+      > </a
+      ><a name="2395" class="Symbol"
+      >&#8594;</a
+      ><a name="2396"
+      > </a
+      ><a name="2397" href="Comonad.Definition.html#2325" class="Bound"
+      >W</a
+      ><a name="2398"
+      > </a
+      ><a name="2399" href="Comonad.Definition.html#2380" class="Bound"
+      >A</a
+      ><a name="2400"
+      > </a
+      ><a name="2401" class="Symbol"
+      >&#8594;</a
+      ><a name="2402"
+      > </a
+      ><a name="2403" href="Comonad.Definition.html#2325" class="Bound"
+      >W</a
+      ><a name="2404"
+      > </a
+      ><a name="2405" href="Comonad.Definition.html#2382" class="Bound"
+      >B</a
+      ><a name="2406"
+      >
+    </a
+      ><a name="2411" href="Comonad.Definition.html#2411" class="Field"
+      >extract</a
+      ><a name="2418"
+      >   </a
+      ><a name="2421" class="Symbol"
+      >:</a
+      ><a name="2422"
+      > </a
+      ><a name="2423" class="Symbol"
+      >&#8704;</a
+      ><a name="2424"
+      > </a
+      ><a name="2425" class="Symbol"
+      >{</a
+      ><a name="2426" href="Comonad.Definition.html#2426" class="Bound"
+      >A</a
+      ><a name="2427" class="Symbol"
+      >}</a
+      ><a name="2428"
+      >   </a
+      ><a name="2431" class="Symbol"
+      >&#8594;</a
+      ><a name="2432"
+      > </a
+      ><a name="2433" href="Comonad.Definition.html#2325" class="Bound"
+      >W</a
+      ><a name="2434"
+      > </a
+      ><a name="2435" href="Comonad.Definition.html#2426" class="Bound"
+      >A</a
+      ><a name="2436"
+      > </a
+      ><a name="2437" class="Symbol"
+      >&#8594;</a
+      ><a name="2438"
+      > </a
+      ><a name="2439" href="Comonad.Definition.html#2426" class="Bound"
+      >A</a
+      ><a name="2440"
+      >
+    </a
+      ><a name="2445" href="Comonad.Definition.html#2445" class="Field"
+      >duplicate</a
+      ><a name="2454"
+      > </a
+      ><a name="2455" class="Symbol"
+      >:</a
+      ><a name="2456"
+      > </a
+      ><a name="2457" class="Symbol"
+      >&#8704;</a
+      ><a name="2458"
+      > </a
+      ><a name="2459" class="Symbol"
+      >{</a
+      ><a name="2460" href="Comonad.Definition.html#2460" class="Bound"
+      >A</a
+      ><a name="2461" class="Symbol"
+      >}</a
+      ><a name="2462"
+      >   </a
+      ><a name="2465" class="Symbol"
+      >&#8594;</a
+      ><a name="2466"
+      > </a
+      ><a name="2467" href="Comonad.Definition.html#2325" class="Bound"
+      >W</a
+      ><a name="2468"
+      > </a
+      ><a name="2469" href="Comonad.Definition.html#2460" class="Bound"
+      >A</a
+      ><a name="2470"
+      > </a
+      ><a name="2471" class="Symbol"
+      >&#8594;</a
+      ><a name="2472"
+      > </a
+      ><a name="2473" href="Comonad.Definition.html#2325" class="Bound"
+      >W</a
+      ><a name="2474"
+      > </a
+      ><a name="2475" class="Symbol"
+      >(</a
+      ><a name="2476" href="Comonad.Definition.html#2325" class="Bound"
+      >W</a
+      ><a name="2477"
+      > </a
+      ><a name="2478" href="Comonad.Definition.html#2460" class="Bound"
+      >A</a
+      ><a name="2479" class="Symbol"
+      >)</a
+      ><a name="2480"
+      >
+    </a
+      ><a name="2485" href="Comonad.Definition.html#2485" class="Field"
+      >isComonad</a
+      ><a name="2494"
+      > </a
+      ><a name="2495" class="Symbol"
+      >:</a
+      ><a name="2496"
+      > </a
+      ><a name="2497" href="Comonad.Definition.html#1518" class="Record"
+      >IsComonad&#8242;</a
+      ><a name="2507"
+      > </a
+      ><a name="2508" href="Comonad.Definition.html#2365" class="Bound"
+      >fmap</a
+      ><a name="2512"
+      > </a
+      ><a name="2513" href="Comonad.Definition.html#2411" class="Bound"
+      >extract</a
+      ><a name="2520"
+      > </a
+      ><a name="2521" href="Comonad.Definition.html#2445" class="Bound"
+      >duplicate</a
+      ><a name="2530"
       >
 
   </a
-      ><a name="1877" class="Keyword"
+      ><a name="2534" class="Keyword"
       >open</a
-      ><a name="1881"
+      ><a name="2538"
       > </a
-      ><a name="1882" href="Comonad.Definition.html#884" class="Module"
+      ><a name="2539" href="Comonad.Definition.html#1518" class="Module"
       >IsComonad&#8242;</a
-      ><a name="1892"
+      ><a name="2549"
       > </a
-      ><a name="1893" href="Comonad.Definition.html#1828" class="Field"
+      ><a name="2550" href="Comonad.Definition.html#2485" class="Field"
       >isComonad</a
-      ><a name="1902"
+      ><a name="2559"
       > </a
-      ><a name="1903" class="Keyword"
+      ><a name="2560" class="Keyword"
       >public</a
-      ><a name="1909"
+      ><a name="2566"
       >
 </a
       ></pre
