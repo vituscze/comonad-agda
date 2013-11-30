@@ -1,3 +1,7 @@
+------------------------------------------------------------------------
+-- Definition of isomorphism and commutative semiring over types.
+------------------------------------------------------------------------
+
 module TypeAlgebra where
 
 open import Algebra
@@ -21,6 +25,9 @@ open import Relation.Binary
 open import Relation.Binary.PropositionalEquality
   using (_≡_; cong; cong₂; refl; trans)
 
+infix 4 _≅_
+
+-- Definition of isomorphism.
 record _≅_ {a b} (A : Set a) (B : Set b) : Set (a ⊔ b) where
   constructor iso
   field
@@ -30,6 +37,7 @@ record _≅_ {a b} (A : Set a) (B : Set b) : Set (a ⊔ b) where
     to-from : ∀ {x} → to (from x) ≡ x
     from-to : ∀ {x} → from (to x) ≡ x
 
+-- The above definition of isomorphism forms an equivalence.
 isEquivalence : ∀ {ℓ} → IsEquivalence {suc ℓ} _≅_
 isEquivalence {ℓ} = record
   { refl  = iso id id refl refl
@@ -44,6 +52,15 @@ isEquivalence {ℓ} = record
     (trans (cong t₂ tf₁) tf₂)
     (trans (cong f₁ ft₂) ft₁)
 
+-- Commutative semiring over types.
+--
+-- This semiring has the following components:
+-- - underlying "set"         - Set ℓ, the type of all (smaller) types
+-- - underlying equivalence   - _≅_, the isomorphism defined above
+-- - additive operation       - _⊎_, disjoint union
+-- - multiplicative operation - _×_, non-dependent pair
+-- - additive identity        - ⊥, the empty type (type that has no values)
+-- - multiplicative identity  - ⊤, the unit type (type that has one value)
 semiring : ∀ {ℓ} → CommutativeSemiring (suc ℓ) ℓ
 semiring {ℓ} = record
   { Carrier = Set ℓ
@@ -78,6 +95,7 @@ semiring {ℓ} = record
   where
   open Algebra.FunctionProperties (_≅_ {a = ℓ})
 
+  -- Lemmas.
   ⊎-assoc : Associative _⊎_
   ⊎-assoc _ _ _ = iso
     [ [ inj₁ , inj₂ ∘ inj₁ ] , inj₂ ∘ inj₂ ]

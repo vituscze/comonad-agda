@@ -1,3 +1,7 @@
+------------------------------------------------------------------------
+-- The Cokleisli category for a given comonad.
+------------------------------------------------------------------------
+
 open import Comonad.Definition
   using (Comonad; module Comonad)
 

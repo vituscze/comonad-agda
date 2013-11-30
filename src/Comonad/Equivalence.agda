@@ -1,3 +1,11 @@
+------------------------------------------------------------------------
+-- The definitions from Comonad.Definition are indeed equivalent.
+--
+-- Sometimes, one of the definitions is easier to implement and this
+-- gives us the ability to define comonad either way and get the
+-- other one for free.
+------------------------------------------------------------------------
+
 module Comonad.Equivalence where
 
 open import Function
